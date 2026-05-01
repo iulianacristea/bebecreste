@@ -9,8 +9,8 @@ export default function CalculatorSomnPage() {
 
       <section className="relative px-5 pb-16 pt-10 sm:px-8 lg:px-10">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,_rgba(186,230,253,0.72),_transparent_34%),radial-gradient(circle_at_82%_12%,_rgba(254,205,211,0.72),_transparent_30%),linear-gradient(135deg,_#fff7f1_0%,_#f8fbff_48%,_#fff1f7_100%)]" />
-        <div className="relative mx-auto grid max-w-7xl gap-8 lg:grid-cols-[0.82fr_1.18fr] lg:items-start">
-          <div className="pt-4 lg:pt-10">
+        <div className="relative mx-auto max-w-7xl">
+          <div className="mb-8 max-w-3xl">
             <p className="mb-5 inline-flex rounded-full border border-sky-200 bg-white/70 px-4 py-2 text-sm font-semibold text-sky-700 shadow-sm">
               Calculator somn bebe
             </p>

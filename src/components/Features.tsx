@@ -24,38 +24,43 @@ const features = [
 
 export function Features() {
   return (
-    <section id="rutine" className="bg-white px-5 py-14 sm:px-8 lg:px-10">
-      <div className="mx-auto max-w-7xl">
-        <div className="max-w-2xl">
-          <p className="text-sm font-semibold uppercase text-emerald-700">
-            Tot ce urmărești zilnic
-          </p>
-          <h2 className="mt-3 text-3xl font-bold tracking-tight text-slate-950 sm:text-4xl">
-            Un tablou simplu pentru ritmul copilului.
-          </h2>
-        </div>
+    <div
+      id="rutine"
+      className="h-full rounded-[2rem] border border-white/85 bg-white/80 p-5 shadow-lg shadow-sky-100/35 backdrop-blur sm:p-6"
+    >
+      <div>
+        <p className="text-sm font-semibold uppercase text-emerald-700">
+          Tot ce urmărești zilnic
+        </p>
+        <h2 className="mt-4 text-2xl font-bold tracking-tight text-slate-950 sm:text-3xl">
+          Un tablou simplu pentru ritmul copilului.
+        </h2>
+      </div>
 
-        <div className="mt-8 grid gap-4 md:grid-cols-3">
-          {features.map((feature) => (
-            <article
-              key={feature.title}
-              className="rounded-[1.75rem] border border-slate-100 bg-slate-50/70 p-6 shadow-sm transition duration-300 hover:-translate-y-1 hover:border-slate-200 hover:bg-white hover:shadow-xl hover:shadow-slate-200/70"
-            >
+      <div className="mt-6 grid gap-3">
+        {features.map((feature) => (
+          <article
+            key={feature.title}
+            className="rounded-[1.25rem] border border-slate-100 bg-slate-50/70 p-4 shadow-sm transition duration-300 hover:-translate-y-0.5 hover:border-slate-200 hover:bg-white hover:shadow-md hover:shadow-slate-200/70"
+          >
+            <div className="flex items-start gap-4">
               <div
-                className={`mb-6 flex h-12 w-12 items-center justify-center rounded-2xl text-sm font-bold ring-1 ${feature.accent}`}
+                className={`flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl text-sm font-bold ring-1 ${feature.accent}`}
               >
                 {feature.icon}
               </div>
-              <h3 className="text-xl font-bold text-slate-950">
-                {feature.title}
-              </h3>
-              <p className="mt-3 leading-7 text-slate-600">
-                {feature.description}
-              </p>
-            </article>
-          ))}
-        </div>
+              <div>
+                <h3 className="text-lg font-bold text-slate-950">
+                  {feature.title}
+                </h3>
+                <p className="mt-1 text-sm leading-6 text-slate-600">
+                  {feature.description}
+                </p>
+              </div>
+            </div>
+          </article>
+        ))}
       </div>
-    </section>
+    </div>
   );
 }

@@ -1,62 +1,67 @@
 const steps = [
   {
     number: "01",
-    title: "Introduci vârsta copilului",
-    description:
-      "Spui câte luni are copilul, ca recomandarea să țină cont de etapa lui de dezvoltare.",
+    icon: "V",
+    title: "Spui vârsta copilului",
+    description: "Alegem recomandarea în funcție de etapa de dezvoltare.",
   },
   {
     number: "02",
+    icon: "T",
     title: "Alegi ora trezirii",
     description:
-      "Selectezi ora la care s-a trezit, iar calculatorul estimează următoarea fereastră de somn.",
+      "Calculatorul estimează următoarea fereastră potrivită de somn.",
   },
   {
     number: "03",
-    title: "Primești recomandarea orientativă",
+    icon: "R",
+    title: "Primești un reper clar",
     description:
-      "Vezi ora următorului somn, ora de culcare și o explicație scurtă pentru ritmul zilei.",
+      "Vezi intervalul recomandat și o explicație simplă pentru ritmul zilei.",
   },
 ];
 
 export function HowItWorks() {
   return (
-    <section id="despre" className="bg-white px-5 py-14 sm:px-8 lg:px-10">
-      <div className="mx-auto max-w-7xl">
-        <div className="flex flex-col justify-between gap-4 md:flex-row md:items-end">
-          <div className="max-w-2xl">
-            <p className="text-sm font-semibold uppercase text-sky-700">
-              Cum funcționează
-            </p>
-            <h2 className="mt-3 text-3xl font-bold tracking-tight text-slate-950 sm:text-4xl">
-              Trei pași simpli pentru o recomandare clară.
-            </h2>
-          </div>
-          <p className="max-w-md text-base leading-7 text-slate-600">
-            Calculatorul păstrează lucrurile simple, ca tu să poți lua rapid o
-            decizie potrivită pentru ziua copilului.
-          </p>
-        </div>
-
-        <div className="mt-8 grid gap-4 md:grid-cols-3">
-          {steps.map((step) => (
-            <article
-              key={step.number}
-              className="rounded-[1.75rem] border border-slate-100 bg-[#fbfdff] p-6 shadow-sm transition duration-300 hover:-translate-y-1 hover:border-sky-100 hover:bg-white hover:shadow-xl hover:shadow-sky-100/70"
-            >
-              <div className="mb-6 inline-flex rounded-full bg-sky-100 px-3 py-1 text-sm font-bold text-sky-700 ring-1 ring-sky-200">
-                {step.number}
-              </div>
-              <h3 className="text-xl font-bold text-slate-950">
-                {step.title}
-              </h3>
-              <p className="mt-3 leading-7 text-slate-600">
-                {step.description}
-              </p>
-            </article>
-          ))}
-        </div>
+    <div className="h-full rounded-[2rem] border border-white/85 bg-white/80 p-5 shadow-lg shadow-rose-100/35 backdrop-blur sm:p-6">
+      <div>
+        <p className="inline-flex rounded-full border border-sky-100 bg-white/75 px-4 py-2 text-sm font-semibold uppercase text-sky-700 shadow-sm shadow-sky-100/60 backdrop-blur">
+            Cum funcționează
+        </p>
+        <h2 className="mt-4 text-2xl font-bold tracking-tight text-slate-950 sm:text-3xl">
+          Primești o recomandare în doar 3 pași
+        </h2>
+        <p className="mt-3 text-base leading-7 text-slate-600">
+          Introduci câteva detalii simple, iar BebeCrește îți oferă un reper
+          blând pentru ziua copilului.
+        </p>
       </div>
-    </section>
+
+      <div className="mt-6 grid gap-3">
+        {steps.map((step) => (
+          <article
+            key={step.number}
+            className="group rounded-[1.25rem] border border-white/85 bg-white/85 p-4 shadow-sm transition duration-300 hover:-translate-y-0.5 hover:border-rose-100 hover:bg-white hover:shadow-md hover:shadow-rose-100/50"
+          >
+            <div className="flex items-start gap-4">
+              <div className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-gradient-to-br from-rose-50 to-sky-50 text-sm font-bold text-slate-950 ring-1 ring-white shadow-sm">
+                {step.icon}
+              </div>
+              <div className="min-w-0">
+                <div className="mb-1 inline-flex rounded-full bg-slate-950 px-2.5 py-0.5 text-xs font-bold text-white transition duration-300 group-hover:bg-rose-700">
+                  {step.number}
+                </div>
+                <h3 className="text-lg font-bold text-slate-950">
+                  {step.title}
+                </h3>
+                <p className="mt-1 text-sm leading-6 text-slate-600">
+                  {step.description}
+                </p>
+              </div>
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
   );
 }
