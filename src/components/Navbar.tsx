@@ -4,6 +4,7 @@ import Image from "next/image";
 const navigationLinks = [
   { href: "/", label: "Acasă" },
   { href: "/calculator-somn", label: "Calculator somn" },
+  { href: "/blog", label: "Blog" },
   { href: "#despre", label: "Despre" },
   { href: "/contact", label: "Contact" },
 ];
