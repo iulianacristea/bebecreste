@@ -13,16 +13,16 @@ export function Footer() {
 
         <nav className="flex flex-wrap gap-4 font-semibold text-slate-600">
           <Link
-            href="/termeni"
+            href="/termeni-si-conditii"
             className="rounded-full px-2 py-1 transition duration-200 hover:bg-rose-50 hover:text-slate-950 focus:outline-none focus:ring-4 focus:ring-rose-100"
           >
-            Termeni
+            Termeni și Condiții
           </Link>
           <Link
-            href="/confidentialitate"
+            href="/politica-confidentialitate"
             className="rounded-full px-2 py-1 transition duration-200 hover:bg-rose-50 hover:text-slate-950 focus:outline-none focus:ring-4 focus:ring-rose-100"
           >
-            Confidențialitate
+            Politică de Confidențialitate
           </Link>
           <Link
             href="/contact"

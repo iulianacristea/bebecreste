@@ -56,6 +56,7 @@ type ChildProfile = {
   ageYears: string;
   ageMonths: string;
   napCount: NapCount;
+  wakeTime: string;
 };
 
 const sleepHistoryStorageKey = "bebecreste:sleep-calculator-history";
@@ -139,6 +140,8 @@ function readChildProfile() {
       typeof profile.name !== "string" ||
       typeof profile.ageYears !== "string" ||
       typeof profile.ageMonths !== "string" ||
+      (typeof profile.wakeTime !== "string" &&
+        typeof profile.wakeTime !== "undefined") ||
       !isNapCount(profile.napCount)
     ) {
       return null;
@@ -149,6 +152,8 @@ function readChildProfile() {
       ageYears: profile.ageYears,
       ageMonths: profile.ageMonths,
       napCount: profile.napCount,
+      wakeTime:
+        typeof profile.wakeTime === "string" ? profile.wakeTime : "",
     };
   } catch {
     return null;
@@ -166,6 +171,7 @@ export function SleepCalculator() {
   const [error, setError] = useState("");
   const [copyStatus, setCopyStatus] = useState("");
   const [profileStatus, setProfileStatus] = useState("");
+  const [hasSavedProfile, setHasSavedProfile] = useState(false);
   const [reminderStatus, setReminderStatus] = useState("");
   const [isReminderSet, setIsReminderSet] = useState(false);
   const reminderTimeoutRef = useRef<number | null>(null);
@@ -181,6 +187,8 @@ export function SleepCalculator() {
         setAgeYears(savedProfile.ageYears);
         setAgeMonths(savedProfile.ageMonths);
         setNapCount(savedProfile.napCount);
+        setWakeTime(savedProfile.wakeTime);
+        setHasSavedProfile(true);
         setProfileStatus("Profil încărcat");
       }
     }, 0);
@@ -637,6 +645,7 @@ export function SleepCalculator() {
 
     if (
       (!hasYears && !hasMonths) ||
+      !wakeTime ||
       !Number.isFinite(years) ||
       !Number.isFinite(months) ||
       !Number.isInteger(years) ||
@@ -646,7 +655,9 @@ export function SleepCalculator() {
       months > 11 ||
       totalMonths > 36
     ) {
-      setProfileStatus("Completează o vârstă validă pentru profil.");
+      setProfileStatus(
+        "Completează o vârstă validă și ora obișnuită de trezire."
+      );
       return;
     }
 
@@ -655,6 +666,7 @@ export function SleepCalculator() {
       ageYears: ageYears.trim(),
       ageMonths: ageMonths.trim(),
       napCount,
+      wakeTime,
     };
 
     try {
@@ -662,10 +674,27 @@ export function SleepCalculator() {
         childProfileStorageKey,
         JSON.stringify(profile)
       );
-      setProfileStatus("Profil salvat");
-      window.setTimeout(() => setProfileStatus(""), 2500);
+      setHasSavedProfile(true);
+      setProfileStatus("Profil salvat local pe dispozitivul tău.");
     } catch {
       setProfileStatus("Profilul nu a putut fi salvat.");
+      window.setTimeout(() => setProfileStatus(""), 2500);
+    }
+  }
+
+  function clearChildProfile() {
+    try {
+      window.localStorage.removeItem(childProfileStorageKey);
+      setChildName("");
+      setAgeYears("");
+      setAgeMonths("");
+      setNapCount("not-sure");
+      setWakeTime("");
+      setHasSavedProfile(false);
+      setProfileStatus("Profil șters de pe dispozitiv.");
+      window.setTimeout(() => setProfileStatus(""), 2500);
+    } catch {
+      setProfileStatus("Profilul nu a putut fi șters.");
       window.setTimeout(() => setProfileStatus(""), 2500);
     }
   }
@@ -882,125 +911,155 @@ export function SleepCalculator() {
         </div>
 
         <div className="grid gap-4">
-        <div className="rounded-[1.5rem] border border-sky-100 bg-sky-50/60 p-4 sm:col-span-2">
-          <div className="flex flex-col gap-3 sm:flex-row sm:items-end">
-            <div className="flex-1">
-              <label
-                htmlFor="child-name"
-                className="mb-2 block text-sm font-semibold text-slate-700"
-              >
-                Profil copil (opțional)
-              </label>
-              <input
-                id="child-name"
-                type="text"
-                value={childName}
-                onChange={(event) => setChildName(event.target.value)}
-                placeholder="ex: Sofia"
-                className="w-full rounded-2xl border border-sky-100 bg-white px-4 py-3.5 text-slate-900 outline-none transition duration-200 placeholder:text-slate-400 hover:border-sky-200 focus:border-sky-300 focus:ring-4 focus:ring-sky-100"
-              />
+          <div className="rounded-[1.5rem] border border-sky-100 bg-sky-50/60 p-4 sm:col-span-2">
+            <div className="flex flex-col gap-2 sm:flex-row sm:items-start sm:justify-between">
+              <div>
+                <p className="text-xs font-semibold uppercase text-sky-700">
+                  Profil copil
+                </p>
+                <h3 className="mt-1 text-lg font-bold text-slate-950">
+                  {hasSavedProfile && childName.trim()
+                    ? `Bună, ${childName.trim()}! Hai să vedem ritmul de azi.`
+                    : "Salvează datele pentru data viitoare"}
+                </h3>
+              </div>
+              <span className="w-fit rounded-full bg-white px-3 py-1 text-xs font-semibold text-sky-700 shadow-sm ring-1 ring-sky-100">
+                Fără cont
+              </span>
             </div>
-            <button
-              type="button"
-              onClick={saveChildProfile}
-              className="rounded-2xl bg-white px-5 py-3.5 text-sm font-semibold text-slate-700 shadow-sm ring-1 ring-sky-100 transition duration-200 hover:-translate-y-0.5 hover:bg-sky-50 hover:text-slate-950 focus:outline-none focus:ring-4 focus:ring-sky-100 active:translate-y-0"
-            >
-              Salvează profilul
-            </button>
-          </div>
-          <p className="mt-2 text-sm leading-6 text-slate-600">
-            Salvăm local vârsta și numărul obișnuit de somnuri, ca să fie
-            completate automat data viitoare.
-          </p>
-          {profileStatus && (
-            <p className="mt-2 text-sm font-semibold text-sky-700">
-              {profileStatus}
+
+            <p className="mt-2 text-sm leading-6 text-slate-600">
+              Datele sunt salvate doar în browserul tău, nu pe server. Le
+              folosim doar ca să completăm automat calculatorul data viitoare.
             </p>
-          )}
-        </div>
 
-        <div className="grid gap-3 sm:grid-cols-2">
-          <div>
-            <label
-              htmlFor="age-years"
-              className="mb-2 block text-sm font-semibold text-slate-700"
-            >
-              Ani
-            </label>
-            <input
-              id="age-years"
-              type="number"
-              min="0"
-              max="3"
-              step="1"
-              inputMode="numeric"
-              value={ageYears}
-              onChange={(event) => setAgeYears(event.target.value)}
-              placeholder="ex: 1"
-              className="w-full rounded-2xl border border-slate-200 bg-white px-4 py-3.5 text-slate-900 outline-none transition duration-200 placeholder:text-slate-400 hover:border-sky-200 focus:border-sky-300 focus:ring-4 focus:ring-sky-100"
-            />
+            <div className="mt-4 grid gap-3 sm:grid-cols-2">
+              <div>
+                <label
+                  htmlFor="child-name"
+                  className="mb-2 block text-sm font-semibold text-slate-700"
+                >
+                  Numele copilului
+                </label>
+                <input
+                  id="child-name"
+                  type="text"
+                  value={childName}
+                  onChange={(event) => setChildName(event.target.value)}
+                  placeholder="ex: Sofia"
+                  className="w-full rounded-2xl border border-sky-100 bg-white px-4 py-3 text-slate-900 outline-none transition duration-200 placeholder:text-slate-400 hover:border-sky-200 focus:border-sky-300 focus:ring-4 focus:ring-sky-100"
+                />
+              </div>
+
+              <div>
+                <label
+                  htmlFor="wake-time"
+                  className="mb-2 block text-sm font-semibold text-slate-700"
+                >
+                  Ora obișnuită de trezire
+                </label>
+                <input
+                  id="wake-time"
+                  type="time"
+                  value={wakeTime}
+                  onChange={(e) => setWakeTime(e.target.value)}
+                  className="w-full rounded-2xl border border-slate-200 bg-white px-4 py-3 text-slate-900 outline-none transition duration-200 hover:border-sky-200 focus:border-sky-300 focus:ring-4 focus:ring-sky-100"
+                />
+              </div>
+            </div>
+
+            <div className="mt-3 grid gap-3 sm:grid-cols-3">
+              <div>
+                <label
+                  htmlFor="age-years"
+                  className="mb-2 block text-sm font-semibold text-slate-700"
+                >
+                  Ani
+                </label>
+                <input
+                  id="age-years"
+                  type="number"
+                  min="0"
+                  max="3"
+                  step="1"
+                  inputMode="numeric"
+                  value={ageYears}
+                  onChange={(event) => setAgeYears(event.target.value)}
+                  placeholder="ex: 1"
+                  className="w-full rounded-2xl border border-slate-200 bg-white px-4 py-3 text-slate-900 outline-none transition duration-200 placeholder:text-slate-400 hover:border-sky-200 focus:border-sky-300 focus:ring-4 focus:ring-sky-100"
+                />
+              </div>
+
+              <div>
+                <label
+                  htmlFor="age-months"
+                  className="mb-2 block text-sm font-semibold text-slate-700"
+                >
+                  Luni
+                </label>
+                <input
+                  id="age-months"
+                  type="number"
+                  min="0"
+                  max="11"
+                  step="1"
+                  inputMode="numeric"
+                  value={ageMonths}
+                  onChange={(event) => setAgeMonths(event.target.value)}
+                  placeholder="ex: 6"
+                  className="w-full rounded-2xl border border-slate-200 bg-white px-4 py-3 text-slate-900 outline-none transition duration-200 placeholder:text-slate-400 hover:border-sky-200 focus:border-sky-300 focus:ring-4 focus:ring-sky-100"
+                />
+              </div>
+
+              <div>
+                <label
+                  htmlFor="nap-count"
+                  className="mb-2 block text-sm font-semibold text-slate-700"
+                >
+                  Somnuri
+                </label>
+                <select
+                  id="nap-count"
+                  value={napCount}
+                  onChange={(event) =>
+                    setNapCount(event.target.value as NapCount)
+                  }
+                  className="w-full rounded-2xl border border-slate-200 bg-white px-4 py-3 text-slate-900 outline-none transition duration-200 hover:border-sky-200 focus:border-sky-300 focus:ring-4 focus:ring-sky-100"
+                >
+                  <option value="1">1 somn</option>
+                  <option value="2">2 somnuri</option>
+                  <option value="3">3 somnuri</option>
+                  <option value="4">4 somnuri</option>
+                  <option value="5">5 somnuri</option>
+                  <option value="6">6 somnuri</option>
+                  <option value="not-sure">Nu sunt sigur</option>
+                </select>
+              </div>
+            </div>
+
+            <div className="mt-4 flex flex-col gap-3 sm:flex-row">
+              <button
+                type="button"
+                onClick={saveChildProfile}
+                className="inline-flex flex-1 justify-center rounded-2xl bg-sky-700 px-5 py-3 text-sm font-semibold text-white shadow-lg shadow-sky-700/15 transition duration-200 hover:-translate-y-0.5 hover:bg-sky-800 hover:shadow-xl hover:shadow-sky-700/20 focus:outline-none focus:ring-4 focus:ring-sky-100 active:translate-y-0"
+              >
+                Salvează profilul
+              </button>
+              <button
+                type="button"
+                onClick={clearChildProfile}
+                className="inline-flex flex-1 justify-center rounded-2xl bg-white px-5 py-3 text-sm font-semibold text-rose-700 shadow-sm ring-1 ring-rose-100 transition duration-200 hover:-translate-y-0.5 hover:bg-rose-50 hover:text-rose-800 focus:outline-none focus:ring-4 focus:ring-rose-100 active:translate-y-0"
+              >
+                Șterge profilul
+              </button>
+            </div>
+
+            {profileStatus && (
+              <p className="mt-3 text-sm font-semibold text-sky-700">
+                {profileStatus}
+              </p>
+            )}
           </div>
-
-          <div>
-            <label
-              htmlFor="age-months"
-              className="mb-2 block text-sm font-semibold text-slate-700"
-            >
-              Luni
-            </label>
-            <input
-              id="age-months"
-              type="number"
-              min="0"
-              max="11"
-              step="1"
-              inputMode="numeric"
-              value={ageMonths}
-              onChange={(event) => setAgeMonths(event.target.value)}
-              placeholder="ex: 6"
-              className="w-full rounded-2xl border border-slate-200 bg-white px-4 py-3.5 text-slate-900 outline-none transition duration-200 placeholder:text-slate-400 hover:border-sky-200 focus:border-sky-300 focus:ring-4 focus:ring-sky-100"
-            />
-          </div>
-        </div>
-
-        <div>
-          <label
-            htmlFor="wake-time"
-            className="mb-2 block text-sm font-semibold text-slate-700"
-          >
-            Ora trezirii
-          </label>
-          <input
-            id="wake-time"
-            type="time"
-            value={wakeTime}
-            onChange={(e) => setWakeTime(e.target.value)}
-            className="w-full rounded-2xl border border-slate-200 bg-white px-4 py-3.5 text-slate-900 outline-none transition duration-200 hover:border-sky-200 focus:border-sky-300 focus:ring-4 focus:ring-sky-100"
-          />
-        </div>
-
-        <div className="sm:col-span-2">
-          <label
-            htmlFor="nap-count"
-            className="mb-2 block text-sm font-semibold text-slate-700"
-          >
-            Câte somnuri are astăzi?
-          </label>
-          <select
-            id="nap-count"
-            value={napCount}
-            onChange={(event) => setNapCount(event.target.value as NapCount)}
-            className="w-full rounded-2xl border border-slate-200 bg-white px-4 py-3.5 text-slate-900 outline-none transition duration-200 hover:border-sky-200 focus:border-sky-300 focus:ring-4 focus:ring-sky-100"
-          >
-            <option value="1">1 somn</option>
-            <option value="2">2 somnuri</option>
-            <option value="3">3 somnuri</option>
-            <option value="4">4 somnuri</option>
-            <option value="5">5 somnuri</option>
-            <option value="6">6 somnuri</option>
-            <option value="not-sure">Nu sunt sigur</option>
-          </select>
-        </div>
 
         <p className="text-sm leading-6 text-slate-500">
           Poți modifica oricând datele. Recomandarea este orientativă și se
