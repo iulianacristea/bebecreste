@@ -11,30 +11,58 @@ type PlannerResult = {
   note: string;
 };
 
-function getAgeGroup(ageInMonths: number) {
-  if (ageInMonths < 6) {
-    return "too-young";
-  }
+type AllergyFlags = {
+  hasEggAllergy: boolean;
+  hasDairyAllergy: boolean;
+  hasNutAllergy: boolean;
+};
 
-  if (ageInMonths <= 8) {
-    return "early";
-  }
-
-  if (ageInMonths <= 12) {
-    return "baby";
-  }
-
-  return "toddler";
+function normalizeText(text: string) {
+  return text.toLocaleLowerCase("ro-RO");
 }
 
-function buildAvailableFoodText(foods: string) {
-  const trimmedFoods = foods.trim();
+function hasAny(text: string, keywords: string[]) {
+  const normalized = normalizeText(text);
+  return keywords.some((keyword) => normalized.includes(keyword));
+}
 
-  if (!trimmedFoods) {
-    return "folosind alimente simple potrivite vârstei";
-  }
+function getAllergyFlags(allergies: string): AllergyFlags {
+  return {
+    hasEggAllergy: hasAny(allergies, [
+      "ou",
+      "ouă",
+      "oua",
+      "egg",
+      "gălbenuș",
+      "galbenus",
+      "albuș",
+      "albus",
+      "omlet",
+    ]),
+    hasDairyAllergy: hasAny(allergies, [
+      "lactate",
+      "lapte",
+      "iaurt",
+      "brânză",
+      "branza",
+      "smântână",
+      "smantana",
+    ]),
+    hasNutAllergy: hasAny(allergies, [
+      "nuci",
+      "arahide",
+      "alune",
+      "migdale",
+      "caju",
+    ]),
+  };
+}
 
-  return `pornind de la ce ai acasă: ${trimmedFoods}`;
+function getAgeGroup(ageInMonths: number) {
+  if (ageInMonths < 6) return "too-young";
+  if (ageInMonths <= 8) return "early";
+  if (ageInMonths <= 12) return "baby";
+  return "toddler";
 }
 
 function getAvailableFoodItems(foods: string) {
@@ -44,25 +72,70 @@ function getAvailableFoodItems(foods: string) {
     .filter(Boolean);
 }
 
+function isFoodAllergic(food: string, flags: AllergyFlags) {
+  const normalized = normalizeText(food);
+
+  if (
+    flags.hasEggAllergy &&
+    hasAny(normalized, [
+      "ou",
+      "ouă",
+      "oua",
+      "egg",
+      "omlet",
+      "gălbenuș",
+      "galbenus",
+      "albuș",
+      "albus",
+    ])
+  ) {
+    return true;
+  }
+
+  if (
+    flags.hasDairyAllergy &&
+    hasAny(normalized, [
+      "lapte",
+      "iaurt",
+      "brânză",
+      "branza",
+      "smântână",
+      "smantana",
+      "lactate",
+    ])
+  ) {
+    return true;
+  }
+
+  if (
+    flags.hasNutAllergy &&
+    hasAny(normalized, ["nuci", "arahide", "alune", "migdale", "caju"])
+  ) {
+    return true;
+  }
+
+  return false;
+}
+
+function filterAllergicFoods(items: string[], flags: AllergyFlags) {
+  return items.filter((item) => !isFoodAllergic(item, flags));
+}
+
 function filterFoodsByKeywords(items: string[], keywords: string[]) {
   return items.filter((item) => {
-    const normalizedItem = item.toLocaleLowerCase("ro-RO");
-
+    const normalizedItem = normalizeText(item);
     return keywords.some((keyword) => normalizedItem.includes(keyword));
   });
 }
 
 function formatFoodList(items: string[]) {
-  if (items.length === 0) {
-    return "";
-  }
-
-  return items.join(", ");
+  return items.length ? items.join(", ") : "";
 }
 
-function buildFoodGroups(foods: string) {
-  const items = getAvailableFoodItems(foods);
-  const proteinFoods = filterFoodsByKeywords(items, [
+function buildFoodGroups(foods: string, flags: AllergyFlags) {
+  const safeItems = filterAllergicFoods(getAvailableFoodItems(foods), flags);
+
+  const proteinFoods = filterFoodsByKeywords(safeItems, [
     "pui",
     "vit",
     "vita",
@@ -71,21 +144,22 @@ function buildFoodGroups(foods: string) {
     "peste",
     "carne",
   ]);
-  const breakfastFoods = filterFoodsByKeywords(items, [
+
+  const breakfastFoods = filterFoodsByKeywords(safeItems, [
     "banan",
     "măr",
     "mar",
     "pară",
     "para",
     "fruct",
-    "iaurt",
     "ovăz",
     "ovaz",
     "cereal",
-    "brânz",
-    "branz",
+    "pâine",
+    "paine",
   ]);
-  const vegetableFoods = filterFoodsByKeywords(items, [
+
+  const vegetableFoods = filterFoodsByKeywords(safeItems, [
     "morcov",
     "dovlecel",
     "cartof",
@@ -103,15 +177,16 @@ function buildFoodGroups(foods: string) {
   };
 }
 
-function getAgeFoodGuide(ageInMonths: number) {
+function getAgeFoodGuide(ageInMonths: number, flags: AllergyFlags) {
+  const dairy = flags.hasDairyAllergy
+    ? "alternative fără lactate, potrivite vârstei"
+    : "iaurt integral sau brânzică de vaci";
+
   if (ageInMonths === 6) {
     return {
-      fruit: "banană sau măr",
       vegetables: "dovlecel, păstârnac, morcov sau cartof dulce",
       cereals: "cereale speciale pentru bebeluși",
       protein: "",
-      dairy: "lapte matern sau formulă",
-      egg: "",
       calories: "aprox. 700-750 kcal/zi",
       meals: "o masă solidă la prânz, restul meselor fiind lapte",
     };
@@ -119,12 +194,10 @@ function getAgeFoodGuide(ageInMonths: number) {
 
   if (ageInMonths <= 8) {
     return {
-      fruit: "mango, pere, caise, prune sau dovleac",
       vegetables: "sparanghel, fasole, mazăre, cartofi sau broccoli",
       cereals: "cereale speciale pentru bebeluși",
       protein: "pui, curcan, pește slab sau porc slab",
-      dairy: "iaurt integral sau brânzică de vaci",
-      egg: "gălbenuș fiert tare",
+      dairy,
       calories: "aprox. 720-800 kcal/zi",
       meals:
         ageInMonths === 7
@@ -133,54 +206,89 @@ function getAgeFoodGuide(ageInMonths: number) {
     };
   }
 
-  if (ageInMonths <= 10) {
-    return {
-      fruit: "pepene roșu, pepene galben sau ananas",
-      vegetables: "ceapă, sfeclă roșie, conopidă sau spanac",
-      cereals: "toate cerealele potrivite vârstei",
-      protein: "vită sau pește",
-      dairy: "smântână, în cantitate potrivită vârstei",
-      egg: "puțin albuș, dacă a fost introdus treptat",
-      calories: "aprox. 750-850 kcal/zi",
-      meals: "3 mese solide și 1-2 gustări, în funcție de ritmul copilului",
-    };
-  }
-
   if (ageInMonths <= 12) {
     return {
-      fruit: "citrice, kiwi sau roșii, dacă sunt tolerate",
-      vegetables: "toate legumele potrivite copilului",
-      cereals: "toate cerealele potrivite vârstei",
-      protein: "alimentele introduse anterior",
-      dairy: "lapte de capră și preparate, dacă sunt potrivite copilului",
-      egg: "ou de găină întreg, introdus treptat",
+      vegetables: "legume variate, potrivite copilului",
+      cereals: "cereale, paste moi sau orez potrivite vârstei",
+      protein: flags.hasEggAllergy
+        ? "pui, curcan, vită sau pește"
+        : "pui, curcan, vită, pește sau ou introdus treptat",
+      dairy,
       calories: "aprox. 800-900 kcal/zi",
       meals: "3 mese solide și până la 2 gustări",
     };
   }
 
   return {
-    fruit: "fructe variate, potrivite copilului",
     vegetables: "legume variate",
     cereals: "cereale, paste, orez sau pâine potrivite vârstei",
-    protein: "pui, curcan, vită, pește sau ou",
-    dairy: "iaurt, brânză sau alte lactate tolerate",
-    egg: "ou, dacă este tolerat",
+    protein: flags.hasEggAllergy
+      ? "pui, curcan, vită sau pește"
+      : "pui, curcan, vită, pește sau ou",
+    dairy,
     calories: "necesarul diferă mult în funcție de copil",
     meals: "3 mese principale și gustări simple, după apetit",
   };
+}
+
+function getBreakfastSuggestion(flags: AllergyFlags, breakfastDetail: string) {
+  if (flags.hasEggAllergy && flags.hasDairyAllergy) {
+    return `Terci cald cu fruct, pâine moale cu pastă de legume sau fructe potrivite vârstei.${breakfastDetail}`;
+  }
+
+  if (flags.hasEggAllergy) {
+    return `Terci cald, fructe potrivite vârstei sau pâine moale cu pastă de legume.${breakfastDetail}`;
+  }
+
+  if (flags.hasDairyAllergy) {
+    return `Omletă moale, terci cald cu fruct sau pâine moale cu pastă de legume.${breakfastDetail}`;
+  }
+
+  return `Omletă moale, iaurt cu fruct sau terci cald.${breakfastDetail}`;
+}
+
+function getSnackSuggestion(flags: AllergyFlags) {
+  if (flags.hasDairyAllergy) {
+    return "Fruct, bastonașe moi de legume, pâine moale sau o gustare simplă fără lactate.";
+  }
+
+  return "Fruct, iaurt, brioșă simplă făcută acasă sau bastonașe moi de legume.";
+}
+
+function getCalorieExplanation(ageInMonths: number, weightKg?: number) {
+  let coefficient = 85;
+  let range = "1–3 ani: ~80–90 kcal/kg/zi";
+
+  if (ageInMonths >= 6 && ageInMonths <= 12) {
+    coefficient = 90;
+    range = "6–12 luni: ~80–100 kcal/kg/zi";
+  }
+
+  if (weightKg && weightKg > 0) {
+    const estimatedCalories = Math.round(weightKg * coefficient);
+
+    return ` Necesar caloric estimat: ${estimatedCalories} kcal/zi, calculat orientativ cu formula: greutate (${weightKg} kg) × ${coefficient} kcal/kg/zi.`;
+  }
+
+  return ` Necesar caloric zilnic orientativ: greutate (kg) × coeficient caloric (kcal/kg/zi). În general: ${range}.`;
 }
 
 function getPlannerResult(
   ageInMonths: number,
   allergies: string,
   isPickyEater: boolean,
-  availableFoods: string
+  availableFoods: string,
+  weightKg?: number
 ): PlannerResult {
   const ageGroup = getAgeGroup(ageInMonths);
-  const foodsText = buildAvailableFoodText(availableFoods);
-  const { breakfastText, proteinText, vegetableText } =
-    buildFoodGroups(availableFoods);
+  const flags = getAllergyFlags(allergies);
+  const guide = getAgeFoodGuide(ageInMonths, flags);
+
+  const { breakfastText, proteinText, vegetableText } = buildFoodGroups(
+    availableFoods,
+    flags
+  );
+
   const breakfastDetail = breakfastText
     ? ` Poți folosi: ${breakfastText}.`
     : "";
@@ -190,26 +298,31 @@ function getPlannerResult(
   const vegetableDetail = vegetableText
     ? ` Merge bine cu legume precum: ${vegetableText}.`
     : "";
+
   const allergyNote = allergies.trim()
     ? `Evită alimentele menționate la alergii: ${allergies.trim()}.`
     : "Verifică mereu ingredientele noi și introdu-le treptat.";
+
   const pickyNote = isPickyEater
     ? "Pentru un copil mofturos, păstrează porțiile mici și oferă alimentele fără presiune."
     : "Poți păstra mesele simple, variate și adaptate apetitului copilului.";
 
+  const calorieNote = getCalorieExplanation(ageInMonths, weightKg);
+
   if (ageGroup === "too-young") {
     return {
-      breakfast: "Pentru sub 6 luni, discută cu pediatrul înainte de diversificare.",
-      lunch: "Laptele rămâne alimentul principal, conform recomandării medicului.",
-      dinner: "Nu forța introducerea meselor solide înainte ca bebe să fie pregătit.",
+      breakfast:
+        "Pentru sub 6 luni, discută cu pediatrul înainte de diversificare.",
+      lunch:
+        "Laptele rămâne alimentul principal, conform recomandării medicului.",
+      dinner:
+        "Nu forța introducerea meselor solide înainte ca bebe să fie pregătit.",
       snack: "Gustările solide nu sunt necesare în această etapă.",
-      note: `${allergyNote} ${pickyNote}`,
+      note: `${allergyNote} ${pickyNote}${calorieNote}`,
     };
   }
 
   if (ageGroup === "early") {
-    const guide = getAgeFoodGuide(ageInMonths);
-
     if (ageInMonths === 6) {
       return {
         breakfast:
@@ -219,59 +332,51 @@ function getPlannerResult(
           "Cina solidă se introduce mai târziu. Seara rămâne simplă, cu lapte și rutină calmă.",
         snack:
           "Gustările nu sunt necesare la 6 luni. Diversificarea începe blând, cu o masă pe zi.",
-        note: `${allergyNote} La 6 luni, convenția este o singură masă solidă, de obicei la prânz. ${guide.calories} orientativ. ${pickyNote}`,
-      };
-    }
-
-    if (ageInMonths === 7) {
-      return {
-        breakfast: `Mic dejun simplu: fruct moale sau cereale pentru bebeluși. Variante potrivite: ${guide.fruit}. ${breakfastDetail}`,
-        lunch: `Prânz cu legume și, dacă au fost introduse, proteină potrivită vârstei: ${guide.protein}.${proteinDetail}${vegetableDetail}`,
-        dinner:
-          "Cina solidă se introduce de obicei de la 8 luni. Până atunci, păstrează seara simplă.",
-        snack:
-          "Gustarea nu este obligatorie la 7 luni; poate rămâne lapte, în funcție de rutina copilului.",
-        note: `${allergyNote} La 7 luni, se introduce micul dejun, iar prânzul rămâne masa principală. ${guide.meals}. ${pickyNote}`,
+        note: `${allergyNote} La 6 luni, recomandarea orientativă este o singură masă solidă, de obicei la prânz. ${guide.calories}. ${pickyNote}${calorieNote}`,
       };
     }
 
     return {
-      breakfast: `Mic dejun cu fruct moale, cereale pentru bebeluși sau iaurt integral, dacă a fost introdus. Variante potrivite: ${guide.fruit}.${breakfastDetail}`,
+      breakfast: getBreakfastSuggestion(flags, breakfastDetail),
       lunch: `Prânz cu legume și proteină potrivită vârstei: ${guide.protein}.${proteinDetail}${vegetableDetail}`,
-      dinner: `Cină simplă cu legume moi sau cereale pentru bebeluși. Legume potrivite: ${guide.vegetables}.`,
-      snack: "O gustare mică: fruct moale, iaurt sau câteva lingurițe dintr-un aliment deja acceptat.",
-      note: `${allergyNote} La 6-8 luni, mesele sunt mai mult despre explorare decât cantitate. ${pickyNote}`,
+      dinner:
+        ageInMonths === 7
+          ? "Cina solidă se introduce de obicei de la 8 luni. Până atunci, păstrează seara simplă."
+          : `Cină simplă cu legume moi sau cereale pentru bebeluși. Legume potrivite: ${guide.vegetables}.`,
+      snack:
+        ageInMonths === 7
+          ? "Gustarea nu este obligatorie la 7 luni; poate rămâne lapte, în funcție de rutina copilului."
+          : flags.hasDairyAllergy
+            ? "O gustare mică: fruct moale, legume moi sau câteva lingurițe dintr-un aliment deja acceptat."
+            : "O gustare mică: fruct moale, iaurt sau câteva lingurițe dintr-un aliment deja acceptat.",
+      note: `${allergyNote} ${guide.meals}. ${pickyNote}${calorieNote}`,
     };
   }
 
   if (ageGroup === "baby") {
-    const guide = getAgeFoodGuide(ageInMonths);
-
     return {
-      breakfast: `Mic dejun cu iaurt, fruct sau cereale potrivite vârstei. Fructe potrivite: ${guide.fruit}.${breakfastDetail}`,
+      breakfast: getBreakfastSuggestion(flags, breakfastDetail),
       lunch: `Prânz cu legume și proteină: ${guide.protein}. Legume potrivite: ${guide.vegetables}.${proteinDetail}${vegetableDetail}`,
       dinner: `Cină cu cereale, legume sau o combinație ușoară deja acceptată. ${guide.cereals}.`,
-      snack:
-        ageInMonths <= 9
-          ? "O gustare simplă: fruct moale, iaurt sau bucăți potrivite vârstei."
-          : "1-2 gustări simple: fruct, iaurt, legume moi sau preparate ușoare de casă.",
-      note: `${allergyNote} Între 9 și 12 luni, poți crește treptat textura și varietatea. ${guide.meals}; ${guide.calories} orientativ. ${pickyNote}`,
+      snack: flags.hasDairyAllergy
+        ? "1-2 gustări simple: fruct, legume moi sau preparate ușoare de casă fără lactate."
+        : "1-2 gustări simple: fruct, iaurt, legume moi sau preparate ușoare de casă.",
+      note: `${allergyNote} Între 9 și 12 luni, poți crește treptat textura și varietatea. ${guide.meals}; ${guide.calories}. ${pickyNote}${calorieNote}`,
     };
   }
 
-  const guide = getAgeFoodGuide(ageInMonths);
-
   return {
-    breakfast: `Omletă moale, iaurt cu fruct sau terci cald.${breakfastDetail}`,
+    breakfast: getBreakfastSuggestion(flags, breakfastDetail),
     lunch: `Supă cremă, legume cu proteină sau un bol simplu cu cereale și legume.${proteinDetail}${vegetableDetail}`,
     dinner: `Cină ușoară cu legume, paste, orez sau alimente deja acceptate.${proteinDetail}`,
-    snack: "Fruct, iaurt, brioșă simplă făcută acasă sau bastonașe moi de legume.",
-    note: `${allergyNote} După 12 luni, rutina contează mult: mese previzibile, porții mici și atmosferă calmă. ${guide.meals}. ${pickyNote} ${foodsText}.`,
+    snack: getSnackSuggestion(flags),
+    note: `${allergyNote} După 12 luni, rutina contează mult: mese previzibile, porții mici și atmosferă calmă. ${guide.meals}. ${pickyNote}${calorieNote}`,
   };
 }
 
 export function MealPlanner() {
   const [ageInMonths, setAgeInMonths] = useState("");
+  const [weightKg, setWeightKg] = useState("");
   const [allergies, setAllergies] = useState("");
   const [isPickyEater, setIsPickyEater] = useState("no");
   const [availableFoods, setAvailableFoods] = useState("");
@@ -282,6 +387,7 @@ export function MealPlanner() {
     event.preventDefault();
 
     const parsedAge = Number(ageInMonths);
+    const parsedWeight = weightKg.trim() ? Number(weightKg) : undefined;
 
     if (
       ageInMonths.trim() === "" ||
@@ -295,13 +401,23 @@ export function MealPlanner() {
       return;
     }
 
+    if (
+      parsedWeight !== undefined &&
+      (!Number.isFinite(parsedWeight) || parsedWeight <= 0 || parsedWeight > 30)
+    ) {
+      setResult(null);
+      setError("Introdu o greutate validă sau lasă câmpul necompletat.");
+      return;
+    }
+
     setError("");
     setResult(
       getPlannerResult(
         parsedAge,
         allergies,
         isPickyEater === "yes",
-        availableFoods
+        availableFoods,
+        parsedWeight
       )
     );
   }
@@ -343,7 +459,29 @@ export function MealPlanner() {
               inputMode="numeric"
               value={ageInMonths}
               onChange={(event) => setAgeInMonths(event.target.value)}
-              placeholder="ex: 10"
+              placeholder="ex: 13"
+              className="w-full rounded-2xl border border-slate-200 bg-white px-4 py-3.5 text-slate-900 outline-none transition duration-200 placeholder:text-slate-400 hover:border-rose-200 focus:border-rose-300 focus:ring-4 focus:ring-rose-100"
+            />
+          </div>
+
+          <div>
+            <label
+              htmlFor="meal-weight"
+              className="mb-2 block text-sm font-semibold text-slate-700"
+            >
+              Greutatea copilului în kg{" "}
+              <span className="font-normal text-slate-400">(opțional)</span>
+            </label>
+            <input
+              id="meal-weight"
+              type="number"
+              min="1"
+              max="30"
+              step="0.1"
+              inputMode="decimal"
+              value={weightKg}
+              onChange={(event) => setWeightKg(event.target.value)}
+              placeholder="ex: 10.5"
               className="w-full rounded-2xl border border-slate-200 bg-white px-4 py-3.5 text-slate-900 outline-none transition duration-200 placeholder:text-slate-400 hover:border-rose-200 focus:border-rose-300 focus:ring-4 focus:ring-rose-100"
             />
           </div>
@@ -395,7 +533,7 @@ export function MealPlanner() {
               value={availableFoods}
               onChange={(event) => setAvailableFoods(event.target.value)}
               rows={4}
-              placeholder="ex: banană, iaurt, morcov, orez, dovlecel"
+              placeholder="ex: banană, morcov, orez, dovlecel"
               className="w-full resize-none rounded-2xl border border-slate-200 bg-white px-4 py-3.5 text-slate-900 outline-none transition duration-200 placeholder:text-slate-400 hover:border-rose-200 focus:border-rose-300 focus:ring-4 focus:ring-rose-100"
             />
           </div>
@@ -450,12 +588,63 @@ export function MealPlanner() {
               </article>
             ))}
 
-            <div className="rounded-[1.25rem] border border-emerald-100 bg-emerald-50/70 p-4">
-              <p className="text-sm font-semibold text-emerald-800">
-                Notă scurtă
-              </p>
-              <p className="mt-2 text-sm leading-6 text-slate-700">
+            <div className="rounded-[1.5rem] border border-emerald-100 bg-gradient-to-br from-emerald-50 via-white to-sky-50 p-5 shadow-sm">
+              <div className="flex items-center gap-3">
+                <div className="flex h-10 w-10 items-center justify-center rounded-full bg-emerald-100 text-lg">
+                  💡
+                </div>
+
+                <div>
+                  <p className="text-sm font-semibold uppercase tracking-wide text-emerald-700">
+                    Notă scurtă
+                  </p>
+                  <p className="text-xs text-slate-500">
+                    Recomandare orientativă pentru ritmul copilului
+                  </p>
+                </div>
+              </div>
+
+              <p className="mt-4 text-sm leading-7 text-slate-700">
                 {result.note}
+              </p>
+
+              <div className="mt-5 rounded-2xl border border-emerald-100 bg-white/80 p-4">
+                <p className="text-sm font-semibold text-slate-900">
+                  Necesar caloric zilnic
+                </p>
+
+                <p className="mt-2 text-sm leading-6 text-slate-600">
+                  Formula orientativă:
+                  <span className="font-semibold text-emerald-700">
+                    {" "}
+                    greutate (kg) × coeficient caloric (kcal/kg/zi)
+                  </span>
+                </p>
+
+                <div className="mt-4 grid gap-3 sm:grid-cols-2">
+                  <div className="rounded-xl bg-emerald-50 p-3">
+                    <p className="text-xs font-semibold uppercase text-emerald-700">
+                      6–12 luni
+                    </p>
+                    <p className="mt-1 text-sm font-semibold text-slate-800">
+                      ~80–100 kcal/kg/zi
+                    </p>
+                  </div>
+
+                  <div className="rounded-xl bg-sky-50 p-3">
+                    <p className="text-xs font-semibold uppercase text-sky-700">
+                      1–3 ani
+                    </p>
+                    <p className="mt-1 text-sm font-semibold text-slate-800">
+                      ~80–90 kcal/kg/zi
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <p className="mt-4 text-xs leading-5 text-slate-500">
+                Valorile sunt orientative și pot varia în funcție de copil, nivelul de
+                activitate și recomandările pediatrului.
               </p>
             </div>
           </div>
@@ -471,6 +660,7 @@ export function MealPlanner() {
         <p className="mt-5 text-xs leading-5 text-slate-500">
           Informațiile sunt orientative și nu înlocuiesc sfatul medicului.
         </p>
+
         <Link
           href="/blog/alimente-de-evitat-in-diversificare"
           className="mt-4 inline-flex rounded-full bg-white px-4 py-2 text-sm font-semibold text-slate-700 shadow-sm ring-1 ring-rose-100 transition duration-200 hover:-translate-y-0.5 hover:bg-rose-50 hover:text-slate-950 focus:outline-none focus:ring-4 focus:ring-rose-100 active:translate-y-0"
