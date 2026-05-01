@@ -34,7 +34,7 @@ export default function Home() {
       <Navbar />
       <Hero />
       <section
-        id="cum-functioneaza"
+        id="/home"
         className="relative bg-[linear-gradient(135deg,_#fffdfb_0%,_#fff7f1_48%,_#f5fbff_100%)] px-5 py-10 sm:px-8 lg:px-10"
       >
         <div className="absolute left-1/2 top-0 h-40 w-40 -translate-x-1/2 rounded-full bg-rose-100/40 blur-3xl" />
