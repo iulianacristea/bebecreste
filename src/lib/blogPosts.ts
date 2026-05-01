@@ -901,6 +901,238 @@ export const blogPosts: BlogPost[] = [
       },
     ],
   },
+  {
+    title: "Alimente recomandate și alimente de evitat în diversificare",
+    slug: "alimente-recomandate-si-de-evitat-in-diversificare",
+    excerpt:
+      "Un ghid prietenos pentru părinți despre alimente potrivite în diversificare și alimente care ar trebui evitate în primul an.",
+    seoDescription:
+      "Alimente recomandate diversificare bebeluși: legume, fructe, cereale, proteine și lista alimentelor de evitat în primul an.",
+    tags: ["alimentatie", "diversificare", "bebelusi"],
+    date: "2026-05-01",
+    content: [
+      {
+        type: "paragraph",
+        text: "Diversificarea este una dintre etapele care vin cu multe întrebări pentru părinți. Ce pot să îi ofer? Ce ar trebui să evit? Când introduc peștele, oul sau lactatele? Răspunsurile pot varia în funcție de copil, de recomandarea medicului pediatru și de istoricul familiei, însă câteva repere simple pot face începutul mai calm.",
+      },
+      {
+        type: "paragraph",
+        text: "Acest articol este orientativ și nu înlocuiește sfatul medicului. Dacă bebe are alergii, reflux, probleme digestive, prematuritate sau alte situații speciale, discută cu pediatrul înainte de a introduce alimente noi.",
+      },
+      {
+        type: "heading",
+        text: "Alimente pe care să le includeți",
+      },
+      {
+        type: "paragraph",
+        text: "În diversificare, cel mai util este să pornești de la alimente simple, gătite blând și adaptate vârstei copilului. Textura contează la fel de mult ca alimentul: la început poate fi piure fin, apoi pasat grosier, bucăți moi sau preparate ușor de ținut în mână, în funcție de dezvoltarea copilului.",
+      },
+      {
+        type: "list",
+        items: [
+          "Legume: dovlecel, morcov, păstârnac, țelină, cartof dulce, dovleac, mazăre, fasole verde.",
+          "Fructe: măr copt, banană, pară, piersică, prune, caise.",
+          "Cereale: orez, ovăz, mei, quinoa, hrișcă.",
+          "Proteine animale: carne de pui, curcan, iepure, vită slabă.",
+          "Pește: somon, păstrăv, șalău, introdus treptat, de obicei după 8 luni.",
+          "Gălbenuș de ou: de obicei după 7 luni, introdus treptat.",
+          "Lactate: după 9 luni, de preferat iaurt simplu și brânzică de vaci.",
+          "Leguminoase pasate: linte roșie, năut, fasole albă fiartă.",
+          "Uleiuri vegetale presate la rece: în principal ulei de măsline extravirgin, în cantitate mică.",
+        ],
+      },
+      {
+        type: "heading",
+        text: "Cum introduci alimentele noi",
+      },
+      {
+        type: "paragraph",
+        text: "O abordare blândă este să introduci alimentele treptat, câte unul sau în combinații simple, mai ales la început. Așa observi mai ușor dacă un aliment nu este bine tolerat. Nu este nevoie ca bebe să mănânce mult din prima. În primele luni, diversificarea înseamnă explorare, gust, textură și obișnuire cu masa.",
+      },
+      {
+        type: "list",
+        items: [
+          "Alege alimente gătite simplu: fierte, la abur sau coapte.",
+          "Păstrează textura potrivită vârstei și abilităților copilului.",
+          "Oferă apă la masă după începerea diversificării, conform recomandării pediatrului.",
+          "Nu forța copilul să termine porția.",
+          "Reia alimentele refuzate în altă zi, fără presiune.",
+        ],
+      },
+      {
+        type: "heading",
+        text: "Alimente pe care să le evitați",
+      },
+      {
+        type: "paragraph",
+        text: "Unele alimente nu sunt potrivite pentru bebeluși, fie din cauza riscului de înec, fie din cauza conținutului mare de sare, zahăr, aditivi sau a riscurilor specifice primului an de viață.",
+      },
+      {
+        type: "list",
+        items: [
+          "Sare și zahăr adăugate.",
+          "Miere, din cauza riscului de botulism până la 1 an.",
+          "Lapte de vacă drept băutură principală până la 12 luni.",
+          "Carne procesată și mezeluri.",
+          "Pește crud și fructe de mare.",
+          "Alimente dure, precum nuci sau semințe întregi, deoarece există risc de înec.",
+          "Produse cu conținut ridicat de aditivi sau conservanți.",
+          "Băuturi carbogazoase sau sucuri din comerț.",
+        ],
+      },
+      {
+        type: "heading",
+        text: "Exemple simple pe parcursul zilei",
+      },
+      {
+        type: "paragraph",
+        text: "La 6 luni, mulți bebeluși încep cu o singură masă solidă, de obicei la prânz. De la 7 luni poate apărea micul dejun, iar de la 8 luni poate fi introdusă și cina, în funcție de copil și de recomandarea medicului. Ritmul nu trebuie grăbit.",
+      },
+      {
+        type: "list",
+        items: [
+          "6 luni: prânz cu piure de legume, simplu și fin.",
+          "7 luni: mic dejun cu fruct sau cereală pentru bebeluși și prânz cu legume.",
+          "8 luni: mic dejun, prânz și cină simplă, cu texturi potrivite.",
+          "9-12 luni: trei mese solide și gustări simple, dacă se potrivesc rutinei copilului.",
+        ],
+      },
+      {
+        type: "heading",
+        text: "Concluzie",
+      },
+      {
+        type: "paragraph",
+        text: "Diversificarea nu trebuie să fie perfectă ca să fie bună. Alege alimente simple, evită produsele nepotrivite pentru primul an, urmărește reacțiile copilului și păstrează mesele cât mai calme. Când ai dubii, pediatrul este cea mai bună sursă de recomandări pentru copilul tău.",
+      },
+    ],
+  },
+  {
+    title: "Alimente de evitat în diversificare: ghid pentru părinți",
+    slug: "alimente-de-evitat-in-diversificare",
+    excerpt:
+      "Lista alimentelor de evitat în diversificare și explicații simple despre sare, zahăr, miere, lapte de vacă, mezeluri și riscul de înec.",
+    seoDescription:
+      "Alimente de evitat în diversificare: ce nu ar trebui oferit bebelușilor în primul an și de ce. Ghid prietenos pentru părinți.",
+    tags: ["alimentatie", "diversificare", "siguranta"],
+    date: "2026-05-01",
+    content: [
+      {
+        type: "paragraph",
+        text: "Când începe diversificarea, întrebarea nu este doar ce poate mânca bebe, ci și ce ar fi bine să eviți. Unele alimente pot fi prea sărate, prea dulci, greu de gestionat pentru un copil mic sau pot avea risc de înec. Vestea bună este că nu ai nevoie de reguli complicate: câteva repere simple pot face mesele mai sigure și mai liniștite.",
+      },
+      {
+        type: "paragraph",
+        text: "Acest ghid este orientativ și nu înlocuiește recomandarea medicului pediatru. Dacă există alergii, istoric familial, prematuritate, reflux, probleme digestive sau alte situații speciale, discută cu pediatrul înainte de a introduce alimente noi.",
+      },
+      {
+        type: "heading",
+        text: "Sare și zahăr adăugate",
+      },
+      {
+        type: "paragraph",
+        text: "În primul an, este recomandat să eviți sarea și zahărul adăugate. Bebelușii descoperă gusturile naturale ale alimentelor, iar mâncarea nu trebuie să semene cu cea a adulților. Legumele, fructele, cerealele și carnea gătită simplu au deja gust suficient pentru început.",
+      },
+      {
+        type: "list",
+        items: [
+          "Evită să adaugi sare în piureuri, supe sau legume.",
+          "Evită zahărul în iaurt, terci, fructe sau deserturi.",
+          "Ai grijă la produse gata preparate, care pot conține sare sau zahăr ascuns.",
+        ],
+      },
+      {
+        type: "heading",
+        text: "Miere până la 1 an",
+      },
+      {
+        type: "paragraph",
+        text: "Mierea se evită până la vârsta de 1 an din cauza riscului de botulism infantil. Chiar dacă este naturală, nu este potrivită pentru bebelușii mici. Pentru gust dulce, fructele coapte sunt o variantă mai potrivită.",
+      },
+      {
+        type: "heading",
+        text: "Lapte de vacă drept băutură principală",
+      },
+      {
+        type: "paragraph",
+        text: "Până la 12 luni, laptele de vacă nu ar trebui folosit ca băutură principală. Laptele matern sau formula rămân baza alimentației. Unele lactate, precum iaurtul simplu sau brânzica de vaci, pot fi introduse mai târziu, în funcție de vârstă și recomandarea pediatrului.",
+      },
+      {
+        type: "heading",
+        text: "Carne procesată și mezeluri",
+      },
+      {
+        type: "paragraph",
+        text: "Mezelurile, cârnații, crenvurștii, șunca procesată și alte produse similare sunt de evitat. De obicei au multă sare, aditivi și o textură care nu este ideală pentru bebeluși. Alege mai degrabă carne simplă, gătită acasă: pui, curcan, iepure sau vită slabă.",
+      },
+      {
+        type: "heading",
+        text: "Pește crud și fructe de mare",
+      },
+      {
+        type: "paragraph",
+        text: "Peștele crud, fructele de mare crude sau preparatele insuficient gătite nu sunt potrivite pentru bebeluși. Dacă introduci pește, alege variante bine gătite, fără oase, în porții mici și urmărește toleranța copilului.",
+      },
+      {
+        type: "heading",
+        text: "Alimente dure și risc de înec",
+      },
+      {
+        type: "paragraph",
+        text: "Un risc important în diversificare este înecul. Unele alimente sunt prea dure, prea rotunde sau prea mici pentru a fi oferite întregi. Forma și textura alimentului contează enorm.",
+      },
+      {
+        type: "list",
+        items: [
+          "Evită nucile și semințele întregi.",
+          "Evită bucățile tari de morcov crud, măr crud sau alte alimente greu de mestecat.",
+          "Taie alimentele rotunde în forme sigure, adaptate vârstei.",
+          "Nu lăsa copilul să mănânce nesupravegheat.",
+        ],
+      },
+      {
+        type: "heading",
+        text: "Produse cu mulți aditivi sau conservanți",
+      },
+      {
+        type: "paragraph",
+        text: "Produsele foarte procesate, cu liste lungi de ingrediente, nu sunt o alegere bună în diversificare. Pentru început, mesele simple sunt cele mai utile: legume gătite, fructe potrivite, cereale simple și proteine gătite blând.",
+      },
+      {
+        type: "heading",
+        text: "Băuturi carbogazoase și sucuri din comerț",
+      },
+      {
+        type: "paragraph",
+        text: "Băuturile carbogazoase și sucurile din comerț nu sunt potrivite pentru bebeluși. Apa, în cantitate potrivită vârstei și după începerea diversificării, este alegerea simplă. Laptele matern sau formula rămân importante în primul an.",
+      },
+      {
+        type: "heading",
+        text: "Lista scurtă: ce să eviți",
+      },
+      {
+        type: "list",
+        items: [
+          "Sare și zahăr adăugate.",
+          "Miere până la 1 an.",
+          "Lapte de vacă drept băutură principală până la 12 luni.",
+          "Carne procesată și mezeluri.",
+          "Pește crud și fructe de mare.",
+          "Nuci, semințe întregi și alte alimente dure cu risc de înec.",
+          "Produse cu mulți aditivi sau conservanți.",
+          "Băuturi carbogazoase și sucuri din comerț.",
+        ],
+      },
+      {
+        type: "heading",
+        text: "Concluzie",
+      },
+      {
+        type: "paragraph",
+        text: "Diversificarea poate fi mai simplă când știi ce să eviți. Păstrează mesele cât mai naturale, fără sare și zahăr adăugate, evită alimentele cu risc și adaptează textura la vârsta copilului. Când ceva nu este clar, cere sfatul pediatrului.",
+      },
+    ],
+  },
 ];
 
 export function getAllBlogPosts() {

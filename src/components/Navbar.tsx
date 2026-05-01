@@ -7,6 +7,7 @@ import Image from "next/image";
 const navigationLinks = [
   { href: "/", label: "Acasă" },
   { href: "/calculator-somn", label: "Calculator somn" },
+  { href: "/planner-mese", label: "Planner mese" },
   { href: "/blog", label: "Blog" },
   { href: "/contact", label: "Contact" },
 ];

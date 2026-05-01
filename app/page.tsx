@@ -5,6 +5,29 @@ import { Hero } from "@/src/components/Hero";
 import { HowItWorks } from "@/src/components/HowItWorks";
 import { Navbar } from "@/src/components/Navbar";
 
+const capabilityCards = [
+  {
+    title: "Somn mai ușor",
+    description:
+      "Primești repere orientative pentru ferestrele de somn și ora de culcare.",
+    href: "/calculator-somn",
+    accent: "bg-sky-50 text-sky-700 ring-sky-100",
+  },
+  {
+    title: "Mese mai simple",
+    description:
+      "Generezi idei de mese potrivite vârstei și preferințelor copilului.",
+    href: "/planner-mese",
+    accent: "bg-rose-50 text-rose-700 ring-rose-100",
+  },
+  {
+    title: "Informații utile",
+    description: "Citești ghiduri scurte și practice pentru părinți.",
+    href: "/blog",
+    accent: "bg-emerald-50 text-emerald-700 ring-emerald-100",
+  },
+];
+
 export default function Home() {
   return (
     <main className="min-h-screen overflow-hidden bg-[#fff7f1] text-slate-900">
@@ -21,23 +44,64 @@ export default function Home() {
         </div>
       </section>
       <section className="bg-white px-5 py-10 sm:px-8 lg:px-10">
+        <div className="mx-auto max-w-6xl">
+          <div className="mx-auto max-w-3xl text-center">
+            <p className="text-sm font-semibold uppercase text-emerald-700">
+              Ce poți face cu BebeCrește
+            </p>
+            <h2 className="mt-3 text-3xl font-bold tracking-tight text-slate-950">
+              Repere clare pentru zile mai liniștite.
+            </h2>
+          </div>
+
+          <div className="mt-7 grid gap-4 md:grid-cols-3">
+            {capabilityCards.map((card) => (
+              <Link
+                key={card.title}
+                href={card.href}
+                className="group rounded-[1.5rem] border border-slate-100 bg-white p-5 shadow-lg shadow-slate-100/70 transition duration-300 hover:-translate-y-1 hover:border-rose-100 hover:shadow-xl hover:shadow-rose-100/50 focus:outline-none focus:ring-4 focus:ring-rose-100"
+              >
+                <span
+                  className={`inline-flex rounded-full px-3 py-1 text-xs font-bold uppercase ring-1 ${card.accent}`}
+                >
+                  BebeCrește
+                </span>
+                <h3 className="mt-4 text-xl font-bold text-slate-950 transition duration-200 group-hover:text-rose-700">
+                  {card.title}
+                </h3>
+                <p className="mt-2 text-sm leading-6 text-slate-600">
+                  {card.description}
+                </p>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+      <section className="bg-white px-5 py-10 sm:px-8 lg:px-10">
         <div className="mx-auto max-w-6xl rounded-[2rem] border border-rose-100 bg-gradient-to-br from-rose-50 via-white to-sky-50 p-6 text-center shadow-xl shadow-rose-100/45 sm:p-8">
           <p className="text-sm font-semibold uppercase text-rose-700">
             Gata de încercat?
           </p>
           <h2 className="mx-auto mt-3 max-w-2xl text-3xl font-bold tracking-tight text-slate-950">
-            Primește rapid un reper pentru următorul somn.
+            Începe cu un pas simplu
           </h2>
           <p className="mx-auto mt-3 max-w-2xl leading-7 text-slate-600">
-            Completezi vârsta și ora trezirii, iar calculatorul îți oferă o
-            recomandare orientativă pentru ziua copilului.
+            Alege ce ai nevoie azi: somn mai clar sau idei de mese.
           </p>
-          <Link
-            href="/calculator-somn"
-            className="mt-6 inline-flex w-full items-center justify-center rounded-full bg-slate-950 px-7 py-4 text-base font-semibold text-white shadow-xl shadow-slate-900/15 transition duration-200 hover:-translate-y-0.5 hover:bg-slate-800 hover:shadow-2xl hover:shadow-slate-900/20 focus:outline-none focus:ring-4 focus:ring-slate-300 active:translate-y-0 sm:w-auto"
-          >
-            Încearcă calculatorul de somn
-          </Link>
+          <div className="mt-6 flex flex-col justify-center gap-3 sm:flex-row">
+            <Link
+              href="/calculator-somn"
+              className="inline-flex w-full items-center justify-center rounded-full bg-slate-950 px-7 py-4 text-base font-semibold text-white shadow-xl shadow-slate-900/15 transition duration-200 hover:-translate-y-0.5 hover:bg-slate-800 hover:shadow-2xl hover:shadow-slate-900/20 focus:outline-none focus:ring-4 focus:ring-slate-300 active:translate-y-0 sm:w-auto"
+            >
+              Calculator somn
+            </Link>
+            <Link
+              href="/planner-mese"
+              className="inline-flex w-full items-center justify-center rounded-full border border-rose-100 bg-white/80 px-7 py-4 text-base font-semibold text-slate-700 shadow-sm shadow-rose-100/60 transition duration-200 hover:-translate-y-0.5 hover:border-rose-200 hover:bg-white hover:shadow-md hover:shadow-rose-100/80 focus:outline-none focus:ring-4 focus:ring-rose-100 active:translate-y-0 sm:w-auto"
+            >
+              Planner mese
+            </Link>
+          </div>
         </div>
       </section>
       <Footer />

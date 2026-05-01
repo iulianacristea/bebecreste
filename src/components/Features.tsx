@@ -1,24 +1,29 @@
+import Link from "next/link";
+
 const features = [
   {
-    title: "Somn",
+    title: "Calculator somn",
     description:
       "Ferestre de veghe, culcări orientative și ritmuri zilnice potrivite vârstei.",
+    href: "/calculator-somn",
     accent: "bg-sky-100 text-sky-700 ring-sky-200",
     icon: "S",
   },
   {
-    title: "Mese",
+    title: "Planner mese",
     description:
-      "Un spațiu clar pentru programul meselor, diversificare și rutine liniștite.",
+      "Idei de mese potrivite vârstei, preferințelor și alimentelor disponibile.",
+    href: "/planner-mese",
     accent: "bg-rose-100 text-rose-700 ring-rose-200",
     icon: "M",
   },
   {
-    title: "Joacă",
+    title: "Blog parenting",
     description:
-      "Idei blânde de conectare și activități adaptate etapelor de dezvoltare.",
+      "Ghiduri scurte despre somn, diversificare și rutine blânde pentru părinți.",
+    href: "/blog",
     accent: "bg-amber-100 text-amber-700 ring-amber-200",
-    icon: "J",
+    icon: "B",
   },
 ];
 
@@ -43,8 +48,9 @@ export function Features() {
 
       <div className="mt-6 grid gap-3">
         {features.map((feature) => (
-          <article
+          <Link
             key={feature.title}
+            href={feature.href}
             className="rounded-[1.25rem] border border-slate-100 bg-slate-50/70 p-4 shadow-sm transition duration-300 hover:-translate-y-0.5 hover:border-slate-200 hover:bg-white hover:shadow-md hover:shadow-slate-200/70"
           >
             <div className="flex items-start gap-4">
@@ -62,7 +68,7 @@ export function Features() {
                 </p>
               </div>
             </div>
-          </article>
+          </Link>
         ))}
       </div>
     </div>

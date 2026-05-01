@@ -8,17 +8,16 @@ export function Hero() {
         <div className="grid items-start gap-8 py-8 md:py-10 lg:grid-cols-[1fr_0.92fr] lg:gap-10 lg:py-12">
           <div className="max-w-[46rem]">
             <p className="mb-6 inline-flex rounded-full border border-rose-100 bg-white/75 px-4 py-2 text-sm font-semibold text-rose-700 shadow-sm shadow-rose-100/70 backdrop-blur">
-              Calculator blând pentru ritmul copilului
+              Somn și mese pentru primii ani
             </p>
 
             <h1 className="text-4xl font-bold leading-[1.08] tracking-tight text-slate-950 sm:text-5xl lg:text-6xl">
-              Rutine mai liniștite pentru somn, mese și joacă.
+              Repere simple pentru somn, mese și rutina copilului.
             </h1>
 
             <p className="mt-4 max-w-[43rem] text-lg leading-8 text-slate-600 sm:text-xl sm:leading-9">
-              BebeCrește te ajută să găsești repere simple pentru ziua
-              copilului tău — de la somn la activități, într-un mod blând și
-              ușor de folosit.
+              BebeCrește te ajută cu recomandări orientative pentru somnul și
+              mesele copilului tău, într-un mod blând, clar și ușor de folosit.
             </p>
 
             <div className="mt-5 flex flex-wrap gap-2">
@@ -43,10 +42,10 @@ export function Hero() {
                 Încearcă calculatorul de somn
               </Link>
               <Link
-                href="#cum-functioneaza"
+                href="/planner-mese"
                 className="inline-flex items-center justify-center rounded-full border border-rose-100 bg-white/80 px-7 py-4 text-base font-semibold text-slate-700 shadow-sm shadow-rose-100/60 transition duration-200 hover:-translate-y-0.5 hover:border-rose-200 hover:bg-white hover:shadow-md hover:shadow-rose-100/80 focus:outline-none focus:ring-4 focus:ring-rose-100 active:translate-y-0"
               >
-                Vezi cum funcționează
+                Planifică mesele
               </Link>
             </div>
 
