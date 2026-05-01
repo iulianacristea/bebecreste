@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 
 const navigationLinks = [
   { href: "/", label: "Acasă" },
@@ -13,14 +14,18 @@ export function Navbar() {
       <nav className="mx-auto flex max-w-7xl flex-col gap-4 rounded-[1.5rem] border border-white/70 bg-white/70 px-4 py-4 shadow-sm shadow-rose-100/70 backdrop-blur transition duration-300 hover:bg-white/85 hover:shadow-md hover:shadow-rose-100/80 sm:rounded-full md:flex-row md:items-center md:justify-between md:px-6">
         <Link
           href="/"
-          className="flex items-center gap-3 rounded-full focus:outline-none focus:ring-4 focus:ring-rose-100"
+          className="flex w-fit items-center rounded-full focus:outline-none focus:ring-4 focus:ring-rose-100"
           aria-label="BebeCrește acasă"
         >
-          <span className="flex h-10 w-10 items-center justify-center rounded-full bg-slate-900 text-sm font-bold text-white">
-            BC
-          </span>
-          <span className="text-base font-bold tracking-tight text-slate-950">
-            BebeCrește
+          <span className="relative block h-14 w-56 md:h-16 md:w-64">
+            <Image
+              src="/bebecreste-logo.webp"
+              alt="BebeCrește"
+              fill
+              priority
+              sizes="(min-width: 768px) 256px, 224px"
+              className="object-contain object-left"
+            />
           </span>
         </Link>
 
