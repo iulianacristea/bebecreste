@@ -28,13 +28,17 @@ export function Features() {
       id="rutine"
       className="h-full rounded-[2rem] border border-white/85 bg-white/80 p-5 shadow-lg shadow-sky-100/35 backdrop-blur sm:p-6"
     >
-      <div>
+      <div className="min-h-[11.75rem]">
         <p className="text-sm font-semibold uppercase text-emerald-700">
           Tot ce urmărești zilnic
         </p>
         <h2 className="mt-4 text-2xl font-bold tracking-tight text-slate-950 sm:text-3xl">
           Un tablou simplu pentru ritmul copilului.
         </h2>
+        <p className="mt-3 text-base leading-7 text-slate-600">
+          Vezi rapid reperele importante ale zilei, într-un format clar și ușor
+          de urmărit.
+        </p>
       </div>
 
       <div className="mt-6 grid gap-3">

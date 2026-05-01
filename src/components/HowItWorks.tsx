@@ -24,7 +24,7 @@ const steps = [
 export function HowItWorks() {
   return (
     <div className="h-full rounded-[2rem] border border-white/85 bg-white/80 p-5 shadow-lg shadow-rose-100/35 backdrop-blur sm:p-6">
-      <div>
+      <div className="min-h-[11.75rem]">
         <p className="inline-flex rounded-full border border-sky-100 bg-white/75 px-4 py-2 text-sm font-semibold uppercase text-sky-700 shadow-sm shadow-sky-100/60 backdrop-blur">
             Cum funcționează
         </p>

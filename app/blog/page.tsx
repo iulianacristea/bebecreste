@@ -61,7 +61,12 @@ export default function BlogPage() {
                   {dateFormatter.format(new Date(post.date))}
                 </time>
                 <h2 className="mt-5 text-2xl font-bold leading-snug text-slate-950 transition duration-200 group-hover:text-rose-700">
-                  {post.title}
+                  <Link
+                    href={`/blog/${post.slug}`}
+                    className="focus:outline-none focus:ring-4 focus:ring-rose-100"
+                  >
+                    {post.title}
+                  </Link>
                 </h2>
                 <p className="mt-4 flex-1 text-base leading-7 text-slate-600">
                   {post.excerpt}
