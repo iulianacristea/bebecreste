@@ -647,6 +647,10 @@ export function MealPlanner() {
                 activitate și recomandările pediatrului.
               </p>
             </div>
+
+
+
+
           </div>
         ) : (
           <div className="mt-6 rounded-[1.5rem] border border-dashed border-sky-200 bg-sky-50/60 p-5">

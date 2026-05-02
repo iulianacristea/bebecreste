@@ -5,17 +5,30 @@ import { Navbar } from "@/src/components/Navbar";
 import { getAllBlogPosts } from "@/src/lib/blogPosts";
 
 export const metadata: Metadata = {
-  title: "Blog somn bebe și parenting | BebeCrește.ro",
+  title: "Blog parenting | Somn bebe, mese și rutine",
   description:
-    "Articole în limba română despre somnul bebelușilor, ferestre de veghe, rutine blânde și parenting pentru primii ani.",
+    "Ghiduri scurte și practice despre program somn bebe, diversificare mese copil, rutine blânde și parenting pentru primii ani.",
   keywords: [
     "somn bebe",
     "program somn bebe",
+    "calculator somn bebe",
+    "diversificare mese copil",
+    "planner mese bebe",
     "ferestre de veghe",
     "rutina somn bebelus",
+    "alimente diversificare",
     "parenting Romania",
     "sfaturi parinti",
   ],
+  alternates: {
+    canonical: "/blog",
+  },
+  openGraph: {
+    title: "Blog parenting | BebeCrește.ro",
+    description:
+      "Articole pentru părinți despre somnul bebelușilor, diversificare și rutine zilnice.",
+    url: "/blog",
+  },
 };
 
 const dateFormatter = new Intl.DateTimeFormat("ro-RO", {

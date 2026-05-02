@@ -1,9 +1,25 @@
 import Link from "next/link";
+import type { Metadata } from "next";
 import { Features } from "@/src/components/Features";
 import { Footer } from "@/src/components/Footer";
 import { Hero } from "@/src/components/Hero";
 import { HowItWorks } from "@/src/components/HowItWorks";
 import { Navbar } from "@/src/components/Navbar";
+
+export const metadata: Metadata = {
+  title: "Program somn bebe, mese și rutine pentru copii",
+  description:
+    "BebeCrește.ro oferă calculator somn bebe, planner mese pentru diversificare și ghiduri simple pentru părinți cu copii 0-3 ani.",
+  alternates: {
+    canonical: "/",
+  },
+  openGraph: {
+    title: "BebeCrește.ro | Program somn bebe și planner mese",
+    description:
+      "Repere orientative pentru somnul, mesele și rutina copilului tău.",
+    url: "/",
+  },
+};
 
 const capabilityCards = [
   {
@@ -29,8 +45,54 @@ const capabilityCards = [
 ];
 
 export default function Home() {
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Organization",
+        "@id": "https://bebecreste.ro/#organization",
+        name: "BebeCrește.ro",
+        url: "https://bebecreste.ro",
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://bebecreste.ro/#website",
+        name: "BebeCrește.ro",
+        url: "https://bebecreste.ro",
+        inLanguage: "ro-RO",
+        publisher: {
+          "@id": "https://bebecreste.ro/#organization",
+        },
+      },
+      {
+        "@type": "WebApplication",
+        name: "Calculator somn bebe BebeCrește",
+        url: "https://bebecreste.ro/calculator-somn",
+        applicationCategory: "HealthApplication",
+        operatingSystem: "Web",
+        inLanguage: "ro-RO",
+        description:
+          "Calculator orientativ pentru program somn bebe, ferestre de veghe și ora de culcare.",
+      },
+      {
+        "@type": "WebApplication",
+        name: "Planner mese BebeCrește",
+        url: "https://bebecreste.ro/planner-mese",
+        applicationCategory: "LifestyleApplication",
+        operatingSystem: "Web",
+        inLanguage: "ro-RO",
+        description:
+          "Planner orientativ pentru diversificare mese copil și idei de mese pe vârstă.",
+      },
+    ],
+  };
+
   return (
     <main className="min-h-screen overflow-hidden bg-[#fff7f1] text-slate-900">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+      />
       <Navbar />
       <Hero />
       <section

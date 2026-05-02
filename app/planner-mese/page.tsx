@@ -1,6 +1,29 @@
+import type { Metadata } from "next";
 import { Footer } from "@/src/components/Footer";
 import { MealPlanner } from "@/src/components/MealPlanner";
 import { Navbar } from "@/src/components/Navbar";
+
+export const metadata: Metadata = {
+  title: "Planner mese bebe | Idei diversificare pe vârstă",
+  description:
+    "Generează idei simple pentru mic dejun, prânz, cină și gustări, adaptate vârstei copilului și diversificării.",
+  keywords: [
+    "planner mese bebe",
+    "diversificare mese copil",
+    "meniu bebe 6 luni",
+    "idei mese bebe",
+    "alimente diversificare",
+  ],
+  alternates: {
+    canonical: "/planner-mese",
+  },
+  openGraph: {
+    title: "Planner mese bebe | BebeCrește.ro",
+    description:
+      "Idei de mese orientative pentru diversificare, în funcție de vârstă și alimente disponibile.",
+    url: "/planner-mese",
+  },
+};
 
 export default function PlannerMesePage() {
   return (

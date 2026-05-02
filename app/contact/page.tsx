@@ -1,6 +1,16 @@
+import type { Metadata } from "next";
 import { ContactForm } from "@/src/components/ContactForm";
 import { Footer } from "@/src/components/Footer";
 import { Navbar } from "@/src/components/Navbar";
+
+export const metadata: Metadata = {
+  title: "Contact",
+  description:
+    "Contactează echipa BebeCrește.ro pentru întrebări, sugestii sau feedback despre calculatorul de somn și plannerul de mese.",
+  alternates: {
+    canonical: "/contact",
+  },
+};
 
 export default function ContactPage() {
   return (
