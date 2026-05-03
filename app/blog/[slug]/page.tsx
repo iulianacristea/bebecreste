@@ -36,9 +36,9 @@ export async function generateMetadata({
   }
 
   return {
-    title: `${post.title} | BebeCrește.ro`,
+    title: post.seoTitle ?? post.title,
     description: post.seoDescription,
-    keywords: [
+    keywords: post.seoKeywords ?? [
       post.title,
       "somn bebe",
       "somn bebelus",
@@ -49,6 +49,22 @@ export async function generateMetadata({
       "sfaturi parinti",
       ...post.tags,
     ],
+    alternates: {
+      canonical: `/blog/${post.slug}`,
+    },
+    openGraph: {
+      title: post.seoTitle ?? post.title,
+      description: post.seoDescription,
+      url: `/blog/${post.slug}`,
+      type: "article",
+      publishedTime: post.date,
+      tags: post.tags,
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: post.seoTitle ?? post.title,
+      description: post.seoDescription,
+    },
   };
 }
 
@@ -124,6 +140,28 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                         </li>
                       ))}
                     </ul>
+                  );
+                }
+
+                if (block.segments) {
+                  return (
+                    <p key={block.text}>
+                      {block.segments.map((segment, index) =>
+                        segment.href ? (
+                          <Link
+                            key={`${segment.text}-${index}`}
+                            href={segment.href}
+                            className="font-semibold text-rose-700 underline decoration-rose-300 underline-offset-4 transition duration-200 hover:text-rose-800 hover:decoration-rose-500 focus:outline-none focus:ring-4 focus:ring-rose-100"
+                          >
+                            {segment.text}
+                          </Link>
+                        ) : (
+                          <span key={`${segment.text}-${index}`}>
+                            {segment.text}
+                          </span>
+                        ),
+                      )}
+                    </p>
                   );
                 }
 

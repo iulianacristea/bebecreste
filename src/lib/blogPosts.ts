@@ -6,6 +6,7 @@ export type BlogContentBlock =
   | {
       type: "paragraph";
       text: string;
+      segments?: { text: string; href?: string }[];
     }
   | {
       type: "list";
@@ -16,13 +17,213 @@ export type BlogPost = {
   title: string;
   slug: string;
   excerpt: string;
+  seoTitle?: string;
   seoDescription: string;
+  seoKeywords?: string[];
   tags: string[];
   content: BlogContentBlock[];
   date: string;
 };
 
 export const blogPosts: BlogPost[] = [
+  {
+    title: "Cât trebuie să mănânce copilul în vârstă de un an?",
+    slug: "cat-trebuie-sa-manance-copilul-in-varsta-de-un-an",
+    excerpt:
+      "Un ghid cald despre cât mănâncă un copil de 1 an, porții, mese, gustări și apetitul care variază de la o zi la alta.",
+    seoTitle: "Cât mănâncă un copil de 1 an",
+    seoDescription:
+      "Află cât mănâncă un copil de 1 an, cu exemple de porții, program de mese, gustări și semne când e bine să ceri sfatul medicului.",
+    seoKeywords: [
+      "cât mănâncă un copil de 1 an",
+      "cât trebuie să mănânce copilul de 1 an",
+      "porții copil 1 an",
+      "program mese copil 1 an",
+      "cat trebuie sa manance copilul de 1 an",
+      "cat mananca un copil de un an",
+      "alimentatie copil 1 an",
+      "meniu copil 1 an",
+      "portii copil 1 an",
+      "mese copil 12 luni",
+      "gustari copil 1 an",
+      "lapte copil 1 an",
+      "diversificare dupa 1 an",
+      "semne de satietate copil mic",
+    ],
+    tags: ["alimentatie", "diversificare", "copil 1 an"],
+    date: "2026-05-03",
+    content: [
+      {
+        type: "paragraph",
+        text: "La vârsta de 1 an, mesele pot deveni surprinzătoare. Într-o zi copilul mănâncă bine la micul dejun, cere gustare și pare curios la prânz. În altă zi, ia câteva înghițituri, întoarce capul și preferă să exploreze casa. Dacă te întrebi cât mănâncă un copil de 1 an, primul lucru important este să știi că variațiile sunt normale. Copiii mici nu mănâncă la fel la fiecare masă, iar pofta lor poate oscila mult de la o zi la alta.",
+      },
+      {
+        type: "paragraph",
+        text: "Acest ghid îți oferă repere blânde despre porții, ritm și semne la care să fii atent. Nu înlocuiește sfatul pediatrului, mai ales dacă există alergii, probleme de creștere, prematuritate, reflux, anemie sau alte îngrijorări medicale.",
+      },
+      {
+        type: "heading",
+        text: "Cât ar trebui să mănânce un copil de 1 an",
+      },
+      {
+        type: "paragraph",
+        text: "Nu există o cantitate perfectă, valabilă pentru toți copiii. La 12 luni, mulți copii au nevoie de mese mici, dese și variate, nu de farfurii mari. O regulă utilă este să începi cu porții mici, de exemplu 1-2 linguri din fiecare aliment, apoi să mai adaugi dacă cel mic cere. Așa reduci presiunea și îi lași copilului spațiu să își asculte senzația de foame și sațietate.",
+      },
+      {
+        type: "paragraph",
+        text: "Când cauți cât trebuie să mănânce copilul de 1 an, gândește-te mai degrabă la echilibrul pe parcursul unei săptămâni decât la o singură masă. Un copil poate mânca foarte bine dimineața și puțin seara, sau poate refuza o legumă de mai multe ori înainte să o accepte. Important este să îi oferi constant alimente potrivite, texturi sigure și o atmosferă calmă.",
+      },
+      {
+        type: "heading",
+        text: "De câte mese are nevoie pe zi",
+      },
+      {
+        type: "paragraph",
+        text: "Un program mese copil 1 an include, de obicei, 3 mese principale și 2 gustări. Uneori pot fi 2 gustări, alteori 3, în funcție de somn, plimbări și cât a mâncat la mesele principale. În practică, copilul primește ceva de mâncat sau de băut cam la 2-3 ore, fără să ronțăie continuu toată ziua.",
+      },
+      {
+        type: "list",
+        items: [
+          "Mic dejun: după trezire, când copilul este de obicei mai odihnit.",
+          "Gustare: la 2-3 ore după micul dejun.",
+          "Prânz: cu legume, proteine și o sursă de energie, precum cartof, orez, paste sau pâine.",
+          "Gustare după somn: simplă și ușor de mâncat.",
+          "Cină: mai calmă, cu texturi pe care copilul le gestionează bine.",
+        ],
+      },
+      {
+        type: "heading",
+        text: "Exemple de porții",
+      },
+      {
+        type: "paragraph",
+        text: "Când vorbim despre porții copil 1 an, reperele sunt mici și flexibile. Nu este nevoie să cântărești totul. Poți porni de la cantități reduse și să observi copilul: mai cere, se oprește, împinge farfuria, se joacă sau pare încă interesat?",
+      },
+      {
+        type: "list",
+        items: [
+          "Mic dejun: 2-4 linguri de terci de ovăz cu banană, iaurt simplu sau o bucățică de omletă bine gătită.",
+          "Gustare: câteva bucăți de fruct moale, iaurt simplu, brânzică sau o felie mică de pâine.",
+          "Prânz: 2-3 linguri de legume gătite, 1-2 linguri de carne, pește, ou sau linte și puțin cartof, orez sau paste.",
+          "Cină: legume moi cu ou, paste cu sos simplu, mămăligă cu brânzică sau supă groasă, adaptată vârstei.",
+          "Apă: oferită la mese și între mese, în cantități mici și regulate.",
+        ],
+      },
+      {
+        type: "paragraph",
+        text: "Pentru idei concrete, poți folosi plannerul de mese, iar dacă mesele se încurcă des cu somnul de zi, te poate ajuta și calculatorul de somn.",
+        segments: [
+          { text: "Pentru idei concrete, poți folosi " },
+          { text: "plannerul de mese", href: "/planner-mese" },
+          {
+            text: ", iar dacă mesele se încurcă des cu somnul de zi, te poate ajuta și ",
+          },
+          { text: "calculatorul de somn", href: "/calculator-somn" },
+          { text: "." },
+        ],
+      },
+      {
+        type: "heading",
+        text: "Ce influențează cât mănâncă copilul",
+      },
+      {
+        type: "paragraph",
+        text: "Apetitul nu este fix. După primul an, ritmul de creștere poate fi mai lent decât în lunile de bebelușie, iar copilul poate părea brusc mai puțin interesat de mâncare. În același timp, merge mai mult, explorează, testează limite și își descoperă preferințele. Toate acestea pot influența cât mănâncă un copil de 1 an.",
+      },
+      {
+        type: "list",
+        items: [
+          "Somnul: un copil foarte obosit poate refuza masa.",
+          "Gustările dese: pot reduce foamea la mesele principale.",
+          "Dinții: perioadele de erupție dentară pot schimba temporar apetitul.",
+          "Textura: un aliment poate fi refuzat pentru cum se simte, nu pentru gust.",
+          "Independența: la 1 an, mulți copii vor să țină singuri lingurița sau bucățile de mâncare.",
+        ],
+      },
+      {
+        type: "heading",
+        text: "Când ar trebui să te îngrijorezi",
+      },
+      {
+        type: "paragraph",
+        text: "O masă refuzată sau o zi cu poftă mică nu înseamnă automat o problemă. Merită însă să ceri sfatul pediatrului dacă refuzul alimentelor este persistent, copilul pare foarte obosit, scutecele sunt mult mai puține, apar vărsături frecvente, constipație severă, dificultăți de mestecare sau înghițire, ori dacă medicul observă probleme pe curba de creștere.",
+      },
+      {
+        type: "paragraph",
+        text: "Dacă ai sentimentul că ceva nu este în regulă, nu trebuie să aștepți. Un consult poate aduce liniște și recomandări potrivite copilului tău. Fiecare copil are istoricul lui, iar sfaturile generale trebuie adaptate cu grijă.",
+      },
+      {
+        type: "heading",
+        text: "Greșeli frecvente ale părinților",
+      },
+      {
+        type: "paragraph",
+        text: "Cele mai multe greșeli vin din grijă, nu din nepăsare. Când părintele se teme că cel mic nu mănâncă destul, e ușor să insiste, să compare sau să ofere alternative la fiecare refuz. Pe termen lung, mesele devin mai liniștite când există ritm, răbdare și limite blânde.",
+      },
+      {
+        type: "list",
+        items: [
+          "Forțarea copilului să termine porția.",
+          "Compararea cu alți copii de aceeași vârstă.",
+          "Oferirea de gustări foarte dese, astfel încât masa principală nu mai are loc.",
+          "Înlocuirea rapidă a mesei refuzate cu un aliment preferat.",
+          "Folosirea ecranelor ca să mănânce mai mult fără să observe masa.",
+        ],
+      },
+      {
+        type: "heading",
+        text: "Concluzie calmă și încurajatoare",
+      },
+      {
+        type: "paragraph",
+        text: "Întrebarea cât mănâncă un copil de 1 an nu are un răspuns în grame perfecte. Un reper bun este: mese regulate, porții mici, alimente variate și atenție la semnalele copilului. Unele zile vor fi mai bune, altele mai haotice. Nu e nevoie să transformi fiecare masă într-un test. Copilul învață să mănânce treptat, iar tu îl ajuți cel mai mult prin calm, consecvență și încredere.",
+      },
+      {
+        type: "heading",
+        text: "FAQ",
+      },
+      {
+        type: "heading",
+        text: "Este normal ca un copil de 1 an să mănânce puțin?",
+      },
+      {
+        type: "paragraph",
+        text: "Da, poate fi normal, mai ales dacă se întâmplă ocazional. Uită-te la mai multe zile, nu doar la o masă. Dacă refuzul este constant sau apar alte semne îngrijorătoare, discută cu pediatrul.",
+      },
+      {
+        type: "heading",
+        text: "Câte gustări sunt potrivite la 1 an?",
+      },
+      {
+        type: "paragraph",
+        text: "Pentru mulți copii, 2 gustări pe zi sunt suficiente. Uneori poate fi nevoie de o gustare mică în plus, în funcție de somn, activitate și ora cinei.",
+      },
+      {
+        type: "heading",
+        text: "Ce fac dacă refuză legumele?",
+      },
+      {
+        type: "paragraph",
+        text: "Continuă să le oferi în cantități mici, fără presiune. Poți schimba textura: coapte, la abur, în supă groasă sau lângă un aliment deja acceptat.",
+      },
+      {
+        type: "heading",
+        text: "Trebuie să îi dau altceva dacă nu mănâncă masa?",
+      },
+      {
+        type: "paragraph",
+        text: "Dacă primește mereu alimentul preferat după un refuz, poate învăța rapid acest tipar. Mai util este să păstrezi o masă cu cel puțin un aliment familiar și să revii calm la următoarea masă sau gustare.",
+      },
+      {
+        type: "heading",
+        text: "Cât lapte ar trebui să bea la 1 an?",
+      },
+      {
+        type: "paragraph",
+        text: "Depinde de copil, de alăptare, de formula folosită anterior și de recomandarea medicului. După 1 an, mâncarea solidă devine tot mai importantă, iar laptele nu ar trebui să înlocuiască mesele în mod constant.",
+      },
+    ],
+  },
   {
     title: "Program de somn pentru bebe de 6 luni: ghid complet pentru părinți",
     slug: "program-de-somn-pentru-bebe-de-6-luni",
