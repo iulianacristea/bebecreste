@@ -27,6 +27,252 @@ export type BlogPost = {
 
 export const blogPosts: BlogPost[] = [
   {
+    title: "Idei de mese pentru copil mofturos",
+    slug: "idei-de-mese-pentru-copil-mofturos",
+    excerpt:
+      "Idei simple de mic dejun, prânz, cină și gustări pentru copil mofturos, cu trucuri blânde pentru mesele de zi cu zi.",
+    seoTitle: "Idei de mese pentru copil mofturos",
+    seoDescription:
+      "Idei mese copil mofturos: mic dejun, prânz, cină, gustări și trucuri blânde când copilul refuză mâncarea.",
+    seoKeywords: [
+      "copil mofturos",
+      "idei mese copil mofturos",
+      "ce mănâncă copil mofturos",
+      "copil refuză mâncarea",
+      "mese copil 1 an",
+      "copil mofturos la mancare",
+      "retete copil mofturos",
+      "mancare copil 1 an",
+      "mancare copii 2 ani",
+      "gustari copil mofturos",
+    ],
+    tags: ["alimentatie", "mese", "copil mofturos"],
+    date: "2026-05-04",
+    content: [
+      {
+        type: "paragraph",
+        text: "Dacă ai un copil mofturos, probabil cunoști bine scena: pregătești o masă cu grijă, o pui frumos în farfurie, iar copilul o împinge după două secunde. Sau cere iaurt, apoi nu mai vrea iaurt. Acceptă pastele luni, dar marți par complet străine. Când copilul refuză mâncarea, este ușor să te întrebi dacă ai greșit ceva sau dacă mănâncă suficient.",
+      },
+      {
+        type: "paragraph",
+        text: "În realitate, mofturile la masă sunt frecvente între 1 și 3 ani. Copiii mici își descoperă preferințele, vor mai mult control și pot avea zile cu poftă mare urmate de zile în care mănâncă foarte puțin. Acest articol îți oferă idei mese copil mofturos, cu exemple simple și realiste, fără presiune și fără promisiuni magice.",
+      },
+      {
+        type: "heading",
+        text: "De ce devine copilul mofturos",
+      },
+      {
+        type: "paragraph",
+        text: "Un copil mofturos nu este, de obicei, un copil răsfățat sau un părinte care nu s-a străduit destul. La vârsta de toddler, apetitul poate varia de la zi la zi. Creșterea nu mai este la fel de rapidă ca în primul an, iar copilul începe să spună mai clar ce vrea și ce nu vrea. Uneori refuză un aliment pentru gust, alteori pentru textură, miros, culoare sau pentru că alimentele se ating în farfurie.",
+      },
+      {
+        type: "paragraph",
+        text: "Mai pot conta oboseala, erupțiile dentare, gustările prea apropiate de masă, o zi foarte agitată sau dorința copilului de a mânca singur. Când te întrebi ce mănâncă copil mofturos, răspunsul începe cu observație: ce acceptă deja, ce texturi preferă, când îi este cu adevărat foame și în ce momente masa devine tensionată.",
+      },
+      {
+        type: "paragraph",
+        text: "Este util să privești alimentația pe câteva zile, nu pe o singură farfurie. Un copil poate mânca mult la micul dejun și aproape nimic la cină, apoi a doua zi invers. Dacă are energie, bea lichide potrivite și pediatrul este mulțumit de evoluția lui, variațiile de apetit pot face parte din ritmul normal al vârstei.",
+      },
+      {
+        type: "heading",
+        text: "Principii importante",
+      },
+      {
+        type: "paragraph",
+        text: "Înainte de idei concrete, ajută să ai câteva repere simple. Scopul nu este să convingi copilul să mănânce mult la fiecare masă, ci să îi oferi ocazii repetate, calme și previzibile de a explora alimente. Uneori succesul înseamnă doar că a atins un aliment nou, l-a mirosit sau l-a ținut în farfurie fără protest.",
+      },
+      {
+        type: "list",
+        items: [
+          "Oferă porții mici. O farfurie plină poate speria un copil care deja refuză mâncarea.",
+          "Include cel puțin un aliment acceptat la masă, alături de unul mai nou sau mai puțin preferat.",
+          "Repetă fără presiune. Un aliment poate avea nevoie de multe expuneri până să fie acceptat.",
+          "Păstrează rutina. Mesele și gustările la ore asemănătoare ajută copilul să știe la ce să se aștepte.",
+          "Lasă copilul să participe: să aleagă între două fructe, să pună bucăți în farfurie sau să amestece cu lingurița.",
+        ],
+      },
+      {
+        type: "heading",
+        text: "Idei de mic dejun",
+      },
+      {
+        type: "paragraph",
+        text: "Micul dejun merge mai bine când este simplu și familiar. Pentru mese copil 1 an, adaptează textura și dimensiunea bucăților la abilitățile copilului. Pentru copiii de 2-3 ani, poți păstra aceleași idei, dar cu mai multă autonomie la masă.",
+      },
+      {
+        type: "paragraph",
+        text: "Dacă dimineața este aglomerată, pregătește două variante rapide pe care le poți roti. Copiii mofturoși se simt adesea mai confortabil când recunosc mâncarea, iar părintele scapă de presiunea de a inventa ceva nou în fiecare zi.",
+      },
+      {
+        type: "list",
+        items: [
+          "Terci de ovăz cu banană pasată și puțin iaurt simplu.",
+          "Omletă bine gătită cu brânzică și bucăți mici de roșie fără coajă, dacă este acceptată.",
+          "Clătite simple din banană și ou, tăiate în fâșii ușor de ținut în mână.",
+          "Iaurt simplu cu fruct moale și câteva linguri de cereale fără zahăr adăugat.",
+          "Pâine prăjită ușor, cu avocado pasat sau cremă de brânză simplă.",
+        ],
+      },
+      {
+        type: "heading",
+        text: "Idei de prânz",
+      },
+      {
+        type: "paragraph",
+        text: "La prânz, ajută combinațiile cu un aliment preferat și o noutate mică. Dacă pastele sunt acceptate, poți adăuga un sos simplu. Dacă piureul merge bine, poți schimba treptat leguma sau proteina.",
+      },
+      {
+        type: "list",
+        items: [
+          "Paste mici cu sos de roșii și morcov ras fin sau dovlecel gătit.",
+          "Chifteluțe moi de curcan sau pui, cu piure de cartof dulce.",
+          "Orez cu legume foarte moi și bucățele mici de ou sau pește bine gătit.",
+          "Supă cremă de legume cu crutoane moi sau pâine tăiată cuburi.",
+          "Mămăligă cu brânzică și iaurt, lângă câteva bucăți de legume gătite.",
+        ],
+      },
+      {
+        type: "heading",
+        text: "Idei de cină",
+      },
+      {
+        type: "paragraph",
+        text: "Seara, mulți copii sunt obosiți, deci cina nu trebuie să fie complicată. Uneori copilul refuză mâncarea nu pentru că nu îi place, ci pentru că ziua a fost lungă. Alege mese ușor de mestecat și pregătit.",
+      },
+      {
+        type: "list",
+        items: [
+          "Cartof copt sau fiert cu iaurt simplu și puțină brânză.",
+          "Omletă cu legume moi, tăiată în bucăți mici.",
+          "Paste cu brânză și broccoli foarte bine gătit, pus separat dacă nu îi place amestecat.",
+          "Supă groasă de pui cu legume, cu bucăți adaptate vârstei.",
+          "Lipie moale cu hummus fin și castravete curățat, tăiat potrivit.",
+        ],
+      },
+      {
+        type: "heading",
+        text: "Idei de gustări",
+      },
+      {
+        type: "paragraph",
+        text: "Gustările sunt utile, dar dacă apar prea des pot reduce foamea la mesele principale. Pentru un copil mofturos, gustarea ideală este simplă, predictibilă și nu foarte aproape de prânz sau cină.",
+      },
+      {
+        type: "list",
+        items: [
+          "Fruct moale: banană, pară coaptă, piersică sau măr copt.",
+          "Iaurt simplu cu fruct pasat.",
+          "Brioșe sărate făcute acasă, cu ou, brânză și legume rase fin.",
+          "Batoane moi de legume coapte, precum cartof dulce sau dovlecel.",
+          "Pâine cu brânzică, avocado sau unt de arahide întins foarte subțire, dacă a fost introdus și tolerat.",
+        ],
+      },
+      {
+        type: "paragraph",
+        text: "Pentru zilele în care nu mai ai idei, poți folosi plannerul de mese pentru idei rapide și combinații potrivite rutinei voastre.",
+        segments: [
+          { text: "Pentru zilele în care nu mai ai idei, poți folosi " },
+          { text: "plannerul de mese", href: "/planner-mese" },
+          {
+            text: " pentru idei rapide și combinații potrivite rutinei voastre.",
+          },
+        ],
+      },
+      {
+        type: "heading",
+        text: "Trucuri care chiar funcționează",
+      },
+      {
+        type: "paragraph",
+        text: "Trucurile bune nu păcălesc copilul, ci reduc tensiunea și cresc curiozitatea. Un copil mofturos are nevoie de siguranță și repetiție. Dacă masa devine o luptă, copilul poate refuza și mai mult.",
+      },
+      {
+        type: "list",
+        items: [
+          "Servește alimentele separat, dacă nu îi place să se atingă în farfurie.",
+          "Oferă alegeri limitate: „vrei pară sau banană?”",
+          "Schimbă forma: aceeași legumă poate fi cubulețe, fâșii, pasată sau coaptă.",
+          "Mănâncă împreună cu el, fără să comentezi fiecare înghițitură.",
+          "Păstrează porția nouă foarte mică: cât un bob de mazăre poate fi suficient la început.",
+        ],
+      },
+      {
+        type: "heading",
+        text: "Ce să NU faci",
+      },
+      {
+        type: "paragraph",
+        text: "Când copilul refuză mâncarea, reacția adultului contează mult. Este firesc să apară frustrare, mai ales când ai gătit și masa ajunge neatinsă. Totuși, unele obiceiuri pot face mesele mai tensionate.",
+      },
+      {
+        type: "list",
+        items: [
+          "Nu forța copilul să termine farfuria.",
+          "Nu transforma desertul în recompensă pentru legume.",
+          "Nu compara copilul cu frați, veri sau alți copii.",
+          "Nu oferi gustări continuu între mese.",
+          "Nu renunța definitiv la un aliment după un singur refuz.",
+        ],
+      },
+      {
+        type: "heading",
+        text: "Concluzie calmă și încurajatoare",
+      },
+      {
+        type: "paragraph",
+        text: "Un copil mofturos nu are nevoie de mese perfecte, ci de un adult calm, de opțiuni simple și de timp. Unele zile vor merge bine, altele vor părea un pas înapoi. Asta nu înseamnă că ai eșuat. Continuă să oferi alimente variate, în porții mici, lângă lucruri pe care copilul deja le acceptă.",
+      },
+      {
+        type: "paragraph",
+        text: "Întrebarea nu este doar ce mănâncă copil mofturos astăzi, ci cum îl ajuți să se simtă în siguranță la masă pe termen lung. Cu răbdare, repetiție și mai puțină presiune, multe refuzuri se pot transforma treptat în curiozitate.",
+      },
+      {
+        type: "heading",
+        text: "FAQ",
+      },
+      {
+        type: "heading",
+        text: "Este normal ca un copil de 1-3 ani să fie mofturos?",
+      },
+      {
+        type: "paragraph",
+        text: "Da, este frecvent. Mulți copii mici refuză alimente pe care înainte le acceptau sau preferă câteva mâncăruri pentru o perioadă. Dacă apar îngrijorări legate de creștere, energie sau sănătate, discută cu pediatrul.",
+      },
+      {
+        type: "heading",
+        text: "Ce fac dacă acceptă doar paste, pâine sau iaurt?",
+      },
+      {
+        type: "paragraph",
+        text: "Păstrează alimentul acceptat în farfurie și adaugă cantități foarte mici din altceva. De exemplu, paste cu sos separat, pâine lângă ou sau iaurt cu un fruct pasat alături.",
+      },
+      {
+        type: "heading",
+        text: "Cât timp insist cu un aliment refuzat?",
+      },
+      {
+        type: "paragraph",
+        text: "Nu insista în aceeași masă. Reoferă alimentul în altă zi, în altă formă și în cantitate mică. Repetiția calmă ajută mai mult decât negocierea.",
+      },
+      {
+        type: "heading",
+        text: "E bine să gătesc separat pentru copil?",
+      },
+      {
+        type: "paragraph",
+        text: "Poți adapta masa familiei, dar nu este nevoie să gătești mereu complet separat. Ajută să existe măcar un aliment familiar la masă, astfel încât copilul să aibă ceva sigur de ales.",
+      },
+      {
+        type: "heading",
+        text: "Când ar trebui să cer ajutor?",
+      },
+      {
+        type: "paragraph",
+        text: "Cere sfatul pediatrului dacă refuzul alimentar este persistent, copilul pare foarte obosit, pierde în greutate, are dificultăți la mestecat sau înghițit ori mesele devin constant foarte stresante.",
+      },
+    ],
+  },
+  {
     title: "Cât trebuie să mănânce copilul în vârstă de un an?",
     slug: "cat-trebuie-sa-manance-copilul-in-varsta-de-un-an",
     excerpt:
