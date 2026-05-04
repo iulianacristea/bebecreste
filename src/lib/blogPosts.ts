@@ -20,6 +20,15 @@ export type BlogPost = {
   seoTitle?: string;
   seoDescription: string;
   seoKeywords?: string[];
+  coverImage: string;
+  coverAlt: string;
+  readingTime: string;
+  relatedSlugs: string[];
+  cta: {
+    text: string;
+    buttonText: string;
+    href: string;
+  };
   tags: string[];
   content: BlogContentBlock[];
   date: string;
@@ -48,6 +57,20 @@ export const blogPosts: BlogPost[] = [
     ],
     tags: ["alimentatie", "mese", "copil mofturos"],
     date: "2026-05-04",
+    coverImage: "/blog/baby_eating1.jpeg",
+    coverAlt:
+      "Farfurie colorată cu alimente simple pentru un copil mofturos",
+    readingTime: "5 min citire",
+    relatedSlugs: [
+      "cat-trebuie-sa-manance-copilul-in-varsta-de-un-an",
+      "alimente-recomandate-si-de-evitat-in-diversificare",
+      "alimente-de-evitat-in-diversificare",
+    ],
+    cta: {
+      text: "Ai nevoie de idei rapide pentru mesele copilului? Plannerul te ajută să găsești combinații simple pentru zile reale, nu perfecte.",
+      buttonText: "Deschide plannerul",
+      href: "/planner-mese",
+    },
     content: [
       {
         type: "paragraph",
@@ -298,6 +321,20 @@ export const blogPosts: BlogPost[] = [
     ],
     tags: ["alimentatie", "diversificare", "copil 1 an"],
     date: "2026-05-03",
+    coverImage: "/blog/oneyearbabyeat.jpeg",
+    coverAlt:
+      "Masă echilibrată cu porții mici pentru un copil în vârstă de un an",
+    readingTime: "5 min citire",
+    relatedSlugs: [
+      "idei-de-mese-pentru-copil-mofturos",
+      "alimente-recomandate-si-de-evitat-in-diversificare",
+      "cate-somnuri-are-nevoie-un-copil-de-1-an",
+    ],
+    cta: {
+      text: "Vrei să transformi reperele în idei concrete de mese? Plannerul îți propune combinații simple, potrivite rutinei voastre.",
+      buttonText: "Planifică mesele",
+      href: "/planner-mese",
+    },
     content: [
       {
         type: "paragraph",
@@ -479,6 +516,20 @@ export const blogPosts: BlogPost[] = [
       "Program somn bebe 6 luni: ghid complet pentru părinți despre somnuri de zi, ferestre de veghe, rutina de seară și ajustări blânde.",
     tags: ["somn", "rutine", "dezvoltare"],
     date: "2026-05-01",
+    coverImage: "/blog/6monthbaby.jpeg",
+    coverAlt:
+      "Ilustrație caldă cu lună și stele pentru programul de somn al bebelușului",
+    readingTime: "6 min citire",
+    relatedSlugs: [
+      "de-ce-nu-doarme-bebe-noaptea",
+      "cum-iti-dai-seama-ca-bebe-este-obosit",
+      "cum-adoarme-bebe-mai-repede",
+    ],
+    cta: {
+      text: "Vrei un reper rapid pentru următorul somn? Calculatorul de somn îți oferă un program orientativ în funcție de vârstă și trezire.",
+      buttonText: "Calculează somnul",
+      href: "/calculator-somn",
+    },
     content: [
       {
         type: "paragraph",
@@ -633,6 +684,20 @@ export const blogPosts: BlogPost[] = [
       "Program somn copil 1 an: află câte somnuri sunt potrivite, cum faci tranziția la un somn și cum ajustezi rutina zilnică.",
     tags: ["somn", "rutine", "dezvoltare"],
     date: "2026-04-24",
+    coverImage: "/blog/cover-rutine.svg",
+    coverAlt:
+      "Calendar blând cu pași de rutină pentru somnul copilului de 1 an",
+    readingTime: "5 min citire",
+    relatedSlugs: [
+      "cat-trebuie-sa-manance-copilul-in-varsta-de-un-an",
+      "program-de-somn-pentru-bebe-de-6-luni",
+      "copilul-de-2-ani-nu-mai-doarme-ziua",
+    ],
+    cta: {
+      text: "Dacă ziua se schimbă des, calculatorul de somn te poate ajuta să găsești o oră orientativă pentru următorul somn.",
+      buttonText: "Încearcă calculatorul",
+      href: "/calculator-somn",
+    },
     content: [
       {
         type: "paragraph",
@@ -791,6 +856,20 @@ export const blogPosts: BlogPost[] = [
       "Bebe nu doarme noaptea? Află cauze frecvente, idei practice și soluții blânde pentru o rutină de somn mai liniștită.",
     tags: ["somn", "rutine", "parenting"],
     date: "2026-05-01",
+    coverImage: "/blog/awake_baby.jpeg",
+    coverAlt:
+      "Cameră liniștită de noapte cu lună și stele pentru somnul bebelușului",
+    readingTime: "5 min citire",
+    relatedSlugs: [
+      "program-de-somn-pentru-bebe-de-6-luni",
+      "cum-adoarme-bebe-mai-repede",
+      "cum-iti-dai-seama-ca-bebe-este-obosit",
+    ],
+    cta: {
+      text: "Când nopțile sunt agitate, un reper pentru somnurile de zi poate aduce mai multă claritate.",
+      buttonText: "Vezi calculatorul",
+      href: "/calculator-somn",
+    },
     content: [
       {
         type: "paragraph",
@@ -936,6 +1015,20 @@ export const blogPosts: BlogPost[] = [
       "Semne bebe obosit: află cum recunoști oboseala timpurie, când bebe este prea obosit și ce poți face pentru o rutină de somn mai calmă.",
     tags: ["somn", "parenting", "dezvoltare"],
     date: "2026-04-17",
+    coverImage: "/blog/cover-rutine.svg",
+    coverAlt:
+      "Repere vizuale pentru semnele de oboseală și rutina bebelușului",
+    readingTime: "4 min citire",
+    relatedSlugs: [
+      "cum-adoarme-bebe-mai-repede",
+      "de-ce-nu-doarme-bebe-noaptea",
+      "program-de-somn-pentru-bebe-de-6-luni",
+    ],
+    cta: {
+      text: "Dacă semnele de oboseală apar greu de citit, începe cu un reper orientativ pentru următorul somn.",
+      buttonText: "Calculează ora de somn",
+      href: "/calculator-somn",
+    },
     content: [
       {
         type: "paragraph",
@@ -1066,6 +1159,20 @@ export const blogPosts: BlogPost[] = [
       "Copil 2 ani nu mai doarme ziua? Află ce poate fi normal, când mai are nevoie de somn și cum poți păstra o rutină liniștită.",
     tags: ["somn", "rutine", "dezvoltare"],
     date: "2026-04-10",
+    coverImage: "/blog/cover-rutine.svg",
+    coverAlt:
+      "Rutina de zi a copilului de 2 ani cu repere calme pentru somn",
+    readingTime: "5 min citire",
+    relatedSlugs: [
+      "cate-somnuri-are-nevoie-un-copil-de-1-an",
+      "cum-iti-dai-seama-ca-bebe-este-obosit",
+      "de-ce-nu-doarme-bebe-noaptea",
+    ],
+    cta: {
+      text: "Pentru zilele în care somnul de prânz se mută sau dispare, calculatorul îți oferă un reper blând pentru seară.",
+      buttonText: "Ajustează somnul",
+      href: "/calculator-somn",
+    },
     content: [
       {
         type: "paragraph",
@@ -1203,6 +1310,20 @@ export const blogPosts: BlogPost[] = [
       "Cum adoarme bebe mai repede: trucuri blânde, rutină de seară, ferestre de veghe și sfaturi practice pentru părinți.",
     tags: ["somn", "rutine", "parenting"],
     date: "2026-04-03",
+    coverImage: "/blog/cover-somn.svg",
+    coverAlt:
+      "Ilustrație cu atmosferă liniștită de seară pentru adormirea bebelușului",
+    readingTime: "5 min citire",
+    relatedSlugs: [
+      "cum-iti-dai-seama-ca-bebe-este-obosit",
+      "de-ce-nu-doarme-bebe-noaptea",
+      "program-de-somn-pentru-bebe-de-6-luni",
+    ],
+    cta: {
+      text: "Un moment potrivit ajută mult la adormire. Folosește calculatorul pentru un reper simplu înainte de rutina de seară.",
+      buttonText: "Găsește ora potrivită",
+      href: "/calculator-somn",
+    },
     content: [
       {
         type: "paragraph",
@@ -1357,6 +1478,20 @@ export const blogPosts: BlogPost[] = [
       "Alimente recomandate diversificare bebeluși: legume, fructe, cereale, proteine și lista alimentelor de evitat în primul an.",
     tags: ["alimentatie", "diversificare", "bebelusi"],
     date: "2026-05-01",
+    coverImage: "/blog/cover-diversificare.svg",
+    coverAlt:
+      "Legume și alimente simple pentru diversificarea bebelușului",
+    readingTime: "4 min citire",
+    relatedSlugs: [
+      "alimente-de-evitat-in-diversificare",
+      "cat-trebuie-sa-manance-copilul-in-varsta-de-un-an",
+      "idei-de-mese-pentru-copil-mofturos",
+    ],
+    cta: {
+      text: "Când vrei să transformi lista de alimente în mese concrete, plannerul îți poate propune idei simple pentru fiecare zi.",
+      buttonText: "Deschide plannerul",
+      href: "/planner-mese",
+    },
     content: [
       {
         type: "paragraph",
@@ -1463,6 +1598,20 @@ export const blogPosts: BlogPost[] = [
       "Alimente de evitat în diversificare: ce nu ar trebui oferit bebelușilor în primul an și de ce. Ghid prietenos pentru părinți.",
     tags: ["alimentatie", "diversificare", "siguranta"],
     date: "2026-05-01",
+    coverImage: "/blog/cover-diversificare.svg",
+    coverAlt:
+      "Alimente pentru diversificare aranjate simplu și sigur pentru bebeluș",
+    readingTime: "4 min citire",
+    relatedSlugs: [
+      "alimente-recomandate-si-de-evitat-in-diversificare",
+      "cat-trebuie-sa-manance-copilul-in-varsta-de-un-an",
+      "idei-de-mese-pentru-copil-mofturos",
+    ],
+    cta: {
+      text: "Pentru mese mai ușor de planificat, pornește de la alimente potrivite și lasă plannerul să îți dea combinații rapide.",
+      buttonText: "Planifică mesele",
+      href: "/planner-mese",
+    },
     content: [
       {
         type: "paragraph",
@@ -1591,4 +1740,10 @@ export function getAllBlogPosts() {
 
 export function getBlogPostBySlug(slug: string) {
   return blogPosts.find((post) => post.slug === slug);
+}
+
+export function getRelatedBlogPosts(slugs: string[]) {
+  return slugs
+    .map((slug) => getBlogPostBySlug(slug))
+    .filter((post): post is BlogPost => Boolean(post));
 }

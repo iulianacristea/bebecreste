@@ -1,0 +1,13 @@
+<svg width="1200" height="720" viewBox="0 0 1200 720" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="720" rx="48" fill="#F7FEE7"/>
+  <circle cx="176" cy="146" r="180" fill="#FED7AA" opacity=".66"/>
+  <circle cx="1000" cy="134" r="188" fill="#BFDBFE" opacity=".58"/>
+  <circle cx="956" cy="590" r="170" fill="#FECACA" opacity=".55"/>
+  <rect x="220" y="166" width="760" height="414" rx="54" fill="white" opacity=".9"/>
+  <rect x="344" y="282" width="112" height="160" rx="56" fill="#FDBA74"/>
+  <rect x="532" y="250" width="112" height="204" rx="56" fill="#86EFAC"/>
+  <rect x="720" y="304" width="112" height="132" rx="56" fill="#FCA5A5"/>
+  <path d="M314 500h572" stroke="#0F172A" stroke-width="24" stroke-linecap="round" opacity=".7"/>
+  <path d="M380 238c34-34 66-34 98 0M568 208c34-34 66-34 98 0M756 264c34-34 66-34 98 0" stroke="#22C55E" stroke-width="16" stroke-linecap="round" opacity=".75"/>
+  <text x="600" y="668" text-anchor="middle" fill="#334155" font-family="Arial, sans-serif" font-size="34" font-weight="700">Diversificare simplă și sigură</text>
+</svg>

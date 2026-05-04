@@ -1,0 +1,13 @@
+<svg width="1200" height="720" viewBox="0 0 1200 720" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="720" rx="48" fill="#FFF7ED"/>
+  <circle cx="202" cy="138" r="178" fill="#A7F3D0" opacity=".54"/>
+  <circle cx="1002" cy="144" r="194" fill="#FDE68A" opacity=".58"/>
+  <circle cx="922" cy="610" r="160" fill="#FBCFE8" opacity=".58"/>
+  <rect x="238" y="168" width="724" height="420" rx="56" fill="white" opacity=".9"/>
+  <rect x="332" y="256" width="154" height="154" rx="32" fill="#BAE6FD"/>
+  <rect x="524" y="256" width="154" height="154" rx="32" fill="#FECACA"/>
+  <rect x="716" y="256" width="154" height="154" rx="32" fill="#BBF7D0"/>
+  <path d="M354 478h492" stroke="#0F172A" stroke-width="22" stroke-linecap="round" opacity=".7"/>
+  <path d="M380 332l24 24 48-58M572 332l24 24 48-58M764 332l24 24 48-58" stroke="white" stroke-width="18" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="600" y="668" text-anchor="middle" fill="#334155" font-family="Arial, sans-serif" font-size="34" font-weight="700">Rutine clare, zile mai calme</text>
+</svg>
