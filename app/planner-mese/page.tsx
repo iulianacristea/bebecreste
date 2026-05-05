@@ -22,6 +22,21 @@ export const metadata: Metadata = {
     description:
       "Idei de mese orientative pentru diversificare, în funcție de vârstă și alimente disponibile.",
     url: "/planner-mese",
+    images: [
+      {
+        url: "/homepage/bebe-mananca.jpeg",
+        width: 1200,
+        height: 630,
+        alt: "Copil mic lângă o masă sănătoasă",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Planner mese bebe | BebeCrește.ro",
+    description:
+      "Primești idei simple de mese pentru bebeluși și copii mici.",
+    images: ["/homepage/bebe-mananca.jpeg"],
   },
 };
 

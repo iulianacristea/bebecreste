@@ -2,7 +2,7 @@ import Link from "next/link";
 
 const features = [
   {
-    title: "Sleep Calculator",
+    title: "Calculator somn",
     description:
       "Află rapid o fereastră orientativă de somn și ajusteaz-o după semnele copilului.",
     href: "/calculator-somn",
@@ -10,7 +10,7 @@ const features = [
     icon: "S",
   },
   {
-    title: "Meal Planner",
+    title: "Planner mese",
     description:
       "Găsești idei de mese simple, potrivite vârstei, preferințelor și zilelor reale.",
     href: "/planner-mese",

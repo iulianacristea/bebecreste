@@ -2,21 +2,28 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 const siteUrl = "https://bebecreste.ro";
+const defaultOgImage = "/homepage/mama-bebe.jpeg";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: "BebeCrește.ro | Somn, mese și rutine pentru copii",
+    default: "BebeCrește.ro | Calculator somn copil și planner mese",
     template: "%s | BebeCrește.ro",
   },
   description:
-    "Repere simple pentru părinți: calculator somn bebe, planner mese, diversificare și ghiduri practice pentru rutina copilului.",
+    "Bebe nu doarme sau mesele sunt greu de organizat? Primești repere simple pentru somnul, mesele și rutina copilului.",
   keywords: [
+    "calculator somn copil",
     "program somn bebe",
     "calculator somn bebe",
+    "planner mese copil",
     "diversificare mese copil",
     "planner mese bebe",
     "rutina bebe",
+    "rutine copii",
+    "bebe nu doarme",
+    "copil nu doarme",
+    "copil nu mananca",
     "somn bebelusi",
     "parenting Romania",
   ],
@@ -35,19 +42,28 @@ export const metadata: Metadata = {
     canonical: siteUrl,
   },
   openGraph: {
-    title: "BebeCrește.ro | Somn, mese și rutine pentru copii",
+    title: "BebeCrește.ro | Calculator somn copil și planner mese",
     description:
-      "Calculator somn bebe, planner mese și ghiduri practice pentru părinți cu copii între 0 și 3 ani.",
+      "Bebe nu doarme? Primești repere clare și orientative pentru somnul, mesele și rutina copilului tău.",
     url: siteUrl,
     siteName: "BebeCrește.ro",
     locale: "ro_RO",
     type: "website",
+    images: [
+      {
+        url: defaultOgImage,
+        width: 1200,
+        height: 630,
+        alt: "Părinte cu bebeluș, pentru BebeCrește.ro",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "BebeCrește.ro | Somn, mese și rutine pentru copii",
+    title: "BebeCrește.ro | Calculator somn copil și planner mese",
     description:
-      "Repere simple pentru somnul, mesele și rutina copilului tău.",
+      "Bebe nu doarme? Calculator somn copil, planner mese și ghiduri simple pentru părinți.",
+    images: [defaultOgImage],
   },
   robots: {
     index: true,

@@ -2,28 +2,52 @@ import Image from "next/image";
 import Link from "next/link";
 import type { Metadata } from "next";
 import { EmailCapture } from "@/src/components/EmailCapture";
-import { Features } from "@/src/components/Features";
 import { Footer } from "@/src/components/Footer";
 import { Hero } from "@/src/components/Hero";
-import { HowItWorks } from "@/src/components/HowItWorks";
 import { MobileStickyCta } from "@/src/components/MobileStickyCta";
 import { Navbar } from "@/src/components/Navbar";
 
 export const metadata: Metadata = {
-  title: "Program somn bebe, mese și rutine pentru copii",
+  title: "Calculator somn copil și planner mese",
   description:
-    "BebeCrește.ro oferă calculator somn bebe, planner mese pentru diversificare și ghiduri simple pentru părinți cu copii 0-3 ani.",
+    "Bebe nu doarme sau copilul nu mănâncă? BebeCrește îți oferă repere simple pentru somn, mese și rutine, în mai puțin de 30 de secunde.",
+  keywords: [
+    "calculator somn copil",
+    "calculator somn bebe",
+    "planner mese copil",
+    "planner mese bebe",
+    "program somn copil",
+    "idei mese copil",
+    "rutine copii",
+    "bebe nu doarme",
+    "copil nu doarme",
+  ],
   alternates: {
     canonical: "https://bebecreste.ro",
   },
   openGraph: {
-    title: "BebeCrește.ro | Program somn bebe și planner mese",
+    title: "BebeCrește.ro | Calculator somn copil și planner mese",
     description:
-      "Repere orientative pentru somnul, mesele și rutina copilului tău.",
+      "Bebe nu doarme? Primești repere simple și clare, adaptate vârstei copilului, fără stres și fără presiune.",
     url: "https://bebecreste.ro",
     siteName: "BebeCrește.ro",
     locale: "ro_RO",
     type: "website",
+    images: [
+      {
+        url: "/homepage/mama-bebe.jpeg",
+        width: 1200,
+        height: 630,
+        alt: "Părinte cu bebeluș, pentru BebeCrește.ro",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "BebeCrește.ro | Calculator somn copil și planner mese",
+    description:
+      "Bebe nu doarme? Repere simple pentru somnul, mesele și rutina copilului tău.",
+    images: ["/homepage/mama-bebe.jpeg"],
   },
 };
 
@@ -86,12 +110,16 @@ export default function Home() {
         "@id": "https://bebecreste.ro/#organization",
         name: "BebeCrește.ro",
         url: "https://bebecreste.ro",
+        logo: "https://bebecreste.ro/bebecreste-logo.webp",
+        image: "https://bebecreste.ro/homepage/mama-bebe.jpeg",
       },
       {
         "@type": "WebSite",
         "@id": "https://bebecreste.ro/#website",
         name: "BebeCrește.ro",
         url: "https://bebecreste.ro",
+        description:
+          "Repere simple pentru părinți despre somn, mese și rutine în primii ani, inclusiv atunci când bebe nu doarme.",
         inLanguage: "ro-RO",
         publisher: {
           "@id": "https://bebecreste.ro/#organization",
@@ -106,6 +134,11 @@ export default function Home() {
         inLanguage: "ro-RO",
         description:
           "Calculator orientativ pentru program somn bebe, ferestre de veghe și ora de culcare.",
+        offers: {
+          "@type": "Offer",
+          price: "0",
+          priceCurrency: "RON",
+        },
       },
       {
         "@type": "WebApplication",
@@ -116,6 +149,11 @@ export default function Home() {
         inLanguage: "ro-RO",
         description:
           "Planner orientativ pentru diversificare mese copil și idei de mese pe vârstă.",
+        offers: {
+          "@type": "Offer",
+          price: "0",
+          priceCurrency: "RON",
+        },
       },
     ],
   };
@@ -291,18 +329,6 @@ export default function Home() {
               </Link>
             ))}
           </div>
-        </div>
-      </section>
-
-      <section
-        id="cum-functioneaza"
-        className="relative bg-[linear-gradient(135deg,_#fffdfb_0%,_#fff7f1_48%,_#f5fbff_100%)] px-5 py-10 sm:px-8 lg:px-10"
-      >
-        <div className="absolute left-1/2 top-0 h-40 w-40 -translate-x-1/2 rounded-full bg-rose-100/40 blur-3xl" />
-
-        <div className="relative mx-auto grid max-w-6xl gap-5 lg:grid-cols-2">
-          <HowItWorks />
-          <Features />
         </div>
       </section>
 

@@ -4,10 +4,11 @@ import { Navbar } from "@/src/components/Navbar";
 import { SleepCalculator } from "@/src/components/SleepCalculator";
 
 export const metadata: Metadata = {
-  title: "Calculator somn bebe | Program somn pe vârstă",
+  title: "Calculator somn bebe | Bebe nu doarme?",
   description:
-    "Calculează fereastra de somn, ora de culcare și un program orientativ pentru bebe, în funcție de vârstă și ora trezirii.",
+    "Bebe nu doarme? Calculează fereastra de somn, ora de culcare și un program orientativ pentru bebe, în funcție de vârstă și ora trezirii.",
   keywords: [
+    "bebe nu doarme",
     "calculator somn bebe",
     "program somn bebe",
     "ferestre de veghe bebe",
@@ -18,10 +19,25 @@ export const metadata: Metadata = {
     canonical: "/calculator-somn",
   },
   openGraph: {
-    title: "Calculator somn bebe | BebeCrește.ro",
+    title: "Calculator somn bebe | Bebe nu doarme?",
     description:
-      "Primește repere orientative pentru următoarea fereastră de somn și ora de culcare.",
+      "Bebe nu doarme? Primește repere orientative pentru următoarea fereastră de somn și ora de culcare.",
     url: "/calculator-somn",
+    images: [
+      {
+        url: "/homepage/bebe-doarme.jpeg",
+        width: 1200,
+        height: 630,
+        alt: "Bebeluș dormind liniștit",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Calculator somn bebe | Bebe nu doarme?",
+    description:
+      "Bebe nu doarme? Calculează următoarea fereastră de somn și ora de culcare.",
+    images: ["/homepage/bebe-doarme.jpeg"],
   },
 };
 
