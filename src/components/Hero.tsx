@@ -15,20 +15,19 @@ export function Hero() {
         <div>
           {/* badge */}
           <span className="inline-flex rounded-full border border-rose-100 bg-white/80 px-4 py-2 text-xs font-bold uppercase tracking-wide text-rose-700 shadow-sm">
-            Pentru părinți în primii ani
+            Pentru părinți
           </span>
 
           {/* headline */}
           <h1 className="mt-6 text-4xl font-extrabold leading-tight tracking-tight text-slate-950 sm:text-5xl lg:text-6xl">
-            Nu mai ghici <br />
-            <span className="text-rose-600">când să doarmă</span> sau{" "}
+            Află mai ușor  <br />
+            <span className="text-rose-600">când să doarmă</span> si{" "}
             <span className="text-sky-600">ce să mănânce</span>
           </h1>
 
           {/* subheadline */}
           <p className="mt-6 max-w-xl text-lg leading-8 text-slate-600">
-            Primești un punct de pornire clar pentru somn și mese — în mai puțin
-            de 30 de secunde, adaptat copilului tău.
+            Primești repere simple pentru somn și mese — în mai puțin de 30 de secunde, adaptate copilului tău.
           </p>
 
           {/* CTA */}
@@ -37,14 +36,14 @@ export function Hero() {
               href="/calculator-somn"
               className="inline-flex items-center justify-center rounded-full bg-slate-950 px-8 py-4 text-base font-semibold text-white shadow-xl shadow-slate-900/20 transition duration-200 hover:-translate-y-0.5 hover:bg-slate-800 hover:shadow-2xl focus:outline-none focus:ring-4 focus:ring-slate-300"
             >
-              Calculează somnul copilului
+              Calculează somnul
             </Link>
 
             <Link
               href="/planner-mese"
               className="inline-flex items-center justify-center rounded-full border border-rose-100 bg-white/90 px-8 py-4 text-base font-semibold text-slate-700 shadow-sm transition duration-200 hover:-translate-y-0.5 hover:border-rose-200 hover:bg-white hover:shadow-md focus:outline-none focus:ring-4 focus:ring-rose-100"
             >
-              Planifică mesele copilului
+              Planifică mesele
             </Link>
           </div>
 
@@ -76,7 +75,7 @@ export function Hero() {
                 Repere simple pentru fiecare zi
               </p>
               <p className="mt-1 text-base font-bold text-slate-900">
-                Somn, mese și rutine mai clare.
+                Mai puțin stres. Mai multă claritate.
               </p>
             </div>
           </div>

@@ -51,7 +51,7 @@ const capabilityCards = [
 ];
 
 const benefitPoints = [
-  "Nu mai ghicești programul copilului",
+  "Somn și mese mai clare pentru copilul tău",
   "Ai idei simple pentru mesele zilnice",
   "Înțelegi mai bine nevoile copilului",
   "Construiești rutine mai liniștite",
@@ -117,11 +117,10 @@ export default function Home() {
               Instrumente utile pentru părinți
             </p>
             <h2 className="mt-3 text-3xl font-bold tracking-tight text-slate-950">
-              Două repere simple pentru fiecare zi
+              Tot ce ai nevoie pentru somn și mese mai clare
             </h2>
             <p className="mt-3 text-base leading-7 text-slate-600">
-              Începi cu ce ai nevoie acum: somn mai clar sau idei rapide de
-              mese.
+              Începi cu ce ai nevoie acum: somn mai clar și idei rapide de mese.
             </p>
           </div>
 
@@ -146,7 +145,8 @@ export default function Home() {
                   <span
                     className={`inline-flex rounded-full px-3 py-1 text-xs font-bold uppercase ring-1 ${card.accent}`}
                   >
-                    BebeCrește
+                    MESE
+                    SOMN
                   </span>
 
                   <h3 className="mt-4 text-xl font-bold text-slate-950 transition duration-200 group-hover:text-rose-700">
