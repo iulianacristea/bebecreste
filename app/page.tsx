@@ -33,28 +33,48 @@ const capabilityCards = [
     description:
       "Află când ar putea fi următoarea fereastră de somn și cum poți ajusta ziua copilului.",
     href: "/calculator-somn",
-    cta: "Calculează somnul",
+    cta: "Află următorul somn",
     image: "/homepage/bebe-doarme.jpeg",
     imageAlt: "Bebeluș dormind liniștit",
     accent: "bg-sky-50 text-sky-700 ring-sky-100",
+    label: "Somn",
   },
   {
     title: "Planner mese copil",
     description:
       "Primești idei simple de mese, adaptate vârstei, preferințelor și alimentelor disponibile.",
     href: "/planner-mese",
-    cta: "Planifică mesele",
+    cta: "Vezi idei de mese",
     image: "/homepage/bebe-mananca.jpeg",
     imageAlt: "Mâncare sănătoasă pentru copil mic",
     accent: "bg-rose-50 text-rose-700 ring-rose-100",
+    label: "Mese",
   },
 ];
 
 const benefitPoints = [
-  "Somn și mese mai clare pentru copilul tău",
+  "Nu mai ghicești programul copilului",
   "Ai idei simple pentru mesele zilnice",
   "Înțelegi mai bine nevoile copilului",
   "Construiești rutine mai liniștite",
+];
+
+const blogPreviewPosts = [
+  {
+    title: "Idei de mese pentru copil mofturos",
+    href: "/blog/idei-de-mese-pentru-copil-mofturos",
+    text: "Idei simple pentru mic dejun, prânz, cină și gustări.",
+  },
+  {
+    title: "Cât mănâncă un copil de 1 an",
+    href: "/blog/cat-trebuie-sa-manance-copilul-in-varsta-de-un-an",
+    text: "Repere despre porții, mese și apetitul copilului.",
+  },
+  {
+    title: "Program de somn pentru bebe de 6 luni",
+    href: "/blog/program-de-somn-pentru-bebe-de-6-luni",
+    text: "Ferestre de veghe, somnuri de zi și rutină blândă.",
+  },
 ];
 
 export default function Home() {
@@ -110,21 +130,22 @@ export default function Home() {
       <Navbar />
       <Hero />
 
-      <section className="bg-white px-5 py-10 sm:px-8 lg:px-10">
+      <section className="bg-white px-5 py-12 sm:px-8 lg:px-10">
         <div className="mx-auto max-w-6xl">
           <div className="mx-auto max-w-3xl text-center">
             <p className="text-sm font-semibold uppercase text-emerald-700">
               Instrumente utile pentru părinți
             </p>
             <h2 className="mt-3 text-3xl font-bold tracking-tight text-slate-950">
-              Tot ce ai nevoie pentru somn și mese mai clare
+              Două instrumente care îți simplifică ziua
             </h2>
             <p className="mt-3 text-base leading-7 text-slate-600">
-              Începi cu ce ai nevoie acum: somn mai clar și idei rapide de mese.
+              Începi cu ce ai nevoie acum: somn mai clar și idei rapide de
+              mese.
             </p>
           </div>
 
-          <div className="mx-auto mt-7 grid max-w-5xl gap-5 md:grid-cols-2">
+          <div className="mx-auto mt-8 grid max-w-5xl gap-5 md:grid-cols-2">
             {capabilityCards.map((card) => (
               <Link
                 key={card.title}
@@ -145,8 +166,7 @@ export default function Home() {
                   <span
                     className={`inline-flex rounded-full px-3 py-1 text-xs font-bold uppercase ring-1 ${card.accent}`}
                   >
-                    SOMN,
-                    MESE
+                    {card.label}
                   </span>
 
                   <h3 className="mt-4 text-xl font-bold text-slate-950 transition duration-200 group-hover:text-rose-700">
@@ -158,7 +178,7 @@ export default function Home() {
                   </p>
 
                   <p className="mt-5 text-sm font-bold text-rose-700">
-                    → {card.cta}
+                    {card.cta} →
                   </p>
                 </div>
               </Link>
@@ -186,6 +206,90 @@ export default function Home() {
               Fiecare copil este diferit. Aici găsești repere care te ajută să
               te adaptezi, nu reguli rigide.
             </p>
+          </div>
+        </div>
+      </section>
+
+      <section className="bg-white px-5 py-10 sm:px-8 lg:px-10">
+        <div className="mx-auto max-w-5xl rounded-[2rem] border border-rose-100 bg-gradient-to-br from-white via-rose-50/50 to-sky-50/60 p-6 shadow-xl shadow-rose-100/35 sm:p-8">
+          <p className="text-sm font-semibold uppercase text-rose-700">
+            De ce BebeCrește
+          </p>
+
+          <h2 className="mt-3 text-3xl font-bold tracking-tight text-slate-950">
+            Creat pentru părinți reali
+          </h2>
+
+          <p className="mt-4 max-w-3xl text-base leading-7 text-slate-600">
+            BebeCrește este construit pentru momentele în care ai nevoie de un
+            reper simplu, nu de încă zece răspunsuri diferite. Recomandările
+            sunt orientative și te ajută să pornești de la ceva clar.
+          </p>
+
+          <div className="mt-6 grid gap-3 sm:grid-cols-3">
+            {[
+              "Fără reguli rigide",
+              "Fără informații contradictorii",
+              "Adaptabil pentru fiecare copil",
+            ].map((item) => (
+              <div
+                key={item}
+                className="rounded-2xl border border-white/80 bg-white/80 px-4 py-3 text-sm font-semibold text-slate-700 shadow-sm"
+              >
+                ✔ {item}
+              </div>
+            ))}
+          </div>
+
+          <p className="mt-5 text-sm leading-6 text-slate-500">
+            Informațiile nu înlocuiesc sfatul medicului. Dacă ai îngrijorări
+            legate de sănătatea copilului, discută cu pediatrul.
+          </p>
+        </div>
+      </section>
+
+      <section className="bg-white px-5 py-10 sm:px-8 lg:px-10">
+        <div className="mx-auto max-w-6xl">
+          <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
+            <div>
+              <p className="text-sm font-semibold uppercase text-emerald-700">
+                Ghiduri utile
+              </p>
+              <h2 className="mt-3 text-3xl font-bold tracking-tight text-slate-950">
+                Citește mai departe
+              </h2>
+              <p className="mt-3 max-w-2xl text-base leading-7 text-slate-600">
+                Articole clare pentru întrebările reale despre somn, mese și
+                rutine.
+              </p>
+            </div>
+
+            <Link
+              href="/blog"
+              className="inline-flex rounded-full border border-rose-100 bg-white px-5 py-3 text-sm font-semibold text-slate-700 shadow-sm transition hover:bg-rose-50 focus:outline-none focus:ring-4 focus:ring-rose-100"
+            >
+              Vezi toate articolele
+            </Link>
+          </div>
+
+          <div className="mt-7 grid gap-5 md:grid-cols-3">
+            {blogPreviewPosts.map((post) => (
+              <Link
+                key={post.href}
+                href={post.href}
+                className="rounded-[1.5rem] border border-slate-100 bg-white p-5 shadow-lg shadow-slate-100/70 transition hover:-translate-y-1 hover:shadow-xl focus:outline-none focus:ring-4 focus:ring-rose-100"
+              >
+                <h3 className="text-lg font-bold text-slate-950">
+                  {post.title}
+                </h3>
+                <p className="mt-3 text-sm leading-6 text-slate-600">
+                  {post.text}
+                </p>
+                <p className="mt-5 text-sm font-bold text-rose-700">
+                  Citește articolul →
+                </p>
+              </Link>
+            ))}
           </div>
         </div>
       </section>
@@ -225,14 +329,14 @@ export default function Home() {
               href="/calculator-somn"
               className="inline-flex w-full items-center justify-center rounded-full bg-slate-950 px-7 py-4 text-base font-semibold text-white shadow-xl shadow-slate-900/15 transition duration-200 hover:-translate-y-0.5 hover:bg-slate-800 hover:shadow-2xl hover:shadow-slate-900/20 focus:outline-none focus:ring-4 focus:ring-slate-300 active:translate-y-0 sm:w-auto"
             >
-              Calculează somnul
+              Află următorul somn
             </Link>
 
             <Link
               href="/planner-mese"
               className="inline-flex w-full items-center justify-center rounded-full border border-rose-100 bg-white/80 px-7 py-4 text-base font-semibold text-slate-700 shadow-sm shadow-rose-100/60 transition duration-200 hover:-translate-y-0.5 hover:border-rose-200 hover:bg-white hover:shadow-md hover:shadow-rose-100/80 focus:outline-none focus:ring-4 focus:ring-rose-100 active:translate-y-0 sm:w-auto"
             >
-              Planifică mesele
+              Vezi idei de mese
             </Link>
           </div>
         </div>
@@ -242,8 +346,8 @@ export default function Home() {
 
       <MobileStickyCta
         links={[
-          { href: "/calculator-somn", label: "Calculează somnul" },
-          { href: "/planner-mese", label: "Planifică mesele" },
+          { href: "/calculator-somn", label: "Află următorul somn" },
+          { href: "/planner-mese", label: "Vezi idei de mese" },
         ]}
       />
     </main>
