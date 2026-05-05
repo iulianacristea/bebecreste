@@ -24,6 +24,13 @@ export const metadata: Metadata = {
   authors: [{ name: "BebeCrește.ro" }],
   creator: "BebeCrește.ro",
   publisher: "BebeCrește.ro",
+  icons: {
+    icon: [
+      { url: "/favicon.ico", sizes: "256x256" },
+      { url: "/favicon.png", type: "image/png", sizes: "256x256" },
+    ],
+    apple: [{ url: "/apple-icon.png", type: "image/png", sizes: "180x180" }],
+  },
   alternates: {
     canonical: siteUrl,
   },

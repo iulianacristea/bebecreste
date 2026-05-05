@@ -145,8 +145,8 @@ export default function Home() {
                   <span
                     className={`inline-flex rounded-full px-3 py-1 text-xs font-bold uppercase ring-1 ${card.accent}`}
                   >
+                    SOMN,
                     MESE
-                    SOMN
                   </span>
 
                   <h3 className="mt-4 text-xl font-bold text-slate-950 transition duration-200 group-hover:text-rose-700">
