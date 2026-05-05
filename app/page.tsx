@@ -1,9 +1,11 @@
 import Link from "next/link";
 import type { Metadata } from "next";
+import { EmailCapture } from "@/src/components/EmailCapture";
 import { Features } from "@/src/components/Features";
 import { Footer } from "@/src/components/Footer";
 import { Hero } from "@/src/components/Hero";
 import { HowItWorks } from "@/src/components/HowItWorks";
+import { MobileStickyCta } from "@/src/components/MobileStickyCta";
 import { Navbar } from "@/src/components/Navbar";
 
 export const metadata: Metadata = {
@@ -23,22 +25,22 @@ export const metadata: Metadata = {
 
 const capabilityCards = [
   {
-    title: "Somn mai ușor",
+    title: "Somn mai previzibil",
     description:
-      "Primești repere orientative pentru ferestrele de somn și ora de culcare.",
+      "Sleep Calculator îți oferă un reper pentru următorul somn și ora de culcare.",
     href: "/calculator-somn",
     accent: "bg-sky-50 text-sky-700 ring-sky-100",
   },
   {
-    title: "Mese mai simple",
+    title: "Mese mai ușor de ales",
     description:
-      "Generezi idei de mese potrivite vârstei și preferințelor copilului.",
+      "Meal Planner te ajută să găsești combinații simple, adaptate vârstei.",
     href: "/planner-mese",
     accent: "bg-rose-50 text-rose-700 ring-rose-100",
   },
   {
-    title: "Informații utile",
-    description: "Citești ghiduri scurte și practice pentru părinți.",
+    title: "Încredere în pașii mici",
+    description: "Citești ghiduri scurte, orientative și blânde pentru părinți.",
     href: "/blog",
     accent: "bg-emerald-50 text-emerald-700 ring-emerald-100",
   },
@@ -88,7 +90,7 @@ export default function Home() {
   };
 
   return (
-    <main className="min-h-screen overflow-hidden bg-[#fff7f1] text-slate-900">
+    <main className="min-h-screen overflow-hidden bg-[#fff7f1] pb-20 text-slate-900 md:pb-0">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
@@ -109,10 +111,10 @@ export default function Home() {
         <div className="mx-auto max-w-6xl">
           <div className="mx-auto max-w-3xl text-center">
             <p className="text-sm font-semibold uppercase text-emerald-700">
-              Ce poți face cu BebeCrește
+              Ce primești cu BebeCrește
             </p>
             <h2 className="mt-3 text-3xl font-bold tracking-tight text-slate-950">
-              Repere clare pentru zile mai liniștite.
+              Instrumente simple pentru întrebările care apar în fiecare zi.
             </h2>
           </div>
 
@@ -139,34 +141,42 @@ export default function Home() {
           </div>
         </div>
       </section>
+      <EmailCapture className="bg-white px-5 py-10 sm:px-8 lg:px-10" />
       <section className="bg-white px-5 py-10 sm:px-8 lg:px-10">
         <div className="mx-auto max-w-6xl rounded-[2rem] border border-rose-100 bg-gradient-to-br from-rose-50 via-white to-sky-50 p-6 text-center shadow-xl shadow-rose-100/45 sm:p-8">
           <p className="text-sm font-semibold uppercase text-rose-700">
-            Gata de încercat?
+            Începe de unde ai nevoie
           </p>
           <h2 className="mx-auto mt-3 max-w-2xl text-3xl font-bold tracking-tight text-slate-950">
-            Începe cu un pas simplu
+            Alege un reper rapid pentru ziua de azi
           </h2>
           <p className="mx-auto mt-3 max-w-2xl leading-7 text-slate-600">
-            Alege ce ai nevoie azi: somn mai clar sau idei de mese.
+            Folosește Sleep Calculator pentru somn sau Meal Planner pentru idei
+            de mese. Recomandările sunt orientative și ușor de adaptat.
           </p>
           <div className="mt-6 flex flex-col justify-center gap-3 sm:flex-row">
             <Link
               href="/calculator-somn"
               className="inline-flex w-full items-center justify-center rounded-full bg-slate-950 px-7 py-4 text-base font-semibold text-white shadow-xl shadow-slate-900/15 transition duration-200 hover:-translate-y-0.5 hover:bg-slate-800 hover:shadow-2xl hover:shadow-slate-900/20 focus:outline-none focus:ring-4 focus:ring-slate-300 active:translate-y-0 sm:w-auto"
             >
-              Calculator somn
+              Calculează somnul
             </Link>
             <Link
               href="/planner-mese"
               className="inline-flex w-full items-center justify-center rounded-full border border-rose-100 bg-white/80 px-7 py-4 text-base font-semibold text-slate-700 shadow-sm shadow-rose-100/60 transition duration-200 hover:-translate-y-0.5 hover:border-rose-200 hover:bg-white hover:shadow-md hover:shadow-rose-100/80 focus:outline-none focus:ring-4 focus:ring-rose-100 active:translate-y-0 sm:w-auto"
             >
-              Planner mese
+              Planifică mesele
             </Link>
           </div>
         </div>
       </section>
       <Footer />
+      <MobileStickyCta
+        links={[
+          { href: "/calculator-somn", label: "Calculează somnul" },
+          { href: "/planner-mese", label: "Planifică mesele" },
+        ]}
+      />
     </main>
   );
 }

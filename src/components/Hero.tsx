@@ -8,20 +8,21 @@ export function Hero() {
         <div className="grid items-start gap-8 py-8 md:py-10 lg:grid-cols-[1fr_0.92fr] lg:gap-10 lg:py-12">
           <div className="max-w-[46rem]">
             <p className="mb-6 inline-flex rounded-full border border-rose-100 bg-white/75 px-4 py-2 text-sm font-semibold text-rose-700 shadow-sm shadow-rose-100/70 backdrop-blur">
-              Somn și mese pentru primii ani
+              Sleep Calculator și Meal Planner pentru primii ani
             </p>
 
             <h1 className="text-4xl font-bold leading-[1.08] tracking-tight text-slate-950 sm:text-5xl lg:text-6xl">
-              Repere simple pentru somn, mese și rutina copilului.
+              Mai multă claritate pentru somn, mese și zilele cu ritm schimbător.
             </h1>
 
             <p className="mt-4 max-w-[43rem] text-lg leading-8 text-slate-600 sm:text-xl sm:leading-9">
-              BebeCrește te ajută cu recomandări orientative pentru somnul și
-              mesele copilului tău, într-un mod blând, clar și ușor de folosit.
+              BebeCrește îți oferă repere orientative prin Sleep Calculator și
+              Meal Planner, ca să iei decizii mai ușor fără presiunea unei
+              rutine perfecte.
             </p>
 
             <div className="mt-5 flex flex-wrap gap-2">
-              {["Program simplu", "Fără stres", "Recomandări blânde"].map(
+              {["Repere rapide", "Mai puțină presiune", "Decizii mai clare"].map(
                 (benefit) => (
                   <span
                     key={benefit}
@@ -39,7 +40,7 @@ export function Hero() {
                 href="/calculator-somn"
                 className="inline-flex items-center justify-center rounded-full bg-slate-950 px-7 py-4 text-base font-semibold text-white shadow-xl shadow-slate-900/15 transition duration-200 hover:-translate-y-0.5 hover:bg-slate-800 hover:shadow-2xl hover:shadow-slate-900/20 focus:outline-none focus:ring-4 focus:ring-slate-300 active:translate-y-0"
               >
-                Încearcă calculatorul de somn
+                Calculează somnul
               </Link>
               <Link
                 href="/planner-mese"
@@ -50,7 +51,7 @@ export function Hero() {
             </div>
 
             <p className="mt-5 text-sm font-semibold text-slate-500">
-              Orientativ • Gratuit • Gândit pentru părinți
+              Orientativ • Gratuit • Creat pentru părinți care vor claritate
             </p>
           </div>
 
@@ -72,7 +73,7 @@ export function Hero() {
                 <div className="flex items-start justify-between gap-4">
                   <div>
                     <p className="text-xs font-bold uppercase text-rose-700">
-                      Calculator somn bebe
+                      Sleep Calculator
                     </p>
                     <h2 className="mt-2 text-2xl font-bold leading-tight tracking-tight text-slate-950">
                       Următoarea fereastră de somn
@@ -122,8 +123,8 @@ export function Hero() {
                     <div className="h-2 w-2/3 rounded-full bg-sky-300" />
                   </div>
                   <p className="mt-3 text-sm leading-6 text-slate-600">
-                    O fereastră estimată pentru următorul somn, pe care o poți
-                    ajusta după starea copilului.
+                    Un reper estimat pentru următorul somn, pe care îl poți
+                    ajusta după semnele copilului și ziua voastră reală.
                   </p>
                 </div>
 

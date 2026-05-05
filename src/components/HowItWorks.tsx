@@ -2,22 +2,22 @@ const steps = [
   {
     number: "01",
     icon: "V",
-    title: "Spui vârsta copilului",
-    description: "Alegem recomandarea în funcție de etapa de dezvoltare.",
+    title: "Introduci câteva detalii",
+    description: "Vârsta, trezirea sau preferințele ajută la un reper mai util.",
   },
   {
     number: "02",
     icon: "T",
-    title: "Alegi ora trezirii",
+    title: "Alegi instrumentul potrivit",
     description:
-      "Calculatorul estimează următoarea fereastră potrivită de somn.",
+      "Sleep Calculator te ajută cu somnul, iar Meal Planner cu ideile de mese.",
   },
   {
     number: "03",
     icon: "R",
-    title: "Primești un reper clar",
+    title: "Primești un punct de pornire",
     description:
-      "Vezi intervalul recomandat și o explicație simplă pentru ritmul zilei.",
+      "Folosești recomandarea orientativă și o adaptezi la copilul tău.",
   },
 ];
 
@@ -29,11 +29,11 @@ export function HowItWorks() {
             Cum funcționează
         </p>
         <h2 className="mt-4 text-2xl font-bold tracking-tight text-slate-950 sm:text-3xl">
-          Primești o recomandare în doar 3 pași
+          Găsești un reper util în doar 3 pași
         </h2>
         <p className="mt-3 text-base leading-7 text-slate-600">
-          Introduci câteva detalii simple, iar BebeCrește îți oferă un reper
-          blând pentru ziua copilului.
+          Fără reguli rigide sau promisiuni perfecte. Primești o direcție
+          clară, apoi o ajustezi după ritmul familiei tale.
         </p>
       </div>
 

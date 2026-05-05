@@ -2,17 +2,17 @@ import Link from "next/link";
 
 const features = [
   {
-    title: "Calculator somn",
+    title: "Sleep Calculator",
     description:
-      "Ferestre de veghe, culcări orientative și ritmuri zilnice potrivite vârstei.",
+      "Află rapid o fereastră orientativă de somn și ajusteaz-o după semnele copilului.",
     href: "/calculator-somn",
     accent: "bg-sky-100 text-sky-700 ring-sky-200",
     icon: "S",
   },
   {
-    title: "Planner mese",
+    title: "Meal Planner",
     description:
-      "Idei de mese potrivite vârstei, preferințelor și alimentelor disponibile.",
+      "Găsești idei de mese simple, potrivite vârstei, preferințelor și zilelor reale.",
     href: "/planner-mese",
     accent: "bg-rose-100 text-rose-700 ring-rose-200",
     icon: "M",
@@ -20,7 +20,7 @@ const features = [
   {
     title: "Blog parenting",
     description:
-      "Ghiduri scurte despre somn, diversificare și rutine blânde pentru părinți.",
+      "Ghiduri scurte, calde și orientative despre somn, diversificare și rutine.",
     href: "/blog",
     accent: "bg-amber-100 text-amber-700 ring-amber-200",
     icon: "B",
@@ -35,14 +35,14 @@ export function Features() {
     >
       <div className="min-h-[11.75rem]">
         <p className="text-sm font-semibold uppercase text-emerald-700">
-          Tot ce urmărești zilnic
+          Instrumente pentru zile mai clare
         </p>
         <h2 className="mt-4 text-2xl font-bold tracking-tight text-slate-950 sm:text-3xl">
-          Un tablou simplu pentru ritmul copilului.
+          Alegi reperele potrivite pentru ce ai nevoie azi.
         </h2>
         <p className="mt-3 text-base leading-7 text-slate-600">
-          Vezi rapid reperele importante ale zilei, într-un format clar și ușor
-          de urmărit.
+          Somnul, mesele și rutina se schimbă des în primii ani. BebeCrește te
+          ajută să pornești de la informații clare, nu de la ghicit.
         </p>
       </div>
 

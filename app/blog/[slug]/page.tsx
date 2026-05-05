@@ -3,7 +3,9 @@ import Image from "next/image";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { Fragment } from "react";
+import { EmailCapture } from "@/src/components/EmailCapture";
 import { Footer } from "@/src/components/Footer";
+import { MobileStickyCta } from "@/src/components/MobileStickyCta";
 import { Navbar } from "@/src/components/Navbar";
 import type { BlogContentBlock, BlogPost } from "@/src/lib/blogPosts";
 import {
@@ -309,6 +311,14 @@ function Breadcrumbs({ title }: { title: string }) {
   );
 }
 
+function getMobileCtaLabel(href: string) {
+  if (href === "/planner-mese") {
+    return "Planner mese";
+  }
+
+  return "Calculator somn";
+}
+
 function renderContentBlock(block: BlogContentBlock) {
   if (block.type === "heading") {
     return (
@@ -427,7 +437,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
   const breadcrumbJsonLd = getBreadcrumbJsonLd(post);
 
   return (
-    <main className="min-h-screen overflow-hidden bg-[#fff7f1] text-slate-900">
+    <main className="min-h-screen overflow-hidden bg-[#fff7f1] pb-20 text-slate-900 md:pb-0">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
@@ -513,6 +523,8 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
 
           <ArticleCta cta={post.cta} placement="end" />
 
+          <EmailCapture className="mt-8" />
+
           {relatedPosts.length > 0 ? (
             <section className="mt-12">
               <div className="flex items-end justify-between gap-4">
@@ -568,6 +580,14 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
       </article>
 
       <Footer />
+      <MobileStickyCta
+        links={[
+          {
+            href: post.cta.href,
+            label: getMobileCtaLabel(post.cta.href),
+          },
+        ]}
+      />
     </main>
   );
 }
