@@ -103,6 +103,18 @@ export const blogPosts: BlogPost[] = [
       {
         type: "paragraph",
         text: "Înainte de idei concrete, ajută să ai câteva repere simple. Scopul nu este să convingi copilul să mănânce mult la fiecare masă, ci să îi oferi ocazii repetate, calme și previzibile de a explora alimente. Uneori succesul înseamnă doar că a atins un aliment nou, l-a mirosit sau l-a ținut în farfurie fără protest.",
+        segments: [
+          {
+            text: "Înainte de idei concrete, ajută să ai câteva repere simple. Scopul nu este să convingi copilul să mănânce mult la fiecare masă, ci să îi oferi ocazii repetate, calme și previzibile de a explora ",
+          },
+          {
+            text: "alimente potrivite în diversificare",
+            href: "/blog/alimente-recomandate-si-de-evitat-in-diversificare",
+          },
+          {
+            text: ". Uneori succesul înseamnă doar că a atins un aliment nou, l-a mirosit sau l-a ținut în farfurie fără protest.",
+          },
+        ],
       },
       {
         type: "list",
@@ -121,6 +133,18 @@ export const blogPosts: BlogPost[] = [
       {
         type: "paragraph",
         text: "Micul dejun merge mai bine când este simplu și familiar. Pentru mese copil 1 an, adaptează textura și dimensiunea bucăților la abilitățile copilului. Pentru copiii de 2-3 ani, poți păstra aceleași idei, dar cu mai multă autonomie la masă.",
+        segments: [
+          {
+            text: "Micul dejun merge mai bine când este simplu și familiar. Pentru ",
+          },
+          {
+            text: "mese copil 1 an",
+            href: "/blog/cat-trebuie-sa-manance-copilul-in-varsta-de-un-an",
+          },
+          {
+            text: ", adaptează textura și dimensiunea bucăților la abilitățile copilului. Pentru copiii de 2-3 ani, poți păstra aceleași idei, dar cu mai multă autonomie la masă.",
+          },
+        ],
       },
       {
         type: "paragraph",
@@ -442,6 +466,18 @@ export const blogPosts: BlogPost[] = [
       {
         type: "paragraph",
         text: "Cele mai multe greșeli vin din grijă, nu din nepăsare. Când părintele se teme că cel mic nu mănâncă destul, e ușor să insiste, să compare sau să ofere alternative la fiecare refuz. Pe termen lung, mesele devin mai liniștite când există ritm, răbdare și limite blânde.",
+        segments: [
+          {
+            text: "Cele mai multe greșeli vin din grijă, nu din nepăsare. Când părintele se teme că cel mic nu mănâncă destul, e ușor să insiste, să compare sau să ofere alternative la fiecare refuz. Dacă refuzurile apar des, poate ajuta și ghidul despre ",
+          },
+          {
+            text: "idei de mese pentru copil mofturos",
+            href: "/blog/idei-de-mese-pentru-copil-mofturos",
+          },
+          {
+            text: ". Pe termen lung, mesele devin mai liniștite când există ritm, răbdare și limite blânde.",
+          },
+        ],
       },
       {
         type: "list",
@@ -559,6 +595,18 @@ export const blogPosts: BlogPost[] = [
       {
         type: "paragraph",
         text: "Ferestrele de veghe sunt intervalele dintre trezire și următorul somn. La 6 luni, ele te ajută mai mult decât o oră fixă. Dacă bebe s-a trezit la 7:00, primul somn poate veni după aproximativ 2 ore. Dacă s-a trezit la 8:00, tot programul se mută natural mai târziu. Această abordare reduce presiunea și îți permite să răspunzi mai bine la ziua reală a copilului.",
+        segments: [
+          {
+            text: "Ferestrele de veghe sunt intervalele dintre trezire și următorul somn. La 6 luni, ele te ajută mai mult decât o oră fixă, iar ",
+          },
+          {
+            text: "calculatorul de somn",
+            href: "/calculator-somn",
+          },
+          {
+            text: " poate oferi un reper rapid. Dacă bebe s-a trezit la 7:00, primul somn poate veni după aproximativ 2 ore. Dacă s-a trezit la 8:00, tot programul se mută natural mai târziu. Această abordare reduce presiunea și îți permite să răspunzi mai bine la ziua reală a copilului.",
+          },
+        ],
       },
       {
         type: "heading",
@@ -628,6 +676,18 @@ export const blogPosts: BlogPost[] = [
       {
         type: "paragraph",
         text: "Cea mai mare capcană este să urmărești doar ceasul și să ignori copilul. Ora contează, dar semnele de oboseală contează la fel de mult. O altă greșeală este să renunți prea repede la al treilea somn, deși bebe încă nu poate duce confortabil o fereastră lungă până la seară. Dacă apar seri foarte grele, programul poate avea nevoie de mai multă flexibilitate, nu de mai multă presiune.",
+        segments: [
+          {
+            text: "Cea mai mare capcană este să urmărești doar ceasul și să ignori copilul. Ora contează, dar ",
+          },
+          {
+            text: "semnele de oboseală",
+            href: "/blog/cum-iti-dai-seama-ca-bebe-este-obosit",
+          },
+          {
+            text: " contează la fel de mult. O altă greșeală este să renunți prea repede la al treilea somn, deși bebe încă nu poate duce confortabil o fereastră lungă până la seară. Dacă apar seri foarte grele, programul poate avea nevoie de mai multă flexibilitate, nu de mai multă presiune.",
+          },
+        ],
       },
       {
         type: "heading",
@@ -648,6 +708,18 @@ export const blogPosts: BlogPost[] = [
       {
         type: "paragraph",
         text: "Da, trezirile nocturne pot apărea încă la această vârstă. Pot avea legătură cu hrănirea, confortul, dezvoltarea sau felul în care a decurs ziua. Dacă ceva te îngrijorează, cel mai bine este să discuți cu pediatrul.",
+        segments: [
+          {
+            text: "Da, trezirile nocturne pot apărea încă la această vârstă. Pot avea legătură cu hrănirea, confortul, dezvoltarea sau felul în care a decurs ziua. Dacă nopțile devin foarte fragmentate, poți citi și despre ",
+          },
+          {
+            text: "de ce nu doarme bebe noaptea",
+            href: "/blog/de-ce-nu-doarme-bebe-noaptea",
+          },
+          {
+            text: ". Dacă ceva te îngrijorează, cel mai bine este să discuți cu pediatrul.",
+          },
+        ],
       },
       {
         type: "heading",
@@ -684,7 +756,7 @@ export const blogPosts: BlogPost[] = [
       "Program somn copil 1 an: află câte somnuri sunt potrivite, cum faci tranziția la un somn și cum ajustezi rutina zilnică.",
     tags: ["somn", "rutine", "dezvoltare"],
     date: "2026-04-24",
-    coverImage: "/blog/cover-rutine.svg",
+    coverImage: "/blog/toddler_Sleeping.jpeg",
     coverAlt:
       "Calendar blând cu pași de rutină pentru somnul copilului de 1 an",
     readingTime: "5 min citire",
@@ -702,6 +774,16 @@ export const blogPosts: BlogPost[] = [
       {
         type: "paragraph",
         text: "În jurul vârstei de 1 an, programul de somn poate deveni mai greu de citit. Copilul pare mai activ, explorează mai mult și uneori refuză un somn care până ieri mergea foarte bine. Un program somn copil 1 an ar trebui să țină cont de două lucruri: nevoia reală de odihnă și ritmul copilului tău, nu doar ora de pe ceas.",
+        segments: [
+          {
+            text: "În jurul vârstei de 1 an, programul de somn poate deveni mai greu de citit. Copilul pare mai activ, explorează mai mult și uneori refuză un somn care până ieri mergea foarte bine. Un program somn copil 1 an ar trebui să țină cont de două lucruri: nevoia reală de odihnă și ritmul copilului tău, nu doar ora de pe ceas. Pentru zilele neclare, ",
+          },
+          {
+            text: "calculatorul de somn",
+            href: "/calculator-somn",
+          },
+          { text: " poate fi un punct de pornire blând." },
+        ],
       },
       {
         type: "heading",
@@ -790,6 +872,16 @@ export const blogPosts: BlogPost[] = [
       {
         type: "paragraph",
         text: "Tranziția la un singur somn merge mai ușor dacă este făcută treptat. Mută somnul principal mai aproape de prânz, cu pași mici de 10-15 minute la câteva zile. În perioada de ajustare, culcarea de seară poate fi mai devreme. Este normal ca unele zile să fie cu un somn, iar altele cu două, mai ales dacă noaptea a fost fragmentată sau ziua a fost solicitantă.",
+        segments: [
+          {
+            text: "Tranziția la un singur somn merge mai ușor dacă este făcută treptat. Mută somnul principal mai aproape de prânz, cu pași mici de 10-15 minute la câteva zile. În perioada de ajustare, culcarea de seară poate fi mai devreme. Este normal ca unele zile să fie cu un somn, iar altele cu două, mai ales dacă noaptea a fost fragmentată sau ziua a fost solicitantă. Dacă refuzul apare mai târziu, ghidul despre ",
+          },
+          {
+            text: "somnul de zi la 2 ani",
+            href: "/blog/copilul-de-2-ani-nu-mai-doarme-ziua",
+          },
+          { text: " poate fi util." },
+        ],
       },
       {
         type: "heading",
@@ -820,6 +912,18 @@ export const blogPosts: BlogPost[] = [
       {
         type: "paragraph",
         text: "Da. Mulți copii de 1 an încă au nevoie de două somnuri, mai ales la începutul perioadei de 12 luni. Dacă programul funcționează și copilul este odihnit, nu este nevoie să îl schimbi doar pentru că a împlinit 1 an.",
+        segments: [
+          {
+            text: "Da. Mulți copii de 1 an încă au nevoie de două somnuri, mai ales la începutul perioadei de 12 luni. Dacă vii din etapa anterioară, poți compara cu reperele pentru ",
+          },
+          {
+            text: "programul de somn la 6 luni",
+            href: "/blog/program-de-somn-pentru-bebe-de-6-luni",
+          },
+          {
+            text: ". Dacă programul funcționează și copilul este odihnit, nu este nevoie să îl schimbi doar pentru că a împlinit 1 an.",
+          },
+        ],
       },
       {
         type: "heading",
@@ -882,6 +986,18 @@ export const blogPosts: BlogPost[] = [
       {
         type: "paragraph",
         text: "Nu există o singură explicație valabilă pentru toți copiii. Un bebeluș se poate trezi pentru hrană, confort, apropiere, scutec, din cauza unei zile prea agitate sau pentru că a ajuns prea obosit la culcare. Uneori, problema nu este noaptea în sine, ci felul în care a fost construită ziua: somnuri prea scurte, ferestre de veghe prea lungi sau o rutină de seară care începe prea târziu.",
+        segments: [
+          {
+            text: "Nu există o singură explicație valabilă pentru toți copiii. Un bebeluș se poate trezi pentru hrană, confort, apropiere, scutec, din cauza unei zile prea agitate sau pentru că a ajuns prea obosit la culcare. Uneori, problema nu este noaptea în sine, ci felul în care a fost construită ziua: somnuri prea scurte, ",
+          },
+          {
+            text: "ferestre de veghe",
+            href: "/calculator-somn",
+          },
+          {
+            text: " prea lungi sau o rutină de seară care începe prea târziu.",
+          },
+        ],
       },
       {
         type: "list",
@@ -900,6 +1016,18 @@ export const blogPosts: BlogPost[] = [
       {
         type: "paragraph",
         text: "Pare paradoxal, dar un copil foarte obosit nu adoarme întotdeauna mai ușor. Uneori devine agitat, plânge mai repede, se arcuiește sau adoarme pentru scurt timp și apoi se trezește din nou. Dacă bebe nu doarme noaptea și seara este mereu dificilă, merită să te uiți la somnurile de zi. Poate ultimul somn lipsește prea devreme, poate fereastra până la culcare este prea lungă sau poate rutina începe când oboseala este deja intensă.",
+        segments: [
+          {
+            text: "Pare paradoxal, dar un copil foarte obosit nu adoarme întotdeauna mai ușor. Uneori devine agitat, plânge mai repede, se arcuiește sau adoarme pentru scurt timp și apoi se trezește din nou. Dacă bebe nu doarme noaptea și seara este mereu dificilă, merită să te uiți la ",
+          },
+          {
+            text: "semnele de oboseală",
+            href: "/blog/cum-iti-dai-seama-ca-bebe-este-obosit",
+          },
+          {
+            text: " și la somnurile de zi. Poate ultimul somn lipsește prea devreme, poate fereastra până la culcare este prea lungă sau poate rutina începe când oboseala este deja intensă.",
+          },
+        ],
       },
       {
         type: "heading",
@@ -925,6 +1053,18 @@ export const blogPosts: BlogPost[] = [
       {
         type: "paragraph",
         text: "Nu ai nevoie de o rutină perfectă sau foarte lungă. Pentru mulți copii, funcționează mai bine câțiva pași repetați în aceeași ordine: lumină mai blândă, schimbat, hrănire dacă este cazul, cântec scurt, îmbrățișare și somn. Repetarea îi transmite copilului că ziua se încheie. În timp, aceste semnale pot face trecerea spre somn mai ușoară.",
+        segments: [
+          {
+            text: "Nu ai nevoie de o rutină perfectă sau foarte lungă. Pentru mulți copii, funcționează mai bine câțiva pași repetați în aceeași ordine: lumină mai blândă, schimbat, hrănire dacă este cazul, cântec scurt, îmbrățișare și somn. Repetarea îi transmite copilului că ziua se încheie. Pentru seri dificile, poți încerca și câteva ",
+          },
+          {
+            text: "trucuri blânde pentru adormire",
+            href: "/blog/cum-adoarme-bebe-mai-repede",
+          },
+          {
+            text: ". În timp, aceste semnale pot face trecerea spre somn mai ușoară.",
+          },
+        ],
       },
       {
         type: "heading",
@@ -1015,7 +1155,7 @@ export const blogPosts: BlogPost[] = [
       "Semne bebe obosit: află cum recunoști oboseala timpurie, când bebe este prea obosit și ce poți face pentru o rutină de somn mai calmă.",
     tags: ["somn", "parenting", "dezvoltare"],
     date: "2026-04-17",
-    coverImage: "/blog/cover-rutine.svg",
+    coverImage: "/blog/bebe_obosit.jpeg",
     coverAlt:
       "Repere vizuale pentru semnele de oboseală și rutina bebelușului",
     readingTime: "4 min citire",
@@ -1077,6 +1217,18 @@ export const blogPosts: BlogPost[] = [
       {
         type: "paragraph",
         text: "Ferestrele de veghe sunt intervalele dintre somnuri. Ele te ajută să pui semnele în context. De exemplu, un căscat la 20 de minute după trezire poate însemna plictiseală sau nevoie de schimbare. Același căscat după o fereastră de veghe potrivită pentru vârsta copilului poate fi un semn clar că somnul se apropie.",
+        segments: [
+          {
+            text: "Ferestrele de veghe sunt intervalele dintre somnuri. Ele te ajută să pui semnele în context, iar ",
+          },
+          {
+            text: "calculatorul de somn",
+            href: "/calculator-somn",
+          },
+          {
+            text: " îți poate da un reper orientativ. De exemplu, un căscat la 20 de minute după trezire poate însemna plictiseală sau nevoie de schimbare. Același căscat după o fereastră de veghe potrivită pentru vârsta copilului poate fi un semn clar că somnul se apropie.",
+          },
+        ],
       },
       {
         type: "heading",
@@ -1085,6 +1237,16 @@ export const blogPosts: BlogPost[] = [
       {
         type: "paragraph",
         text: "Să spunem că bebe s-a trezit la 7:00 și, în jur de 8:45, începe să privească în gol, își freacă ochii și nu mai este interesat de joacă. Acestea sunt semne timpurii și poate fi momentul potrivit pentru rutină. În altă zi, dacă a trecut prea mult timp și bebe plânge, se arcuiește și nu acceptă nimic, este posibil să fie deja prea obosit. Atunci ajută o rutină mai scurtă, mai puțină stimulare și multă răbdare.",
+        segments: [
+          {
+            text: "Să spunem că bebe s-a trezit la 7:00 și, în jur de 8:45, începe să privească în gol, își freacă ochii și nu mai este interesat de joacă. Acestea sunt semne timpurii și poate fi momentul potrivit pentru rutină. În altă zi, dacă a trecut prea mult timp și bebe plânge, se arcuiește și nu acceptă nimic, este posibil să fie deja prea obosit. Atunci ajută o rutină mai scurtă, mai puțină stimulare și ideile din ghidul despre ",
+          },
+          {
+            text: "cum adoarme bebe mai repede",
+            href: "/blog/cum-adoarme-bebe-mai-repede",
+          },
+          { text: "." },
+        ],
       },
       {
         type: "heading",
@@ -1147,6 +1309,18 @@ export const blogPosts: BlogPost[] = [
       {
         type: "paragraph",
         text: "Recunoașterea semnelor de oboseală vine cu timp și repetiție. Nu vei prinde mereu momentul perfect și este în regulă. Uită-te la combinația dintre ceas, comportament și felul în care a decurs ziua. Când observi semnele mai devreme, poți începe rutina cu mai mult calm, iar somnul are șanse mai bune să vină natural. Dacă oboseala pare extremă, somnul este foarte fragmentat sau ai orice îngrijorare legată de sănătate, discută cu pediatrul.",
+        segments: [
+          {
+            text: "Recunoașterea semnelor de oboseală vine cu timp și repetiție. Nu vei prinde mereu momentul perfect și este în regulă. Uită-te la combinația dintre ceas, comportament și felul în care a decurs ziua. Dacă somnul este foarte fragmentat, poate ajuta și articolul despre ",
+          },
+          {
+            text: "trezirile de noapte",
+            href: "/blog/de-ce-nu-doarme-bebe-noaptea",
+          },
+          {
+            text: ". Când observi semnele mai devreme, poți începe rutina cu mai mult calm, iar somnul are șanse mai bune să vină natural. Dacă oboseala pare extremă sau ai orice îngrijorare legată de sănătate, discută cu pediatrul.",
+          },
+        ],
       },
     ],
   },
@@ -1177,6 +1351,16 @@ export const blogPosts: BlogPost[] = [
       {
         type: "paragraph",
         text: "În jurul vârstei de 2 ani, mulți părinți trec printr-o perioadă confuză: copilul refuză somnul de zi, dar seara devine agitat, plânge mai ușor sau adoarme greu. Dacă te întrebi dacă este normal ca un copil 2 ani nu mai doarme ziua, răspunsul este: uneori da, dar depinde mult de copil și de cum arată restul zilei.",
+        segments: [
+          {
+            text: "În jurul vârstei de 2 ani, mulți părinți trec printr-o perioadă confuză: copilul refuză somnul de zi, dar seara devine agitat, plânge mai ușor sau adoarme greu. Dacă te întrebi dacă este normal ca un copil 2 ani nu mai doarme ziua, răspunsul este: uneori da, dar depinde mult de copil și de cum arată restul zilei. Pentru un reper de seară, poți folosi ",
+          },
+          {
+            text: "calculatorul de somn",
+            href: "/calculator-somn",
+          },
+          { text: "." },
+        ],
       },
       {
         type: "heading",
@@ -1185,6 +1369,18 @@ export const blogPosts: BlogPost[] = [
       {
         type: "paragraph",
         text: "Unii copii încep să refuze somnul de zi în jurul vârstei de 2 ani, însă mulți încă au nevoie de o perioadă de odihnă la prânz. Tranziția nu se întâmplă peste noapte. Pot exista zile în care copilul doarme, zile în care doar stă liniștit și zile în care pare că nu are deloc nevoie de pauză. Această alternanță poate fi normală.",
+        segments: [
+          {
+            text: "Unii copii încep să refuze somnul de zi în jurul vârstei de 2 ani, însă mulți încă au nevoie de o perioadă de odihnă la prânz. Tranziția nu se întâmplă peste noapte. Dacă etapa a început mai devreme, merită revăzute și reperele pentru ",
+          },
+          {
+            text: "programul de somn la 1 an",
+            href: "/blog/cate-somnuri-are-nevoie-un-copil-de-1-an",
+          },
+          {
+            text: ". Pot exista zile în care copilul doarme, zile în care doar stă liniștit și zile în care pare că nu are deloc nevoie de pauză. Această alternanță poate fi normală.",
+          },
+        ],
       },
       {
         type: "list",
@@ -1254,6 +1450,16 @@ export const blogPosts: BlogPost[] = [
       {
         type: "paragraph",
         text: "Zilele fără somn de prânz cer, de multe ori, o seară mai devreme. Nu aștepta neapărat ora obișnuită dacă observi că apar plâns, agitație sau multe negocieri. O culcare cu 30-60 de minute mai devreme poate face diferența între o seară tensionată și una mai liniștită.",
+        segments: [
+          {
+            text: "Zilele fără somn de prânz cer, de multe ori, o seară mai devreme. Nu aștepta neapărat ora obișnuită dacă observi că apar plâns, agitație sau multe negocieri. O culcare cu 30-60 de minute mai devreme poate face diferența între o seară tensionată și una mai liniștită. Dacă seara rămâne dificilă, citește și despre ",
+          },
+          {
+            text: "semnele de oboseală",
+            href: "/blog/cum-iti-dai-seama-ca-bebe-este-obosit",
+          },
+          { text: "." },
+        ],
       },
       {
         type: "heading",
@@ -1336,6 +1542,18 @@ export const blogPosts: BlogPost[] = [
       {
         type: "paragraph",
         text: "Un bebe adoarme mai greu dacă este prea puțin obosit, dar și dacă este prea obosit. De aceea, momentul contează mult. Dacă începi rutina prea devreme, copilul poate protesta pentru că încă are energie. Dacă o începi prea târziu, poate deveni agitat și greu de liniștit. Ferestrele de veghe te ajută să găsești un interval potrivit, dar semnele copilului rămân la fel de importante.",
+        segments: [
+          {
+            text: "Un bebe adoarme mai greu dacă este prea puțin obosit, dar și dacă este prea obosit. De aceea, momentul contează mult. Dacă începi rutina prea devreme, copilul poate protesta pentru că încă are energie. Dacă o începi prea târziu, poate deveni agitat și greu de liniștit. ",
+          },
+          {
+            text: "Ferestrele de veghe",
+            href: "/calculator-somn",
+          },
+          {
+            text: " te ajută să găsești un interval potrivit, dar semnele copilului rămân la fel de importante.",
+          },
+        ],
       },
       {
         type: "list",
@@ -1404,6 +1622,16 @@ export const blogPosts: BlogPost[] = [
       {
         type: "paragraph",
         text: "Când cauți cum adoarme bebe mai repede, este ușor să găsești liste lungi de metode. Cele mai utile sunt, de obicei, cele simple și consecvente. Alege una sau două și păstrează-le câteva seri, ca să vezi dacă ajută.",
+        segments: [
+          {
+            text: "Când cauți cum adoarme bebe mai repede, este ușor să găsești liste lungi de metode. Cele mai utile sunt, de obicei, cele simple și consecvente. Alege una sau două și păstrează-le câteva seri, ca să vezi dacă ajută. Dacă seara rămâne greu de citit, uită-te și la ",
+          },
+          {
+            text: "semnele de oboseală",
+            href: "/blog/cum-iti-dai-seama-ca-bebe-este-obosit",
+          },
+          { text: "." },
+        ],
       },
       {
         type: "list",
@@ -1450,6 +1678,16 @@ export const blogPosts: BlogPost[] = [
       {
         type: "paragraph",
         text: "Depinde de copil și de zi. Uneori durează 10-15 minute, alteori mai mult. Dacă adormirea este mereu foarte lungă, uită-te la ora ultimului somn, fereastra de veghe și rutina de seară.",
+        segments: [
+          {
+            text: "Depinde de copil și de zi. Uneori durează 10-15 minute, alteori mai mult. Dacă adormirea este mereu foarte lungă, uită-te la ora ultimului somn, fereastra de veghe și rutina de seară. Dacă problema apare mai ales după treziri dese, poate ajuta articolul despre ",
+          },
+          {
+            text: "nopțile agitate",
+            href: "/blog/de-ce-nu-doarme-bebe-noaptea",
+          },
+          { text: "." },
+        ],
       },
       {
         type: "heading",
@@ -1478,7 +1716,7 @@ export const blogPosts: BlogPost[] = [
       "Alimente recomandate diversificare bebeluși: legume, fructe, cereale, proteine și lista alimentelor de evitat în primul an.",
     tags: ["alimentatie", "diversificare", "bebelusi"],
     date: "2026-05-01",
-    coverImage: "/blog/cover-diversificare.svg",
+    coverImage: "/blog/food.jpeg",
     coverAlt:
       "Legume și alimente simple pentru diversificarea bebelușului",
     readingTime: "4 min citire",
@@ -1508,6 +1746,18 @@ export const blogPosts: BlogPost[] = [
       {
         type: "paragraph",
         text: "În diversificare, cel mai util este să pornești de la alimente simple, gătite blând și adaptate vârstei copilului. Textura contează la fel de mult ca alimentul: la început poate fi piure fin, apoi pasat grosier, bucăți moi sau preparate ușor de ținut în mână, în funcție de dezvoltarea copilului.",
+        segments: [
+          {
+            text: "În diversificare, cel mai util este să pornești de la alimente simple, gătite blând și adaptate vârstei copilului. Pentru combinații de zi cu zi, ",
+          },
+          {
+            text: "plannerul de mese",
+            href: "/planner-mese",
+          },
+          {
+            text: " poate fi un sprijin rapid. Textura contează la fel de mult ca alimentul: la început poate fi piure fin, apoi pasat grosier, bucăți moi sau preparate ușor de ținut în mână, în funcție de dezvoltarea copilului.",
+          },
+        ],
       },
       {
         type: "list",
@@ -1548,6 +1798,16 @@ export const blogPosts: BlogPost[] = [
       {
         type: "paragraph",
         text: "Unele alimente nu sunt potrivite pentru bebeluși, fie din cauza riscului de înec, fie din cauza conținutului mare de sare, zahăr, aditivi sau a riscurilor specifice primului an de viață.",
+        segments: [
+          {
+            text: "Unele alimente nu sunt potrivite pentru bebeluși, fie din cauza riscului de înec, fie din cauza conținutului mare de sare, zahăr, aditivi sau a riscurilor specifice primului an de viață. Pentru detalii, poți citi lista dedicată de ",
+          },
+          {
+            text: "alimente de evitat în diversificare",
+            href: "/blog/alimente-de-evitat-in-diversificare",
+          },
+          { text: "." },
+        ],
       },
       {
         type: "list",
@@ -1569,6 +1829,16 @@ export const blogPosts: BlogPost[] = [
       {
         type: "paragraph",
         text: "La 6 luni, mulți bebeluși încep cu o singură masă solidă, de obicei la prânz. De la 7 luni poate apărea micul dejun, iar de la 8 luni poate fi introdusă și cina, în funcție de copil și de recomandarea medicului. Ritmul nu trebuie grăbit.",
+        segments: [
+          {
+            text: "La 6 luni, mulți bebeluși încep cu o singură masă solidă, de obicei la prânz. De la 7 luni poate apărea micul dejun, iar de la 8 luni poate fi introdusă și cina, în funcție de copil și de recomandarea medicului. Ritmul nu trebuie grăbit, iar după primul an poți urmări și reperele despre ",
+          },
+          {
+            text: "cât mănâncă un copil de 1 an",
+            href: "/blog/cat-trebuie-sa-manance-copilul-in-varsta-de-un-an",
+          },
+          { text: "." },
+        ],
       },
       {
         type: "list",
@@ -1598,7 +1868,7 @@ export const blogPosts: BlogPost[] = [
       "Alimente de evitat în diversificare: ce nu ar trebui oferit bebelușilor în primul an și de ce. Ghid prietenos pentru părinți.",
     tags: ["alimentatie", "diversificare", "siguranta"],
     date: "2026-05-01",
-    coverImage: "/blog/cover-diversificare.svg",
+    coverImage: "/blog/alimenteInterzise.jpeg",
     coverAlt:
       "Alimente pentru diversificare aranjate simplu și sigur pentru bebeluș",
     readingTime: "4 min citire",
@@ -1616,6 +1886,18 @@ export const blogPosts: BlogPost[] = [
       {
         type: "paragraph",
         text: "Când începe diversificarea, întrebarea nu este doar ce poate mânca bebe, ci și ce ar fi bine să eviți. Unele alimente pot fi prea sărate, prea dulci, greu de gestionat pentru un copil mic sau pot avea risc de înec. Vestea bună este că nu ai nevoie de reguli complicate: câteva repere simple pot face mesele mai sigure și mai liniștite.",
+        segments: [
+          {
+            text: "Când începe diversificarea, întrebarea nu este doar ce poate mânca bebe, ci și ce ar fi bine să eviți. Dacă vrei o privire de ansamblu, începe cu ghidul despre ",
+          },
+          {
+            text: "alimente recomandate și de evitat",
+            href: "/blog/alimente-recomandate-si-de-evitat-in-diversificare",
+          },
+          {
+            text: ". Unele alimente pot fi prea sărate, prea dulci, greu de gestionat pentru un copil mic sau pot avea risc de înec. Vestea bună este că nu ai nevoie de reguli complicate: câteva repere simple pot face mesele mai sigure și mai liniștite.",
+          },
+        ],
       },
       {
         type: "paragraph",
@@ -1693,6 +1975,16 @@ export const blogPosts: BlogPost[] = [
       {
         type: "paragraph",
         text: "Produsele foarte procesate, cu liste lungi de ingrediente, nu sunt o alegere bună în diversificare. Pentru început, mesele simple sunt cele mai utile: legume gătite, fructe potrivite, cereale simple și proteine gătite blând.",
+        segments: [
+          {
+            text: "Produsele foarte procesate, cu liste lungi de ingrediente, nu sunt o alegere bună în diversificare. Pentru început, mesele simple sunt cele mai utile: legume gătite, fructe potrivite, cereale simple și proteine gătite blând. Când ai nevoie de combinații rapide, poți porni de la ",
+          },
+          {
+            text: "plannerul de mese",
+            href: "/planner-mese",
+          },
+          { text: "." },
+        ],
       },
       {
         type: "heading",
@@ -1726,6 +2018,18 @@ export const blogPosts: BlogPost[] = [
       {
         type: "paragraph",
         text: "Diversificarea poate fi mai simplă când știi ce să eviți. Păstrează mesele cât mai naturale, fără sare și zahăr adăugate, evită alimentele cu risc și adaptează textura la vârsta copilului. Când ceva nu este clar, cere sfatul pediatrului.",
+        segments: [
+          {
+            text: "Diversificarea poate fi mai simplă când știi ce să eviți. Păstrează mesele cât mai naturale, fără sare și zahăr adăugate, evită alimentele cu risc și adaptează textura la vârsta copilului. Dacă apar refuzuri la masă mai târziu, te poate ajuta și articolul cu ",
+          },
+          {
+            text: "idei pentru copil mofturos",
+            href: "/blog/idei-de-mese-pentru-copil-mofturos",
+          },
+          {
+            text: ". Când ceva nu este clar, cere sfatul pediatrului.",
+          },
+        ],
       },
     ],
   },

@@ -2,8 +2,10 @@ import Link from "next/link";
 import Image from "next/image";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
+import { Fragment } from "react";
 import { Footer } from "@/src/components/Footer";
 import { Navbar } from "@/src/components/Navbar";
+import type { BlogContentBlock, BlogPost } from "@/src/lib/blogPosts";
 import {
   getAllBlogPosts,
   getBlogPostBySlug,
@@ -19,6 +21,338 @@ const dateFormatter = new Intl.DateTimeFormat("ro-RO", {
   month: "long",
   year: "numeric",
 });
+
+type FaqItem = {
+  question: string;
+  answer: string;
+};
+
+type FaqPageJsonLd = {
+  "@context": "https://schema.org";
+  "@type": "FAQPage";
+  mainEntity: {
+    "@type": "Question";
+    name: string;
+    acceptedAnswer: {
+      "@type": "Answer";
+      text: string;
+    };
+  }[];
+};
+
+type BreadcrumbListJsonLd = {
+  "@context": "https://schema.org";
+  "@type": "BreadcrumbList";
+  itemListElement: {
+    "@type": "ListItem";
+    position: number;
+    name: string;
+    item?: string;
+  }[];
+};
+
+const faqSectionHeadings = [
+  "faq",
+  "întrebări frecvente",
+  "intrebari frecvente",
+];
+
+function isQuestionHeading(text: string) {
+  return text.trim().endsWith("?");
+}
+
+function isFaqSectionHeading(text: string) {
+  const normalizedText = text.trim().toLocaleLowerCase("ro-RO");
+
+  return faqSectionHeadings.some((heading) =>
+    normalizedText.includes(heading),
+  );
+}
+
+function getBlockPlainText(block: BlogContentBlock) {
+  if (block.type === "paragraph") {
+    return block.segments
+      ? block.segments.map((segment) => segment.text).join("")
+      : block.text;
+  }
+
+  if (block.type === "list") {
+    return block.items.join(" ");
+  }
+
+  return "";
+}
+
+function getFaqItems(content: BlogContentBlock[]) {
+  const collectQuestionAtIndex = (index: number): FaqItem | null => {
+    const block = content[index];
+
+    if (block.type !== "heading") {
+      return null;
+    }
+
+    if (!isQuestionHeading(block.text)) {
+      return null;
+    }
+
+    const answerParts: string[] = [];
+
+    for (
+      let nextBlockIndex = index + 1;
+      nextBlockIndex < content.length;
+      nextBlockIndex += 1
+    ) {
+      const nextBlock = content[nextBlockIndex];
+
+      if (nextBlock.type === "heading") {
+        break;
+      }
+
+      const nextBlockText = getBlockPlainText(nextBlock);
+
+      if (nextBlockText) {
+        answerParts.push(nextBlockText);
+      }
+    }
+
+    const answer = answerParts.join(" ");
+
+    if (!answer) {
+      return null;
+    }
+
+    return {
+      question: block.text,
+      answer,
+    };
+  };
+
+  const explicitFaqHeadingIndex = content.findIndex(
+    (block) => block.type === "heading" && isFaqSectionHeading(block.text),
+  );
+
+  if (explicitFaqHeadingIndex >= 0) {
+    return content
+      .slice(explicitFaqHeadingIndex + 1)
+      .map((_, slicedIndex) =>
+        collectQuestionAtIndex(explicitFaqHeadingIndex + 1 + slicedIndex),
+      )
+      .filter((item): item is FaqItem => Boolean(item));
+  }
+
+  const questionGroups: number[][] = [];
+  let currentQuestionGroup: number[] = [];
+
+  content.forEach((block, index) => {
+    if (block.type !== "heading") {
+      return;
+    }
+
+    if (isQuestionHeading(block.text)) {
+      currentQuestionGroup.push(index);
+      return;
+    }
+
+    if (currentQuestionGroup.length > 0) {
+      questionGroups.push(currentQuestionGroup);
+      currentQuestionGroup = [];
+    }
+  });
+
+  if (currentQuestionGroup.length > 0) {
+    questionGroups.push(currentQuestionGroup);
+  }
+
+  const faqLikeQuestionGroup = questionGroups
+    .filter((group) => group.length >= 3)
+    .at(-1);
+
+  if (!faqLikeQuestionGroup) {
+    return [];
+  }
+
+  return faqLikeQuestionGroup
+    .map((index) => collectQuestionAtIndex(index))
+    .filter((item): item is FaqItem => Boolean(item));
+}
+
+function getFaqJsonLd(faqItems: FaqItem[]): FaqPageJsonLd | null {
+  if (faqItems.length === 0) {
+    return null;
+  }
+
+  return {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: faqItems.map((item) => ({
+      "@type": "Question",
+      name: item.question,
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: item.answer,
+      },
+    })),
+  };
+}
+
+function getBreadcrumbJsonLd(post: BlogPost): BreadcrumbListJsonLd {
+  return {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: "Acasă",
+        item: "/",
+      },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: "Blog",
+        item: "/blog",
+      },
+      {
+        "@type": "ListItem",
+        position: 3,
+        name: post.title,
+        item: `/blog/${post.slug}`,
+      },
+    ],
+  };
+}
+
+function stringifyJsonLd(jsonLd: FaqPageJsonLd | BreadcrumbListJsonLd) {
+  return JSON.stringify(jsonLd).replace(/</g, "\\u003c");
+}
+
+function ArticleCta({
+  cta,
+  placement,
+}: {
+  cta: BlogPost["cta"];
+  placement: "inline" | "end";
+}) {
+  const isEndPlacement = placement === "end";
+
+  return (
+    <div
+      className={`rounded-[1.5rem] border border-rose-100 bg-white/90 p-6 shadow-xl shadow-rose-200/25 ${
+        isEndPlacement
+          ? "mt-8 sm:flex sm:items-center sm:justify-between sm:gap-6 sm:p-8"
+          : "my-9 sm:p-7"
+      }`}
+    >
+      <div>
+        <p className="text-sm font-bold uppercase text-rose-700">
+          Un ajutor blând, când îți prinde bine
+        </p>
+        <p className="mt-2 text-lg font-bold leading-8 text-slate-950">
+          {cta.text}
+        </p>
+      </div>
+      <Link
+        href={cta.href}
+        className={`mt-5 inline-flex shrink-0 rounded-full bg-slate-950 px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-slate-900/15 transition duration-200 hover:-translate-y-0.5 hover:bg-slate-800 hover:shadow-xl hover:shadow-slate-900/20 focus:outline-none focus:ring-4 focus:ring-slate-300 active:translate-y-0 ${
+          isEndPlacement ? "sm:mt-0" : ""
+        }`}
+      >
+        {cta.buttonText}
+      </Link>
+    </div>
+  );
+}
+
+function AuthorBox() {
+  return (
+    <div className="mt-8 rounded-[1.5rem] border border-sky-100 bg-sky-50/70 p-5 text-slate-700 ring-1 ring-white/80 sm:p-6">
+      <p className="text-sm font-bold uppercase text-sky-700">BebeCrește</p>
+      <p className="mt-2 text-base leading-7">
+        Conținut creat pentru părinți, cu recomandări orientative și un ton
+        blând.
+      </p>
+      <p className="mt-3 text-sm font-semibold leading-6 text-slate-600">
+        Informațiile nu înlocuiesc sfatul medicului.
+      </p>
+    </div>
+  );
+}
+
+function Breadcrumbs({ title }: { title: string }) {
+  return (
+    <nav
+      aria-label="Breadcrumb"
+      className="mt-6 flex flex-wrap items-center gap-2 text-sm font-semibold text-slate-500"
+    >
+      <Link
+        href="/"
+        className="transition duration-200 hover:text-rose-700 focus:outline-none focus:ring-4 focus:ring-rose-100"
+      >
+        Acasă
+      </Link>
+      <span className="text-slate-300" aria-hidden="true">
+        &gt;
+      </span>
+      <Link
+        href="/blog"
+        className="transition duration-200 hover:text-rose-700 focus:outline-none focus:ring-4 focus:ring-rose-100"
+      >
+        Blog
+      </Link>
+      <span className="text-slate-300" aria-hidden="true">
+        &gt;
+      </span>
+      <span className="max-w-full truncate text-slate-700 sm:max-w-md">
+        {title}
+      </span>
+    </nav>
+  );
+}
+
+function renderContentBlock(block: BlogContentBlock) {
+  if (block.type === "heading") {
+    return (
+      <h2 className="pt-4 text-2xl font-bold leading-snug text-slate-950 sm:text-3xl">
+        {block.text}
+      </h2>
+    );
+  }
+
+  if (block.type === "list") {
+    return (
+      <ul className="space-y-3 rounded-[1.5rem] bg-rose-50/70 p-5 text-base leading-7 text-slate-700 ring-1 ring-rose-100 sm:p-6">
+        {block.items.map((item) => (
+          <li key={item} className="flex gap-3">
+            <span className="mt-3 h-2 w-2 shrink-0 rounded-full bg-rose-400" />
+            <span>{item}</span>
+          </li>
+        ))}
+      </ul>
+    );
+  }
+
+  if (block.segments) {
+    return (
+      <p>
+        {block.segments.map((segment, index) =>
+          segment.href ? (
+            <Link
+              key={`${segment.text}-${index}`}
+              href={segment.href}
+              className="font-semibold text-rose-700 underline decoration-rose-300 underline-offset-4 transition duration-200 hover:text-rose-800 hover:decoration-rose-500 focus:outline-none focus:ring-4 focus:ring-rose-100"
+            >
+              {segment.text}
+            </Link>
+          ) : (
+            <span key={`${segment.text}-${index}`}>{segment.text}</span>
+          ),
+        )}
+      </p>
+    );
+  }
+
+  return <p>{block.text}</p>;
+}
 
 export function generateStaticParams() {
   return getAllBlogPosts().map((post) => ({
@@ -89,9 +423,25 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
   }
 
   const relatedPosts = getRelatedBlogPosts(post.relatedSlugs);
+  const faqJsonLd = getFaqJsonLd(getFaqItems(post.content));
+  const breadcrumbJsonLd = getBreadcrumbJsonLd(post);
 
   return (
     <main className="min-h-screen overflow-hidden bg-[#fff7f1] text-slate-900">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: stringifyJsonLd(breadcrumbJsonLd),
+        }}
+      />
+      {faqJsonLd ? (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: stringifyJsonLd(faqJsonLd),
+          }}
+        />
+      ) : null}
       <Navbar />
 
       <article className="relative px-5 pb-24 pt-10 sm:px-8 lg:px-10">
@@ -103,6 +453,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
           >
             Înapoi la blog
           </Link>
+          <Breadcrumbs title={post.title} />
 
           <div className="mt-8 overflow-hidden rounded-[2rem] border border-white/80 bg-white/90 shadow-2xl shadow-rose-200/30">
             <div className="relative aspect-[16/9] bg-rose-50">
@@ -134,6 +485,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
             <p className="mt-5 max-w-3xl text-xl leading-9 text-slate-600">
               {post.excerpt}
             </p>
+            <AuthorBox />
             <div className="mt-6 flex flex-wrap gap-2">
               {post.tags.map((tag) => (
                 <span
@@ -146,80 +498,26 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
             </div>
 
             <div className="mt-10 max-w-3xl space-y-7 border-t border-rose-100 pt-10 text-lg leading-9 text-slate-700">
-              {post.content.map((block) => {
-                if (block.type === "heading") {
-                  return (
-                    <h2
-                      key={block.text}
-                      className="pt-4 text-2xl font-bold leading-snug text-slate-950 sm:text-3xl"
-                    >
-                      {block.text}
-                    </h2>
-                  );
-                }
-
-                if (block.type === "list") {
-                  return (
-                    <ul
-                      key={block.items.join("|")}
-                      className="space-y-3 rounded-[1.5rem] bg-rose-50/70 p-5 text-base leading-7 text-slate-700 ring-1 ring-rose-100 sm:p-6"
-                    >
-                      {block.items.map((item) => (
-                        <li key={item} className="flex gap-3">
-                          <span className="mt-3 h-2 w-2 shrink-0 rounded-full bg-rose-400" />
-                          <span>{item}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  );
-                }
-
-                if (block.segments) {
-                  return (
-                    <p key={block.text}>
-                      {block.segments.map((segment, index) =>
-                        segment.href ? (
-                          <Link
-                            key={`${segment.text}-${index}`}
-                            href={segment.href}
-                            className="font-semibold text-rose-700 underline decoration-rose-300 underline-offset-4 transition duration-200 hover:text-rose-800 hover:decoration-rose-500 focus:outline-none focus:ring-4 focus:ring-rose-100"
-                          >
-                            {segment.text}
-                          </Link>
-                        ) : (
-                          <span key={`${segment.text}-${index}`}>
-                            {segment.text}
-                          </span>
-                        ),
-                      )}
-                    </p>
-                  );
-                }
-
-                return <p key={block.text}>{block.text}</p>;
-              })}
+              {post.content.map((block, index) => (
+                <Fragment key={`${block.type}-${index}`}>
+                  {renderContentBlock(block)}
+                  {index === 1 ? (
+                    <ArticleCta cta={post.cta} placement="inline" />
+                  ) : null}
+                </Fragment>
+              ))}
             </div>
 
               </div>
             </div>
 
-          <div className="mt-8 rounded-[1.5rem] border border-rose-100 bg-white/90 p-6 shadow-xl shadow-rose-200/25 sm:flex sm:items-center sm:justify-between sm:gap-6 sm:p-8">
-            <p className="text-lg font-bold leading-8 text-slate-950">
-              {post.cta.text}
-            </p>
-            <Link
-              href={post.cta.href}
-              className="mt-5 inline-flex shrink-0 rounded-full bg-slate-950 px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-slate-900/15 transition duration-200 hover:-translate-y-0.5 hover:bg-slate-800 hover:shadow-xl hover:shadow-slate-900/20 focus:outline-none focus:ring-4 focus:ring-slate-300 active:translate-y-0 sm:mt-0"
-            >
-              {post.cta.buttonText}
-            </Link>
-          </div>
+          <ArticleCta cta={post.cta} placement="end" />
 
           {relatedPosts.length > 0 ? (
             <section className="mt-12">
               <div className="flex items-end justify-between gap-4">
                 <h2 className="text-2xl font-bold leading-tight text-slate-950 sm:text-3xl">
-                  Articole recomandate
+                  Citește și
                 </h2>
                 <Link
                   href="/blog"
@@ -232,31 +530,35 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                 {relatedPosts.map((relatedPost) => (
                   <article
                     key={relatedPost.slug}
-                    className="group overflow-hidden rounded-[1.25rem] border border-white/80 bg-white/90 shadow-lg shadow-rose-200/20 transition duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-rose-200/35"
+                    className="group flex h-full flex-col rounded-[1.25rem] border border-white/80 bg-white/90 p-5 shadow-lg shadow-rose-200/20 transition duration-300 hover:-translate-y-1 hover:bg-white hover:shadow-xl hover:shadow-rose-200/35"
                   >
+                    <div className="flex flex-wrap gap-2">
+                      {relatedPost.tags.map((tag) => (
+                        <span
+                          key={tag}
+                          className="rounded-full bg-rose-50 px-3 py-1 text-xs font-bold uppercase text-rose-700 ring-1 ring-rose-100"
+                        >
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+                    <h3 className="mt-4 text-lg font-bold leading-snug text-slate-950 transition duration-200 group-hover:text-rose-700">
+                      <Link
+                        href={`/blog/${relatedPost.slug}`}
+                        className="focus:outline-none focus:ring-4 focus:ring-rose-100"
+                      >
+                        {relatedPost.title}
+                      </Link>
+                    </h3>
+                    <p className="mt-3 flex-1 text-sm leading-7 text-slate-600">
+                      {relatedPost.excerpt}
+                    </p>
                     <Link
                       href={`/blog/${relatedPost.slug}`}
-                      className="relative block aspect-[16/10] bg-rose-50 focus:outline-none focus:ring-4 focus:ring-rose-100"
-                      aria-label={relatedPost.title}
+                      className="mt-5 inline-flex w-fit rounded-full bg-slate-950 px-4 py-2 text-sm font-semibold text-white shadow-lg shadow-slate-900/15 transition duration-200 hover:-translate-y-0.5 hover:bg-slate-800 focus:outline-none focus:ring-4 focus:ring-slate-300 active:translate-y-0"
                     >
-                      <Image
-                        src={relatedPost.coverImage}
-                        alt={relatedPost.coverAlt}
-                        fill
-                        sizes="(max-width: 768px) 100vw, 33vw"
-                        className="object-cover transition duration-500 group-hover:scale-105"
-                      />
+                      Citește articolul
                     </Link>
-                    <div className="p-5">
-                      <p className="text-xs font-bold uppercase text-emerald-700">
-                        {relatedPost.readingTime}
-                      </p>
-                      <h3 className="mt-3 text-lg font-bold leading-snug text-slate-950 transition duration-200 group-hover:text-rose-700">
-                        <Link href={`/blog/${relatedPost.slug}`}>
-                          {relatedPost.title}
-                        </Link>
-                      </h3>
-                    </div>
                   </article>
                 ))}
               </div>

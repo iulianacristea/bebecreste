@@ -9,6 +9,7 @@ const navigationLinks = [
   { href: "/calculator-somn", label: "Calculator somn" },
   { href: "/planner-mese", label: "Planner mese" },
   { href: "/blog", label: "Blog" },
+  { href: "/despre-noi", label: "Despre" },
   { href: "/contact", label: "Contact" },
 ];
 
