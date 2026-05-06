@@ -23,16 +23,16 @@ export const metadata: Metadata = {
     "sfaturi parinti",
   ],
   alternates: {
-    canonical: "/blog",
+    canonical: "https://bebecreste.ro/blog",
   },
   openGraph: {
     title: "Blog parenting | BebeCrește.ro",
     description:
       "Articole pentru părinți despre somnul bebelușilor, bebe nu doarme, diversificare și rutine zilnice.",
-    url: "/blog",
+    url: "https://bebecreste.ro/blog",
     images: [
       {
-        url: "/blog/6monthbaby.jpeg",
+        url: "https://bebecreste.ro/blog/6monthbaby.jpeg",
         width: 1200,
         height: 630,
         alt: "Bebeluș zâmbind, pentru blogul BebeCrește",
@@ -44,7 +44,7 @@ export const metadata: Metadata = {
     title: "Blog parenting | BebeCrește.ro",
     description:
       "Ghiduri scurte pentru când bebe nu doarme, plus mese, diversificare și rutine blânde.",
-    images: ["/blog/6monthbaby.jpeg"],
+    images: ["https://bebecreste.ro/blog/6monthbaby.jpeg"],
   },
 };
 
@@ -56,34 +56,126 @@ const dateFormatter = new Intl.DateTimeFormat("ro-RO", {
 
 export default function BlogPage() {
   const posts = getAllBlogPosts();
+  const featuredPost = posts[0];
+  const otherPosts = posts.slice(1);
 
   return (
     <main className="min-h-screen overflow-hidden bg-[#fff7f1] text-slate-900">
       <Navbar />
 
-      <section className="relative px-5 pb-24 pt-10 sm:px-8 lg:px-10">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,_rgba(186,230,253,0.7),_transparent_34%),radial-gradient(circle_at_82%_12%,_rgba(254,205,211,0.72),_transparent_30%),linear-gradient(135deg,_#fff7f1_0%,_#f8fbff_48%,_#fff1f7_100%)]" />
+      <section className="relative overflow-hidden px-5 pb-16 pt-10 sm:px-8 lg:px-10 lg:pb-20">
+        <div className="absolute inset-0 bg-[linear-gradient(135deg,_#fff7f1_0%,_#ffffff_45%,_#eef9ff_100%)]" />
+        <div className="absolute -left-24 top-24 h-72 w-72 rounded-full bg-rose-200/30 blur-3xl" />
+        <div className="absolute -right-24 bottom-20 h-72 w-72 rounded-full bg-sky-200/40 blur-3xl" />
+
         <div className="relative mx-auto max-w-7xl">
-          <div className="max-w-3xl pt-4">
-            <p className="mb-5 inline-flex rounded-full border border-rose-200 bg-white/70 px-4 py-2 text-sm font-semibold text-rose-700 shadow-sm">
+          <div className="max-w-3xl">
+            <span className="inline-flex rounded-full border border-rose-100 bg-white/90 px-4 py-2 text-xs font-bold uppercase tracking-[0.15em] text-rose-700 shadow-sm backdrop-blur">
               Blog BebeCrește
-            </p>
-            <h1 className="text-4xl font-bold leading-tight tracking-tight text-slate-950 sm:text-5xl">
-              Articole pentru ritmuri mai calme în fiecare zi.
+            </span>
+
+            <h1 className="mt-7 text-5xl font-extrabold leading-[0.98] tracking-tight text-slate-950 sm:text-6xl lg:text-[4.8rem]">
+              Ghiduri blânde pentru somn, mese și rutine.
             </h1>
-            <p className="mt-5 text-lg leading-8 text-slate-600">
-              Ghiduri scurte despre somn, rutine și repere blânde pentru
-              primii ani.
+
+            <p className="mt-7 max-w-2xl text-lg leading-8 text-slate-600 sm:text-xl">
+              Articole clare, scrise pe înțelesul părinților, pentru zilele în
+              care ai nevoie de un reper simplu și calm.
             </p>
           </div>
 
-          <div className="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-            {posts.map((post) => (
+          {featuredPost && (
+            <article className="mt-12 grid overflow-hidden rounded-[2.5rem] border border-white/80 bg-white shadow-[0_30px_80px_rgba(15,23,42,0.10)] lg:grid-cols-[1.05fr_0.95fr]">
+              <Link
+                href={`/blog/${featuredPost.slug}`}
+                className="relative block min-h-[320px] overflow-hidden bg-rose-50 focus:outline-none focus:ring-4 focus:ring-rose-100 lg:min-h-[440px]"
+                aria-label={featuredPost.title}
+              >
+                <Image
+                  src={featuredPost.coverImage}
+                  alt={featuredPost.coverAlt}
+                  fill
+                  priority
+                  sizes="(min-width: 1024px) 50vw, 100vw"
+                  className="object-cover transition duration-700 hover:scale-105"
+                />
+              </Link>
+
+              <div className="flex flex-col justify-center p-6 sm:p-8 lg:p-10">
+                <div className="flex flex-wrap items-center gap-2 text-xs font-bold uppercase">
+                  <span className="rounded-full bg-rose-50 px-3 py-1 text-rose-700 ring-1 ring-rose-100">
+                    Articol recomandat
+                  </span>
+                  <time
+                    dateTime={featuredPost.date}
+                    className="rounded-full bg-sky-50 px-3 py-1 text-sky-700 ring-1 ring-sky-100"
+                  >
+                    {dateFormatter.format(new Date(featuredPost.date))}
+                  </time>
+                  <span className="rounded-full bg-emerald-50 px-3 py-1 text-emerald-700 ring-1 ring-emerald-100">
+                    {featuredPost.readingTime}
+                  </span>
+                </div>
+
+                <h2 className="mt-5 text-3xl font-extrabold leading-tight tracking-tight text-slate-950 sm:text-4xl">
+                  <Link
+                    href={`/blog/${featuredPost.slug}`}
+                    className="transition hover:text-rose-700 focus:outline-none focus:ring-4 focus:ring-rose-100"
+                  >
+                    {featuredPost.title}
+                  </Link>
+                </h2>
+
+                <p className="mt-4 text-base leading-7 text-slate-600">
+                  {featuredPost.excerpt}
+                </p>
+
+                <div className="mt-5 flex flex-wrap gap-2">
+                  {featuredPost.tags.map((tag) => (
+                    <span
+                      key={tag}
+                      className="rounded-full bg-slate-50 px-3 py-1 text-xs font-bold uppercase text-slate-600 ring-1 ring-slate-100"
+                    >
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+
+                <Link
+                  href={`/blog/${featuredPost.slug}`}
+                  className="mt-8 inline-flex w-fit items-center rounded-full bg-slate-950 px-6 py-3.5 text-sm font-semibold text-white shadow-xl shadow-slate-900/15 transition duration-200 hover:-translate-y-0.5 hover:bg-slate-800 hover:shadow-2xl focus:outline-none focus:ring-4 focus:ring-slate-300 active:translate-y-0"
+                >
+                  Citește articolul
+                </Link>
+              </div>
+            </article>
+          )}
+        </div>
+      </section>
+
+      <section className="bg-white px-5 py-14 sm:px-8 lg:px-10">
+        <div className="mx-auto max-w-7xl">
+          <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
+            <div>
+              <p className="text-sm font-semibold uppercase tracking-wide text-emerald-700">
+                Toate articolele
+              </p>
+              <h2 className="mt-3 text-3xl font-bold tracking-tight text-slate-950">
+                Citește după ce ai nevoie azi
+              </h2>
+            </div>
+
+            <p className="max-w-xl text-sm leading-6 text-slate-500">
+              Informațiile sunt orientative și nu înlocuiesc sfatul medicului.
+            </p>
+          </div>
+
+          <div className="mt-8 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+            {otherPosts.map((post) => (
               <article
                 key={post.slug}
-                className="group relative flex h-full flex-col overflow-hidden rounded-[1.5rem] border border-white/80 bg-white/90 shadow-xl shadow-rose-200/25 transition duration-300 hover:-translate-y-1.5 hover:border-rose-100 hover:bg-white hover:shadow-2xl hover:shadow-rose-200/45"
+                className="group flex h-full flex-col overflow-hidden rounded-[2rem] border border-slate-100 bg-white shadow-lg shadow-slate-100/70 transition duration-300 hover:-translate-y-1 hover:shadow-2xl hover:shadow-rose-100/45"
               >
-                <div className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-rose-300 via-sky-200 to-emerald-200 opacity-80" />
                 <Link
                   href={`/blog/${post.slug}`}
                   className="relative block aspect-[16/10] overflow-hidden bg-rose-50 focus:outline-none focus:ring-4 focus:ring-rose-100"
@@ -94,11 +186,12 @@ export default function BlogPage() {
                     alt={post.coverAlt}
                     fill
                     sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                    className="object-cover transition duration-500 group-hover:scale-105"
+                    className="object-cover transition duration-700 group-hover:scale-105"
                   />
                 </Link>
+
                 <div className="flex flex-1 flex-col p-6">
-                  <div className="flex flex-wrap items-center gap-2 text-xs font-bold uppercase tracking-normal">
+                  <div className="flex flex-wrap items-center gap-2 text-xs font-bold uppercase">
                     <time
                       dateTime={post.date}
                       className="rounded-full bg-sky-50 px-3 py-1 text-sky-700 ring-1 ring-sky-100"
@@ -109,6 +202,7 @@ export default function BlogPage() {
                       {post.readingTime}
                     </span>
                   </div>
+
                   <h2 className="mt-5 text-2xl font-bold leading-snug text-slate-950 transition duration-200 group-hover:text-rose-700">
                     <Link
                       href={`/blog/${post.slug}`}
@@ -117,22 +211,25 @@ export default function BlogPage() {
                       {post.title}
                     </Link>
                   </h2>
+
                   <p className="mt-4 flex-1 text-base leading-7 text-slate-600">
                     {post.excerpt}
                   </p>
+
                   <div className="mt-5 flex flex-wrap gap-2">
                     {post.tags.map((tag) => (
                       <span
                         key={tag}
-                        className="rounded-full bg-rose-50 px-3 py-1 text-xs font-bold uppercase text-rose-700 ring-1 ring-rose-100"
+                        className="rounded-full bg-rose-50 px-3 py-1 text-xs font-bold uppercase text-rose-700 ring-1 ring-100"
                       >
                         {tag}
                       </span>
                     ))}
                   </div>
+
                   <Link
                     href={`/blog/${post.slug}`}
-                    className="mt-7 inline-flex w-fit items-center rounded-full bg-slate-950 px-5 py-3 text-sm font-semibold text-white shadow-lg shadow-slate-900/15 transition duration-200 hover:-translate-y-0.5 hover:bg-slate-800 hover:shadow-xl hover:shadow-slate-900/20 focus:outline-none focus:ring-4 focus:ring-slate-300 active:translate-y-0"
+                    className="mt-7 inline-flex w-fit items-center rounded-full bg-slate-950 px-5 py-3 text-sm font-semibold text-white shadow-lg shadow-slate-900/15 transition duration-200 hover:-translate-y-0.5 hover:bg-slate-800 hover:shadow-xl focus:outline-none focus:ring-4 focus:ring-slate-300 active:translate-y-0"
                   >
                     Citește articolul
                   </Link>
