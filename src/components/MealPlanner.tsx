@@ -428,7 +428,7 @@ export function MealPlanner() {
         onSubmit={handleSubmit}
         className="rounded-[2rem] border border-white/80 bg-white/85 p-5 shadow-2xl shadow-rose-200/35 backdrop-blur sm:p-7"
       >
-        <div className="flex items-start justify-between gap-4">
+        <div>
           <div>
             <p className="text-sm font-semibold uppercase text-rose-700">
               Date pentru masă
@@ -437,9 +437,6 @@ export function MealPlanner() {
               Construiește un plan simplu
             </h2>
           </div>
-          <span className="rounded-full bg-rose-50 px-3 py-1 text-xs font-semibold text-rose-700 ring-1 ring-rose-100">
-            fără cont
-          </span>
         </div>
 
         <div className="mt-6 grid gap-4">

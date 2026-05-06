@@ -174,11 +174,11 @@ export default function BlogPage() {
             {otherPosts.map((post) => (
               <article
                 key={post.slug}
-                className="group flex h-full flex-col overflow-hidden rounded-[2rem] border border-slate-100 bg-white shadow-lg shadow-slate-100/70 transition duration-300 hover:-translate-y-1 hover:shadow-2xl hover:shadow-rose-100/45"
+                className="group flex h-full flex-col overflow-hidden rounded-[1.75rem] border border-slate-100 bg-white shadow-lg shadow-slate-100/70 transition duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-rose-100/45"
               >
                 <Link
                   href={`/blog/${post.slug}`}
-                  className="relative block aspect-[16/10] overflow-hidden bg-rose-50 focus:outline-none focus:ring-4 focus:ring-rose-100"
+                  className="relative block aspect-[16/10] overflow-hidden bg-slate-100 focus:outline-none focus:ring-4 focus:ring-rose-100"
                   aria-label={post.title}
                 >
                   <Image
@@ -190,7 +190,7 @@ export default function BlogPage() {
                   />
                 </Link>
 
-                <div className="flex flex-1 flex-col p-6">
+                <div className="flex flex-1 flex-col p-5 sm:p-6">
                   <div className="flex flex-wrap items-center gap-2 text-xs font-bold uppercase">
                     <time
                       dateTime={post.date}
@@ -203,7 +203,7 @@ export default function BlogPage() {
                     </span>
                   </div>
 
-                  <h2 className="mt-5 text-2xl font-bold leading-snug text-slate-950 transition duration-200 group-hover:text-rose-700">
+                  <h2 className="mt-5 text-xl font-bold leading-snug text-slate-950 transition duration-200 group-hover:text-rose-700 sm:text-2xl">
                     <Link
                       href={`/blog/${post.slug}`}
                       className="focus:outline-none focus:ring-4 focus:ring-rose-100"
@@ -212,15 +212,15 @@ export default function BlogPage() {
                     </Link>
                   </h2>
 
-                  <p className="mt-4 flex-1 text-base leading-7 text-slate-600">
+                  <p className="mt-3 line-clamp-3 flex-1 text-sm leading-6 text-slate-600 sm:text-base sm:leading-7">
                     {post.excerpt}
                   </p>
 
                   <div className="mt-5 flex flex-wrap gap-2">
-                    {post.tags.map((tag) => (
+                    {post.tags.slice(0, 3).map((tag) => (
                       <span
                         key={tag}
-                        className="rounded-full bg-rose-50 px-3 py-1 text-xs font-bold uppercase text-rose-700 ring-1 ring-100"
+                        className="rounded-full bg-rose-50 px-3 py-1 text-xs font-bold uppercase text-rose-700 ring-1 ring-rose-100"
                       >
                         {tag}
                       </span>
@@ -229,7 +229,7 @@ export default function BlogPage() {
 
                   <Link
                     href={`/blog/${post.slug}`}
-                    className="mt-7 inline-flex w-fit items-center rounded-full bg-slate-950 px-5 py-3 text-sm font-semibold text-white shadow-lg shadow-slate-900/15 transition duration-200 hover:-translate-y-0.5 hover:bg-slate-800 hover:shadow-xl focus:outline-none focus:ring-4 focus:ring-slate-300 active:translate-y-0"
+                    className="mt-6 inline-flex w-fit items-center rounded-full bg-slate-950 px-5 py-3 text-sm font-semibold text-white shadow-md shadow-slate-900/10 transition duration-200 hover:-translate-y-0.5 hover:bg-slate-800 hover:shadow-lg focus:outline-none focus:ring-4 focus:ring-slate-300 active:translate-y-0"
                   >
                     Citește articolul
                   </Link>

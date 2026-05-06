@@ -52,7 +52,7 @@ export default function PlannerMesePage() {
             <p className="mb-5 inline-flex rounded-full border border-rose-200 bg-white/70 px-4 py-2 text-sm font-semibold text-rose-700 shadow-sm">
               Planner mese copii
             </p>
-            <h1 className="max-w-3xl text-4xl font-bold leading-tight tracking-tight text-slate-950 sm:text-5xl">
+            <h1 className="max-w-4xl text-5xl font-bold leading-tight tracking-tight text-slate-950 sm:text-6xl lg:text-[4.5rem]">
               Idei simple de mese pentru bebeluși și copii mici.
             </h1>
             <p className="mt-5 max-w-2xl text-lg leading-8 text-slate-600">
