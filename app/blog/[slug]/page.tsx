@@ -461,12 +461,13 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
 
       <article className="relative px-5 pb-24 pt-10 sm:px-8 lg:px-10">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,_rgba(186,230,253,0.7),_transparent_34%),radial-gradient(circle_at_82%_12%,_rgba(254,205,211,0.72),_transparent_30%),linear-gradient(135deg,_#fff7f1_0%,_#f8fbff_48%,_#fff1f7_100%)]" />
-        <div className="relative mx-auto max-w-4xl">
+        <div className="relative mx-auto max-w-6xl">
           <Link
             href="/blog"
-            className="inline-flex rounded-full border border-slate-200 bg-white/75 px-4 py-2 text-sm font-semibold text-slate-700 shadow-sm transition duration-200 hover:-translate-y-0.5 hover:bg-white hover:shadow-md hover:shadow-slate-200/70 focus:outline-none focus:ring-4 focus:ring-rose-100 active:translate-y-0"
+            className="inline-flex items-center gap-2 rounded-full bg-white/80 px-4 py-2 text-sm font-semibold text-slate-700 shadow-sm ring-1 ring-slate-200 transition duration-200 hover:-translate-x-0.5 hover:bg-white hover:text-rose-700 hover:shadow-md hover:shadow-slate-200/70 focus:outline-none focus:ring-4 focus:ring-rose-100 active:translate-x-0"
           >
-            Înapoi la blog
+            <span aria-hidden="true">←</span>
+            <span>Înapoi la toate articolele</span>
           </Link>
           <Breadcrumbs title={post.title} />
 
@@ -477,12 +478,12 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                 alt={post.coverAlt}
                 fill
                 priority
-                sizes="(max-width: 1024px) 100vw, 896px"
+                sizes="(max-width: 1024px) 100vw, 1152px"
                 className="object-cover"
               />
             </div>
 
-            <div className="p-6 sm:p-10 lg:p-12">
+            <div className="mx-auto max-w-4xl p-6 sm:p-10 lg:p-12">
               <div className="flex flex-wrap items-center gap-2 text-sm font-bold uppercase tracking-normal">
                 <time
                   dateTime={post.date}
@@ -512,7 +513,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
               ))}
             </div>
 
-            <div className="mt-10 max-w-3xl space-y-7 border-t border-rose-100 pt-10 text-lg leading-9 text-slate-700">
+            <div className="mt-10 space-y-7 border-t border-rose-100 pt-10 text-lg leading-9 text-slate-700">
               {post.content.map((block, index) => (
                 <Fragment key={`${block.type}-${index}`}>
                   {renderContentBlock(block)}
@@ -528,7 +529,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
 
           <ArticleCta cta={post.cta} placement="end" />
 
-          <EmailCapture className="mt-8" />
+          <EmailCapture className="mt-8" wide />
 
           {relatedPosts.length > 0 ? (
             <section className="mt-12">

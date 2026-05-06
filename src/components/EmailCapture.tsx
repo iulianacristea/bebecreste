@@ -4,9 +4,10 @@ import { useState } from "react";
 
 type EmailCaptureProps = {
   className?: string;
+  wide?: boolean;
 };
 
-export function EmailCapture({ className = "" }: EmailCaptureProps) {
+export function EmailCapture({ className = "", wide = false }: EmailCaptureProps) {
   const [email, setEmail] = useState("");
   const [isSuccessVisible, setIsSuccessVisible] = useState(false);
 
@@ -18,7 +19,11 @@ export function EmailCapture({ className = "" }: EmailCaptureProps) {
 
   return (
     <section className={className}>
-      <div className="mx-auto max-w-5xl overflow-hidden rounded-[2rem] border border-slate-100 bg-white shadow-xl shadow-slate-100/80">
+      <div
+        className={`mx-auto overflow-hidden rounded-[2rem] border border-slate-100 bg-white shadow-xl shadow-slate-100/80 ${
+          wide ? "max-w-6xl" : "max-w-5xl"
+        }`}
+      >
         <div className="grid lg:grid-cols-[0.95fr_1.05fr]">
           <div className="bg-gradient-to-br from-rose-50 via-white to-sky-50 p-6 sm:p-8 lg:p-10">
             <p className="text-sm font-bold uppercase text-rose-700">
