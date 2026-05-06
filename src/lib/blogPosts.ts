@@ -2033,6 +2033,427 @@ export const blogPosts: BlogPost[] = [
       },
     ],
   },
+  {
+    title: "Fructe de pădure pentru copii: 10 idei simple de rețete",
+    slug: "fructe-de-padure-pentru-copii-10-idei-simple-de-retete",
+    excerpt:
+      "Idei blânde de rețete cu afine, căpșuni, zmeură, mure și alte fructe de pădure, potrivite pentru copii și ușor de adaptat.",
+    seoTitle: "Fructe de pădure pentru copii: 10 rețete simple",
+    seoDescription:
+      "Descoperă idei de rețete cu fructe de pădure pentru copii: piureuri, gustări, brioșe, sosuri și deserturi simple, cu recomandări orientative.",
+    seoKeywords: [
+      "fructe de padure copii",
+      "fructe de padure bebelusi",
+      "retete cu fructe de padure copii",
+      "afine bebe",
+      "capsuni bebe",
+      "zmeura bebe",
+      "mure copii",
+      "retete diversificare fructe",
+      "gustari copii fructe",
+      "deserturi copii fructe",
+    ],
+    tags: ["alimentatie", "diversificare", "retete copii"],
+    date: "2026-05-06",
+    coverImage: "/blog/fructe-padure.jpeg",
+    coverAlt:
+      "Fructe proaspete și ingrediente simple pentru gustări de copii",
+    readingTime: "6 min citire",
+    relatedSlugs: [
+      "alimente-recomandate-si-de-evitat-in-diversificare",
+      "alimente-de-evitat-in-diversificare",
+      "idei-de-mese-pentru-copil-mofturos",
+    ],
+    cta: {
+      text: "Vrei idei rapide de mese și gustări adaptate copilului tău? Plannerul îți oferă combinații simple pentru zile obișnuite.",
+      buttonText: "Planifică mesele",
+      href: "/planner-mese",
+    },
+    content: [
+      {
+        type: "paragraph",
+        text: "Fructele de pădure sunt colorate, aromate și ușor de folosit în gustări simple pentru copii. Afinele, căpșunile, zmeura, murele sau coacăzele pot aduce varietate în farfurie, mai ales atunci când sunt oferite în forme potrivite vârstei: pasate, bine spălate, tăiate corect sau trecute prin sită dacă semințele deranjează.",
+      },
+      {
+        type: "paragraph",
+        text: "Acest articol este orientativ și nu înlocuiește sfatul pediatrului. Dacă există alergii, dermatită atopică, reflux, probleme digestive sau alte recomandări speciale, discută cu medicul înainte de a introduce alimente noi.",
+      },
+      {
+        type: "heading",
+        text: "Când poți oferi fructe de pădure copilului",
+      },
+      {
+        type: "paragraph",
+        text: "Mulți părinți introduc fructele de pădure în perioada diversificării, după ce copilul a testat deja câteva fructe simple. Momentul exact poate varia. Important este ca fructele să fie oferite într-o textură sigură, fără bucăți tari sau rotunde care pot crește riscul de înec.",
+        segments: [
+          {
+            text: "Mulți părinți introduc fructele de pădure în perioada diversificării, după ce copilul a testat deja câteva fructe simple. Pentru o privire de ansamblu, poți porni de la ghidul despre ",
+          },
+          {
+            text: "alimente recomandate și de evitat în diversificare",
+            href: "/blog/alimente-recomandate-si-de-evitat-in-diversificare",
+          },
+          {
+            text: ". Momentul exact poate varia. Important este ca fructele să fie oferite într-o textură sigură, fără bucăți tari sau rotunde care pot crește riscul de înec.",
+          },
+        ],
+      },
+      {
+        type: "list",
+        items: [
+          "Spală foarte bine fructele înainte de servire.",
+          "Taie căpșunile și fructele mai mari în bucăți potrivite vârstei.",
+          "Pasează sau strivește afinele pentru copiii mici.",
+          "Trece zmeura sau murele prin sită dacă semințele incomodează copilul.",
+          "Alege fructe congelate simple, fără zahăr adăugat, când nu este sezon.",
+        ],
+      },
+      {
+        type: "heading",
+        text: "Ce fructe de pădure poți folosi",
+      },
+      {
+        type: "paragraph",
+        text: "Cele mai folosite variante sunt afinele, căpșunile, zmeura, murele, coacăzele și merișoarele. Cătina, măceșele sau agrișele pot fi și ele interesante, dar au gust mai intens și sunt mai potrivite în cantități mici, integrate în sosuri, piureuri sau preparate gătite.",
+      },
+      {
+        type: "heading",
+        text: "10 idei de rețete cu fructe de pădure pentru copii",
+      },
+      {
+        type: "paragraph",
+        text: "Ideile de mai jos sunt simple și flexibile. Ajustează textura, cantitatea și ingredientele în funcție de vârsta copilului, alimentele deja introduse și recomandarea pediatrului.",
+      },
+      {
+        type: "heading",
+        text: "1. Piure de afine cu banană",
+      },
+      {
+        type: "paragraph",
+        text: "Pasează câteva afine bine spălate cu o jumătate de banană coaptă. Pentru copiii mici, afinele pot fi zdrobite foarte bine sau trecute prin sită. Rezultatul este o gustare rapidă, dulce natural și ușor de combinat cu iaurt simplu sau terci de ovăz.",
+      },
+      {
+        type: "heading",
+        text: "2. Iaurt simplu cu zmeură pasată",
+      },
+      {
+        type: "paragraph",
+        text: "Amestecă iaurt simplu cu zmeură pasată. Dacă semințele sunt deranjante, trece fructele prin sită înainte. Pentru copiii peste 1 an, poți adăuga puțină scorțișoară, dacă este deja acceptată.",
+      },
+      {
+        type: "heading",
+        text: "3. Terci de ovăz cu fructe de pădure",
+      },
+      {
+        type: "paragraph",
+        text: "Fierbe ovăzul în apă, lapte matern, formulă preparată conform instrucțiunilor sau lapte potrivit vârstei copilului. La final, adaugă afine zdrobite, căpșuni tăiate mărunt sau mure pasate. Este o variantă bună pentru mic dejun, mai ales în zilele aglomerate.",
+      },
+      {
+        type: "heading",
+        text: "4. Clătite moi cu căpșuni",
+      },
+      {
+        type: "paragraph",
+        text: "Pregătește clătite mici din ou, banană și puțină făină sau ovăz măcinat, apoi servește-le cu căpșuni pasate deasupra. Pentru copiii mici, taie clătitele în fâșii ușor de ținut în mână și evită bucățile mari de fruct.",
+      },
+      {
+        type: "heading",
+        text: "5. Brioșe cu afine",
+      },
+      {
+        type: "paragraph",
+        text: "Brioșele pot fi o gustare practică pentru copiii mai mari. Folosește un aluat simplu cu iaurt, ou, făină și afine zdrobite sau tăiate. Pentru copiii sub 1 an evită zahărul adăugat, iar pentru cei mici păstrează textura moale și porțiile mici.",
+      },
+      {
+        type: "heading",
+        text: "6. Sos rapid de merișoare sau coacăze",
+      },
+      {
+        type: "paragraph",
+        text: "Fierbe fructele câteva minute cu puțină apă, apoi pasează-le. Sosul poate fi servit lângă iaurt, clătite, terci sau, pentru copiii mai mari, alături de preparate simple cu carne. Dacă gustul este prea acrișor, combină-l cu măr copt sau banană.",
+      },
+      {
+        type: "heading",
+        text: "7. Smoothie gros cu afine și pară",
+      },
+      {
+        type: "paragraph",
+        text: "Mixează afine cu pară coaptă și iaurt simplu. Servește smoothie-ul cu lingurița sau într-un pahar potrivit copilului. Pentru bebeluși, păstrează consistența mai groasă, ca un piure, nu ca o băutură dulce consumată rapid.",
+      },
+      {
+        type: "heading",
+        text: "8. Piure de mure cu măr copt",
+      },
+      {
+        type: "paragraph",
+        text: "Coace un măr, apoi pasează-l cu mure bine spălate și trecute prin sită. Mărul copt îmblânzește gustul acrișor al murelor și oferă o textură fină. Este o idee bună pentru o gustare mică.",
+      },
+      {
+        type: "heading",
+        text: "9. Cuburi înghețate cu fructe și iaurt",
+      },
+      {
+        type: "paragraph",
+        text: "Pentru copiii mai mari, poți congela iaurt simplu amestecat cu fructe pasate în forme mici. Se servesc sub supraveghere și adaptat vârstei, mai ales dacă cel mic gestionează bine texturile reci.",
+      },
+      {
+        type: "heading",
+        text: "10. Budincă simplă cu fructe de pădure",
+      },
+      {
+        type: "paragraph",
+        text: "Pregătește o budincă simplă din griș, ovăz fin sau chia hidratată, în funcție de vârstă și alimentele deja introduse. Adaugă deasupra fructe de pădure pasate. Pentru copiii mici, evită toppingurile dure și semințele întregi.",
+      },
+      {
+        type: "heading",
+        text: "Cum păstrezi mesele calme",
+      },
+      {
+        type: "paragraph",
+        text: "Fructele de pădure pot păta, pot avea gust acrișor și uneori sunt refuzate la început. Nu este nevoie să insiști. Oferă cantități mici, alături de un aliment deja acceptat, și lasă copilul să exploreze fără presiune.",
+        segments: [
+          {
+            text: "Fructele de pădure pot păta, pot avea gust acrișor și uneori sunt refuzate la început. Nu este nevoie să insiști. Oferă cantități mici, alături de un aliment deja acceptat, și lasă copilul să exploreze fără presiune. Dacă treceți printr-o perioadă cu refuzuri, te poate ajuta și articolul cu ",
+          },
+          {
+            text: "idei de mese pentru copil mofturos",
+            href: "/blog/idei-de-mese-pentru-copil-mofturos",
+          },
+          { text: "." },
+        ],
+      },
+      {
+        type: "heading",
+        text: "Ce să eviți",
+      },
+      {
+        type: "list",
+        items: [
+          "Nu oferi boabe întregi, tari sau rotunde unui copil care nu le poate gestiona sigur.",
+          "Nu adăuga miere înainte de 1 an.",
+          "Evită zahărul adăugat în gustările pentru bebeluși.",
+          "Nu folosi fructe mucegăite, fermentate sau cu miros modificat.",
+          "Nu forța copilul să termine porția dacă refuză.",
+        ],
+      },
+      {
+        type: "heading",
+        text: "Concluzie",
+      },
+      {
+        type: "paragraph",
+        text: "Fructele de pădure pot aduce culoare și varietate în alimentația copilului, dar cheia este simplitatea: porții mici, texturi sigure, ingrediente cunoscute și fără presiune la masă. Începe cu variante blânde, observă reacțiile copilului și adaptează rețetele la ritmul familiei.",
+      },
+      {
+        type: "heading",
+        text: "FAQ",
+      },
+      {
+        type: "heading",
+        text: "Pot oferi fructe de pădure bebelușului?",
+      },
+      {
+        type: "paragraph",
+        text: "Da, în multe cazuri pot fi introduse în diversificare, dar momentul depinde de copil și de recomandarea pediatrului. Textura trebuie adaptată vârstei.",
+      },
+      {
+        type: "heading",
+        text: "Fructele congelate sunt potrivite?",
+      },
+      {
+        type: "paragraph",
+        text: "Da, dacă sunt simple, fără zahăr adăugat. Se folosesc bine în terciuri, sosuri sau piureuri, după ce sunt preparate corespunzător.",
+      },
+      {
+        type: "heading",
+        text: "Trebuie să evit semințele din zmeură și mure?",
+      },
+      {
+        type: "paragraph",
+        text: "Pentru copiii mici, poate fi mai confortabil să treci fructele prin sită. Pe măsură ce copilul crește și gestionează mai bine texturile, acest pas poate să nu mai fie necesar.",
+      },
+      {
+        type: "heading",
+        text: "Ce fac dacă apar iritații sau reacții după fructe de pădure?",
+      },
+      {
+        type: "paragraph",
+        text: "Oprește alimentul respectiv și discută cu pediatrul, mai ales dacă apar urticarie, umflături, vărsături, dificultăți de respirație sau alte semne îngrijorătoare.",
+      },
+    ],
+  },
+  {
+  title: "Nume copii: alegerea care îți umple inima de bucurie",
+  slug: "nume-copii-alegerea-care-iti-umple-inima-de-bucurie",
+  excerpt:
+    "Cum alegi numele copilului fără stres: idei, inspirație, semnificații și lucruri importante de luat în calcul.",
+  seoTitle: "Nume copii: cum alegi numele perfect pentru copil",
+  seoDescription:
+    "Află cum alegi numele copilului: idei de nume, semnificații, sfaturi practice și lucruri de evitat.",
+  seoKeywords: [
+    "nume copii",
+    "nume copii baieti",
+    "nume copii fete",
+    "cum alegi numele copilului",
+    "idei nume copii",
+    "semnificatie nume copii",
+    "nume moderne copii",
+    "nume rare copii",
+    "nume populare copii",
+  ],
+  tags: ["nume copii", "bebelusi", "parenting"],
+  date: "2026-05-05",
+  coverImage: "/homepage/mama-bebe.jpeg",
+  coverAlt: "Părinte ținând bebelușul în brațe, într-un moment liniștit",
+  readingTime: "4 min citire",
+  relatedSlugs: [
+    "cum-iti-dai-seama-ca-bebe-este-obosit",
+    "de-ce-nu-doarme-bebe-noaptea",
+    "cat-trebuie-sa-manance-copilul-in-varsta-de-un-an",
+  ],
+  cta: {
+    text: "Când apar următoarele întrebări despre somn, mese sau rutine, găsești pe BebeCrește repere simple, scrise pe înțelesul părinților.",
+    buttonText: "Citește ghidurile",
+    href: "/blog",
+  },
+  content: [
+    {
+      type: "paragraph",
+      text: "Alegerea numelui pentru copil este unul dintre cele mai emoționante momente din viața unui părinte. Este un cuvânt pe care îl vei rosti de mii de ori, un nume care îl va însoți pe copilul tău toată viața. De aceea, nu este doar o alegere practică, ci una care îți umple inima de bucurie, emoție și uneori… indecizie.",
+    },
+
+    {
+      type: "heading",
+      text: "De ce este atât de important numele copilului",
+    },
+    {
+      type: "paragraph",
+      text: "Numele nu este doar un mod de a identifica o persoană. Este parte din identitate, din povestea copilului și din felul în care va fi perceput în lume. Pentru mulți părinți, numele reflectă valori, tradiții de familie sau pur și simplu un sentiment puternic că „acesta este numele potrivit”.",
+    },
+
+    {
+      type: "heading",
+      text: "Cum alegi numele copilului fără stres",
+    },
+    {
+      type: "paragraph",
+      text: "Este ușor să te simți copleșit atunci când vezi sute de variante de nume copii. În realitate, procesul poate deveni mai simplu dacă îl împarți în pași mici și clare.",
+    },
+    {
+      type: "list",
+      items: [
+        "Fă o listă scurtă cu numele care îți plac cu adevărat.",
+        "Spune-le cu voce tare, de mai multe ori.",
+        "Vezi cum sună împreună cu numele de familie.",
+        "Observă dacă îți transmit o emoție bună.",
+        "Nu te grăbi — unele nume „se simt” mai bine în timp.",
+      ],
+    },
+
+    {
+      type: "heading",
+      text: "Nume moderne vs. nume tradiționale",
+    },
+    {
+      type: "paragraph",
+      text: "Unii părinți preferă nume moderne copii, mai scurte și mai internaționale, în timp ce alții aleg nume tradiționale, cu semnificație culturală sau religioasă. Nu există o alegere corectă sau greșită — important este să alegi ceva care rezonează cu tine.",
+    },
+
+    {
+      type: "list",
+      items: [
+        "Nume moderne: sunt ușor de pronunțat și deseori internaționale.",
+        "Nume tradiționale: au rădăcini puternice și semnificații istorice.",
+        "Nume rare: oferă unicitate, dar pot necesita explicații.",
+        "Nume populare: sunt familiare și ușor de recunoscut.",
+      ],
+    },
+
+    {
+      type: "heading",
+      text: "Idei de nume pentru copii",
+    },
+    {
+      type: "paragraph",
+      text: "Dacă ești în căutare de inspirație, iată câteva idei de nume copii, atât pentru fete, cât și pentru băieți:",
+    },
+    {
+      type: "list",
+      items: [
+        "Fete: Sofia, Eva, Maria, Luna, Daria, Anastasia, Ilinca, Ioana, Ana, Emma, Sara, Mara, Irina, Elena, Amalia, Natalia, Teodora, Antonia, Victoria, Clara, Maia, Alma, Ema, Carla, Ingrid, Iris, Lara, Sonia, Ruxandra, Miruna, Iulia, Rebeca, Olivia, Adela, Timeea, Ariana, Adelina, Cezara, Emilia, Raisa",
+        "Băieți: Luca, Matei, David, Andrei, Noah, Alexandru, Tudor, Rareș, Vlad, Ștefan, Mihai, Gabriel, Victor, Filip, Eric, Robert, Sebastian, Cezar, Darius, Mario, Dominic, Patrick, Radu, Cristian, Nicholas, Albert, Denis, Eduard, Marc, Damian, Oliver, Ianis, Theodor, Iustin, Călin, Dragoș, Felix, Vladimir, George, Adrian",
+      ],
+    },
+
+    {
+      type: "heading",
+      text: "Ce să eviți când alegi numele copilului",
+    },
+    {
+      type: "paragraph",
+      text: "Deși nu există reguli stricte, sunt câteva lucruri care pot face alegerea mai dificilă pe termen lung.",
+    },
+    {
+      type: "list",
+      items: [
+        "Nume foarte greu de pronunțat sau scris.",
+        "Combinații care sună ciudat cu numele de familie.",
+        "Nume alese doar pentru că sunt „la modă”.",
+        "Presiunea din partea altor persoane.",
+      ],
+    },
+
+    {
+      type: "heading",
+      text: "Ascultă-ți instinctul",
+    },
+    {
+      type: "paragraph",
+      text: "La final, alegerea numelui copilului nu este despre liste perfecte sau reguli stricte. Este despre acel moment în care un nume pur și simplu „se potrivește”. Când îl rostești și simți că este al copilului tău.",
+    },
+
+    {
+      type: "heading",
+      text: "Concluzie",
+    },
+    {
+      type: "paragraph",
+      text: "Alegerea numelui pentru copil este o combinație de emoție, logică și intuiție. Nu trebuie să fie perfectă pentru toată lumea — trebuie doar să fie potrivită pentru tine și familia ta. În final, numele copilului devine frumos prin povestea pe care o va construi în jurul lui.",
+    },
+
+    {
+      type: "heading",
+      text: "FAQ",
+    },
+
+    {
+      type: "heading",
+      text: "Când ar trebui să aleg numele copilului?",
+    },
+    {
+      type: "paragraph",
+      text: "Unii părinți aleg numele înainte de naștere, alții după ce își văd copilul. Ambele variante sunt normale.",
+    },
+
+    {
+      type: "heading",
+      text: "Este mai bine un nume rar sau unul popular?",
+    },
+    {
+      type: "paragraph",
+      text: "Depinde de preferințe. Numele rar oferă unicitate, iar cel popular este mai ușor de recunoscut.",
+    },
+
+    {
+      type: "heading",
+      text: "Pot schimba numele dacă nu mai sunt sigur?",
+    },
+    {
+      type: "paragraph",
+      text: "Da, dar procesul legal poate fi mai complicat. De aceea, merită să îți acorzi timp înainte de decizia finală.",
+    },
+  ],
+}
 ];
 
 export function getAllBlogPosts() {

@@ -316,7 +316,11 @@ function getMobileCtaLabel(href: string) {
     return "Planner mese";
   }
 
-  return "Calculator somn";
+  if (href === "/calculator-somn") {
+    return "Calculator somn";
+  }
+
+  return "Citește blogul";
 }
 
 function renderContentBlock(block: BlogContentBlock) {

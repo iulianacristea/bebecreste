@@ -223,27 +223,37 @@ export default function Home() {
             ))}
           </div>
 
-          <div className="mx-auto mt-10 max-w-4xl rounded-[2rem] border border-sky-100 bg-gradient-to-br from-sky-50 via-white to-rose-50 p-6 shadow-xl shadow-sky-100/35 sm:p-8">
-            <h2 className="text-3xl font-bold tracking-tight text-slate-950">
-              Mai puțin stres. Mai multă claritate.
-            </h2>
+          <div className="mx-auto mt-10 max-w-5xl overflow-hidden rounded-[2rem] border border-slate-100 bg-white shadow-xl shadow-slate-100/80">
+            <div className="grid gap-0 lg:grid-cols-[0.9fr_1.1fr]">
+              <div className="bg-gradient-to-br from-sky-50 via-white to-rose-50 p-6 sm:p-8">
+                <p className="text-sm font-bold uppercase text-emerald-700">
+                  Repere pentru fiecare zi
+                </p>
+                <h2 className="mt-3 text-3xl font-bold tracking-tight text-slate-950">
+                  Mai puțin stres. Mai multă claritate.
+                </h2>
+                <p className="mt-4 text-base leading-7 text-slate-600">
+                  Fiecare copil este diferit. Aici găsești repere care te ajută
+                  să te adaptezi, nu reguli rigide.
+                </p>
+              </div>
 
-            <div className="mt-6 grid gap-3 sm:grid-cols-2">
-              {benefitPoints.map((benefit) => (
-                <div
-                  key={benefit}
-                  className="flex items-start gap-3 rounded-2xl border border-white/80 bg-white/75 px-4 py-3 text-sm font-semibold leading-6 text-slate-700 shadow-sm"
-                >
-                  <span className="mt-0.5 text-emerald-600">✔</span>
-                  <span>{benefit}</span>
-                </div>
-              ))}
+              <div className="grid gap-3 bg-white p-4 sm:grid-cols-2 sm:p-6">
+                {benefitPoints.map((benefit) => (
+                  <div
+                    key={benefit}
+                    className="flex min-h-24 items-start gap-4 rounded-2xl border border-slate-100 bg-slate-50/70 p-4 shadow-sm transition duration-200 hover:-translate-y-0.5 hover:border-emerald-100 hover:bg-white hover:shadow-md"
+                  >
+                    <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-emerald-50 text-sm font-black text-emerald-700 ring-1 ring-emerald-100">
+                      ✓
+                    </span>
+                    <span className="pt-1 text-sm font-bold leading-6 text-slate-800">
+                      {benefit}
+                    </span>
+                  </div>
+                ))}
+              </div>
             </div>
-
-            <p className="mt-5 text-sm leading-6 text-slate-600">
-              Fiecare copil este diferit. Aici găsești repere care te ajută să
-              te adaptezi, nu reguli rigide.
-            </p>
           </div>
         </div>
       </section>
