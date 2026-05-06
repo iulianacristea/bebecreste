@@ -259,7 +259,8 @@ export function SleepCalculator() {
   ) {
     const recommendedNapCount = getRecommendedNapCount(rule, count);
     const wakeWindows = getScheduleWakeWindows(rule, recommendedNapCount);
-    const protectsWakeWindow = rule.maximumWakeWindowHours <= 4;
+    const protectsWakeWindow =
+      count === "not-sure" && rule.maximumWakeWindowHours <= 4;
 
     const schedule: SleepScheduleItem[] = [
       {
@@ -863,7 +864,10 @@ export function SleepCalculator() {
       nextSleepInterval,
       nextSleepReminderAt: minimumNextSleep.getTime(),
       bedtime: bedtimeInterval,
-      napRecommendation: sleepRule.napCountRecommendation,
+      napRecommendation:
+        napCount === "not-sure"
+          ? sleepRule.napCountRecommendation
+          : getNapLabel(napCount),
       totalSleepRecommendation: sleepRule.totalSleepRecommendation,
       daySleepRecommendation: sleepRule.daySleepRecommendation,
       nightSleepRecommendation: sleepRule.nightSleepRecommendation,
