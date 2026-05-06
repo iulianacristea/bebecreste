@@ -890,7 +890,7 @@ export function SleepCalculator() {
       className="grid gap-6 md:grid-cols-2 md:items-start"
     >
       <form
-        className="rounded-[2rem] border border-white/80 bg-white/85 p-5 shadow-2xl shadow-rose-200/35 backdrop-blur sm:p-7"
+        className="rounded-[2rem] border border-slate-100 bg-white p-5 shadow-xl shadow-slate-100/80 sm:p-7"
         onSubmit={(event) => {
           event.preventDefault();
           calculateSleep();
@@ -908,7 +908,7 @@ export function SleepCalculator() {
         </div>
 
         <div className="grid gap-4">
-          <div className="rounded-[1.5rem] border border-sky-100 bg-sky-50/60 p-4 sm:col-span-2">
+          <div className="rounded-[1.5rem] border border-sky-100 bg-sky-50/50 p-4 sm:col-span-2">
             <div>
               <div>
                 <p className="text-xs font-semibold uppercase text-sky-700">
@@ -1078,7 +1078,7 @@ export function SleepCalculator() {
       <div className="space-y-5 md:sticky md:top-28">
         <section
           aria-live="polite"
-          className="rounded-[2rem] border border-white/80 bg-white/85 p-5 shadow-2xl shadow-sky-100/45 backdrop-blur transition-all duration-300 sm:p-7"
+          className="rounded-[2rem] border border-slate-100 bg-white p-5 shadow-xl shadow-slate-100/80 transition-all duration-300 sm:p-7"
         >
           <div>
             <p className="text-sm font-semibold uppercase text-emerald-700">
@@ -1227,54 +1227,38 @@ export function SleepCalculator() {
               </p>
             </div>
           ) : (
-            <div className="mt-5 rounded-[1.5rem] border border-dashed border-sky-200 bg-sky-50/60 p-5">
-              <p className="text-lg font-bold text-slate-950">
-                Rezultatul va apărea aici.
+            <div className="mt-5 rounded-[1.5rem] border border-sky-100 bg-sky-50/70 p-5">
+              <p className="text-sm font-semibold uppercase text-sky-700">
+                Preview orientativ
               </p>
-              <p className="mt-2 text-sm leading-6 text-slate-600">
-                Completează datele copilului și apasă pe Calculează pentru a
-                vedea fereastra de somn, ora de culcare și explicația.
+              <p className="mt-2 text-base leading-7 text-slate-600">
+                Completează datele copilului și aici vei vedea un reper clar
+                pentru următorul somn.
               </p>
+
+              <div className="mt-5 grid gap-3">
+                {[
+                  ["Următorul somn", "ex: 10:00 - 11:00"],
+                  ["Ora de culcare", "ex: 19:00 - 20:00"],
+                  ["Fereastră de veghe", "adaptată vârstei copilului"],
+                ].map(([label, text]) => (
+                  <div
+                    key={label}
+                    className="rounded-2xl bg-white/85 p-4 shadow-sm ring-1 ring-white"
+                  >
+                    <p className="text-xs font-bold uppercase text-slate-500">
+                      {label}
+                    </p>
+                    <p className="mt-1 text-sm font-semibold leading-6 text-slate-700">
+                      {text}
+                    </p>
+                  </div>
+                ))}
+              </div>
             </div>
           )}
         </section>
 
-        {sleepHistory.length > 0 && (
-          <section className="rounded-[1.5rem] border border-slate-100 bg-white/75 p-4 shadow-sm">
-            <div>
-              <p className="text-sm font-semibold uppercase text-slate-500">
-                Istoric recent
-              </p>
-              <h3 className="mt-1 text-lg font-bold text-slate-950">
-                Ultimele 3 calcule
-              </h3>
-            </div>
-
-            <div className="mt-4 grid gap-3">
-              {sleepHistory.map((item) => (
-                <article
-                  key={item.id}
-                  className="rounded-2xl bg-slate-50/80 p-4 ring-1 ring-slate-100"
-                >
-                  <div className="flex flex-col gap-2 sm:flex-row sm:items-start sm:justify-between">
-                    <div>
-                      <p className="text-sm font-bold text-slate-950">
-                        {item.nextSleepInterval}
-                      </p>
-                      <p className="mt-1 text-sm leading-6 text-slate-600">
-                        {item.ageLabel} • trezire {item.wakeTime} •{" "}
-                        {item.napLabel}
-                      </p>
-                    </div>
-                    <p className="text-sm font-semibold text-slate-500">
-                      Culcare {item.bedtime}
-                    </p>
-                  </div>
-                </article>
-              ))}
-            </div>
-          </section>
-        )}
       </div>
     </div>
   );

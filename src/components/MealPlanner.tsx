@@ -650,11 +650,35 @@ export function MealPlanner() {
 
           </div>
         ) : (
-          <div className="mt-6 rounded-[1.5rem] border border-dashed border-sky-200 bg-sky-50/60 p-5">
-            <p className="text-base leading-7 text-slate-600">
-              Completează vârsta, eventualele alergii și ce alimente ai la
-              îndemână. Plannerul îți va sugera idei simple pentru mesele zilei.
+          <div className="mt-6 rounded-[1.5rem] border border-sky-100 bg-sky-50/70 p-5">
+            <p className="text-sm font-semibold uppercase text-sky-700">
+              Preview orientativ
             </p>
+            <p className="mt-2 text-base leading-7 text-slate-600">
+              Completează formularul și aici vei vedea o zi de mese structurată
+              simplu.
+            </p>
+
+            <div className="mt-5 grid gap-3">
+              {[
+                ["Mic dejun", "ex: terci cald, iaurt sau fruct potrivit"],
+                ["Prânz", "ex: legume moi cu proteină adaptată vârstei"],
+                ["Cină", "ex: combinație ușoară, deja acceptată"],
+                ["Gustare", "ex: fruct, iaurt sau bastonașe moi"],
+              ].map(([label, text]) => (
+                <div
+                  key={label}
+                  className="rounded-2xl bg-white/85 p-4 shadow-sm ring-1 ring-white"
+                >
+                  <p className="text-xs font-bold uppercase text-slate-500">
+                    {label}
+                  </p>
+                  <p className="mt-1 text-sm leading-6 text-slate-500">
+                    {text}
+                  </p>
+                </div>
+              ))}
+            </div>
           </div>
         )}
 
