@@ -239,28 +239,29 @@ function ArticleCta({
 
   return (
     <div
-      className={`rounded-[1.5rem] border border-rose-100 bg-white/90 p-6 shadow-xl shadow-rose-200/25 ${
+      className={`relative overflow-hidden rounded-[1.5rem] border border-slate-100 bg-white p-5 shadow-lg shadow-slate-100/80 ${
         isEndPlacement
-          ? "mt-8 sm:flex sm:items-center sm:justify-between sm:gap-6 sm:p-8"
-          : "my-9 sm:p-7"
+          ? "mt-8 sm:p-6"
+          : "my-9 sm:p-6"
       }`}
     >
-      <div>
-        <p className="text-sm font-bold uppercase text-rose-700">
-          Un ajutor blând, când îți prinde bine
-        </p>
-        <p className="mt-2 text-lg font-bold leading-8 text-slate-950">
-          {cta.text}
-        </p>
+      <div className="absolute inset-y-0 left-0 w-1.5 bg-gradient-to-b from-rose-300 via-sky-200 to-emerald-200" />
+      <div className="flex flex-col gap-5 pl-3 sm:flex-row sm:items-center sm:justify-between">
+        <div className="max-w-2xl">
+          <p className="text-xs font-bold uppercase tracking-normal text-rose-700">
+            Un reper util
+          </p>
+          <p className="mt-2 text-base font-semibold leading-7 text-slate-800 sm:text-lg">
+            {cta.text}
+          </p>
+        </div>
+        <Link
+          href={cta.href}
+          className="inline-flex w-full shrink-0 justify-center rounded-full bg-slate-950 px-5 py-3 text-sm font-semibold text-white shadow-md shadow-slate-900/10 transition duration-200 hover:-translate-y-0.5 hover:bg-slate-800 hover:shadow-lg hover:shadow-slate-900/15 focus:outline-none focus:ring-4 focus:ring-slate-300 active:translate-y-0 sm:w-auto"
+        >
+          {cta.buttonText}
+        </Link>
       </div>
-      <Link
-        href={cta.href}
-        className={`mt-5 inline-flex shrink-0 rounded-full bg-slate-950 px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-slate-900/15 transition duration-200 hover:-translate-y-0.5 hover:bg-slate-800 hover:shadow-xl hover:shadow-slate-900/20 focus:outline-none focus:ring-4 focus:ring-slate-300 active:translate-y-0 ${
-          isEndPlacement ? "sm:mt-0" : ""
-        }`}
-      >
-        {cta.buttonText}
-      </Link>
     </div>
   );
 }
