@@ -45,7 +45,7 @@ export default function TermeniSiConditiiPage() {
               </p>
             </section>
 
-            <section>
+            <section id="disclaimer-medical" className="scroll-mt-28">
               <h2 className="text-2xl font-bold text-slate-950">
                 3. Disclaimer medical
               </h2>

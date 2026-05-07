@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 
@@ -18,53 +18,84 @@ const navigationLinks = [
 
 export function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [hasScrolled, setHasScrolled] = useState(false);
 
   const closeMenu = () => setIsMenuOpen(false);
 
+  useEffect(() => {
+    const handleScroll = () => {
+      setHasScrolled(window.scrollY > 12);
+    };
+
+    handleScroll();
+    window.addEventListener("scroll", handleScroll, { passive: true });
+
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return (
-    <header className="sticky top-0 z-50 px-4 pt-4 sm:px-8 lg:px-10">
-      <nav className="mx-auto max-w-7xl rounded-[1.75rem] border border-white/80 bg-white/90 px-4 py-3 shadow-xl shadow-rose-100/45 backdrop-blur-xl md:rounded-full md:px-5">
+    <header
+      className={`sticky top-0 z-50 px-4 sm:px-8 lg:px-10 transition-all duration-500 ease-out ${
+        hasScrolled ? "pt-2" : "pt-4"
+      }`}
+    >
+      <nav
+        className={`mx-auto max-w-7xl rounded-[1.9rem] border px-4 shadow-[0_18px_55px_rgba(15,23,42,0.08)] backdrop-blur-2xl transition-all duration-500 ease-out md:rounded-full md:px-6 ${
+          hasScrolled
+            ? "border-white/70 bg-white/85 py-2.5 shadow-[0_14px_40px_rgba(15,23,42,0.07)]"
+            : "border-white/75 bg-white/76 py-4 shadow-[0_22px_70px_rgba(244,114,182,0.13)]"
+        }`}
+      >
         <div className="flex items-center justify-between gap-4">
           <Link
             href="/"
             onClick={closeMenu}
-            className="flex items-center rounded-full focus:outline-none focus:ring-4 focus:ring-rose-100"
+            className="flex items-center rounded-full transition duration-300 hover:opacity-95 focus:outline-none focus:ring-4 focus:ring-rose-100"
             aria-label="BebeCrește acasă"
           >
-            <span className="relative block h-12 w-44 md:h-14 md:w-52">
+            <span
+              className={`relative block transition-all duration-500 ease-out ${
+                hasScrolled
+                  ? "h-12 w-44 md:h-[3.25rem] md:w-52"
+                  : "h-14 w-48 md:h-16 md:w-56"
+              }`}
+            >
               <Image
                 src="/bebecreste-logo.webp"
                 alt="BebeCrește"
                 fill
                 priority
-                sizes="(min-width: 768px) 208px, 176px"
+                sizes="(min-width: 768px) 224px, 192px"
                 className="object-contain object-left"
               />
             </span>
           </Link>
 
-          <div className="hidden items-center rounded-full bg-slate-50/80 p-1 md:flex">
+          <div className="hidden items-center gap-1 rounded-full bg-white/45 p-1.5 ring-1 ring-white/70 md:flex">
             {navigationLinks.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
-                className="rounded-full px-4 py-2 text-sm font-semibold text-slate-600 transition duration-200 hover:bg-white hover:text-slate-950 hover:shadow-sm focus:outline-none focus:ring-4 focus:ring-rose-100"
+                className="group relative rounded-full px-4 py-2.5 text-sm font-semibold text-slate-600 transition duration-300 hover:bg-white/55 hover:text-slate-950 focus:outline-none focus:ring-4 focus:ring-rose-100 lg:px-5"
               >
-                {link.label}
+                <span className="relative">
+                  {link.label}
+                  <span className="absolute -bottom-1 left-0 h-px w-full origin-left scale-x-0 rounded-full bg-gradient-to-r from-rose-300 via-sky-300 to-emerald-300 transition-transform duration-300 ease-out group-hover:scale-x-100" />
+                </span>
               </Link>
             ))}
           </div>
 
           <Link
             href="/calculator-somn"
-            className="hidden rounded-full bg-slate-950 px-5 py-3 text-sm font-semibold text-white shadow-lg shadow-slate-900/15 transition duration-200 hover:-translate-y-0.5 hover:bg-slate-800 hover:shadow-xl focus:outline-none focus:ring-4 focus:ring-slate-300 active:translate-y-0 md:inline-flex"
+            className="hidden rounded-full bg-gradient-to-r from-slate-950 to-slate-800 px-5 py-3 text-sm font-semibold text-white shadow-[0_14px_32px_rgba(15,23,42,0.18)] transition duration-300 hover:-translate-y-0.5 hover:shadow-[0_18px_42px_rgba(15,23,42,0.22)] focus:outline-none focus:ring-4 focus:ring-slate-300 active:translate-y-0 md:inline-flex lg:px-6"
           >
             Calculează somnul
           </Link>
 
           <button
             type="button"
-            className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-rose-100 bg-white/90 text-slate-950 shadow-sm transition duration-200 hover:bg-rose-50 focus:outline-none focus:ring-4 focus:ring-rose-100 md:hidden"
+            className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-white/80 bg-white/80 text-slate-950 shadow-sm shadow-rose-100/50 backdrop-blur transition duration-300 hover:bg-rose-50 focus:outline-none focus:ring-4 focus:ring-rose-100 md:hidden"
             aria-label={isMenuOpen ? "Închide meniul" : "Deschide meniul"}
             aria-expanded={isMenuOpen}
             onClick={() => setIsMenuOpen((currentValue) => !currentValue)}
@@ -93,14 +124,14 @@ export function Navbar() {
             }`}
         >
           <div className="overflow-hidden">
-            <div className="mt-4 border-t border-rose-100 pt-4">
+            <div className="mt-4 border-t border-rose-100/70 pt-4">
               <div className="flex flex-col gap-2">
                 {navigationLinks.map((link) => (
                   <Link
                     key={link.href}
                     href={link.href}
                     onClick={closeMenu}
-                    className="rounded-2xl px-4 py-3 text-sm font-semibold text-slate-700 transition duration-200 hover:bg-rose-50 hover:text-slate-950 focus:outline-none focus:ring-4 focus:ring-rose-100"
+                    className="rounded-2xl px-4 py-3 text-sm font-semibold text-slate-700 transition duration-300 hover:bg-white/70 hover:text-slate-950 hover:shadow-sm focus:outline-none focus:ring-4 focus:ring-rose-100"
                   >
                     {link.label}
                   </Link>
@@ -110,7 +141,7 @@ export function Navbar() {
               <Link
                 href="/calculator-somn"
                 onClick={closeMenu}
-                className="mt-3 inline-flex w-full justify-center rounded-full bg-slate-950 px-5 py-3 text-sm font-semibold text-white shadow-lg shadow-slate-900/15 transition duration-200 hover:bg-slate-800 focus:outline-none focus:ring-4 focus:ring-slate-300"
+                className="mt-3 inline-flex w-full justify-center rounded-full bg-gradient-to-r from-slate-950 to-slate-800 px-5 py-3.5 text-sm font-semibold text-white shadow-lg shadow-slate-900/15 transition duration-300 hover:-translate-y-0.5 hover:shadow-xl focus:outline-none focus:ring-4 focus:ring-slate-300 active:translate-y-0"
               >
                 Calculează somnul
               </Link>

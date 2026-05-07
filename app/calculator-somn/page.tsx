@@ -67,18 +67,57 @@ const sleepTimeline = [
 
 const howItWorksSteps = [
   {
-    title: "Introduci vârsta",
-    text: "Anii și lunile ajută la alegerea reperelor potrivite etapei copilului.",
+    title: "Completezi datele copilului",
+    text: "Introduci vârsta, ora trezirii și numărul de somnuri.",
+    accent: "bg-sky-50 text-sky-700 ring-sky-100",
+    icon: "D",
   },
   {
-    title: "Adaugi ora trezirii",
-    text: "Trezirea de dimineață este punctul de pornire pentru ziua de somn.",
+    title: "Primești recomandarea",
+    text: "Calculatorul estimează următoarea fereastră de somn și ora de culcare.",
+    accent: "bg-rose-50 text-rose-700 ring-rose-100",
+    icon: "R",
   },
   {
-    title: "Primești o recomandare",
-    text: "Vezi fereastra de somn, ora de culcare și un program orientativ.",
+    title: "Adaptezi după copil",
+    text: "Folosești recomandarea ca reper și ajustezi după semnele copilului.",
+    accent: "bg-emerald-50 text-emerald-700 ring-emerald-100",
+    icon: "A",
   },
 ];
+
+const tiredSigns = [
+  {
+    title: "Se freacă la ochi",
+    icon: "eyes",
+    accent: "from-sky-50 to-white text-sky-700 ring-sky-100",
+  },
+  {
+    title: "Devine agitat",
+    icon: "waves",
+    accent: "from-rose-50 to-white text-rose-700 ring-rose-100",
+  },
+  {
+    title: "Cască des",
+    icon: "moon",
+    accent: "from-violet-50 to-white text-violet-700 ring-violet-100",
+  },
+  {
+    title: "Își pierde interesul pentru joacă",
+    icon: "toy",
+    accent: "from-amber-50 to-white text-amber-700 ring-amber-100",
+  },
+  {
+    title: "Devine mai sensibil",
+    icon: "heart",
+    accent: "from-pink-50 to-white text-pink-700 ring-pink-100",
+  },
+  {
+    title: "Se liniștește greu",
+    icon: "cloud",
+    accent: "from-emerald-50 to-white text-emerald-700 ring-emerald-100",
+  },
+] as const;
 
 const faqItems = [
   {
@@ -102,6 +141,97 @@ const faqItems = [
       "Da, calculatorul poate oferi repere orientative și pentru copii mici, inclusiv când au un singur somn de zi sau sunt în tranziție.",
   },
 ];
+
+function TiredSignIcon({ type }: { type: (typeof tiredSigns)[number]["icon"] }) {
+  const iconClass = "h-7 w-7";
+
+  if (type === "eyes") {
+    return (
+      <svg aria-hidden="true" viewBox="0 0 24 24" className={iconClass} fill="none">
+        <path
+          d="M4 12s2.8-4 8-4 8 4 8 4-2.8 4-8 4-8-4-8-4Z"
+          stroke="currentColor"
+          strokeWidth="1.7"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
+        <path
+          d="M12 10.2a1.8 1.8 0 1 1 0 3.6 1.8 1.8 0 0 1 0-3.6Z"
+          stroke="currentColor"
+          strokeWidth="1.7"
+        />
+      </svg>
+    );
+  }
+
+  if (type === "waves") {
+    return (
+      <svg aria-hidden="true" viewBox="0 0 24 24" className={iconClass} fill="none">
+        <path
+          d="M4 8c2 0 2-2 4-2s2 2 4 2 2-2 4-2 2 2 4 2M4 14c2 0 2-2 4-2s2 2 4 2 2-2 4-2 2 2 4 2"
+          stroke="currentColor"
+          strokeWidth="1.7"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
+      </svg>
+    );
+  }
+
+  if (type === "moon") {
+    return (
+      <svg aria-hidden="true" viewBox="0 0 24 24" className={iconClass} fill="none">
+        <path
+          d="M19.2 15.7A7.2 7.2 0 0 1 8.3 4.8 7.8 7.8 0 1 0 19.2 15.7Z"
+          stroke="currentColor"
+          strokeWidth="1.7"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
+      </svg>
+    );
+  }
+
+  if (type === "toy") {
+    return (
+      <svg aria-hidden="true" viewBox="0 0 24 24" className={iconClass} fill="none">
+        <path
+          d="M8 10h8M12 6v8M6.5 4h11A2.5 2.5 0 0 1 20 6.5v9A4.5 4.5 0 0 1 15.5 20h-7A4.5 4.5 0 0 1 4 15.5v-9A2.5 2.5 0 0 1 6.5 4Z"
+          stroke="currentColor"
+          strokeWidth="1.7"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
+      </svg>
+    );
+  }
+
+  if (type === "heart") {
+    return (
+      <svg aria-hidden="true" viewBox="0 0 24 24" className={iconClass} fill="none">
+        <path
+          d="M20 8.9c0 5.1-8 9.1-8 9.1s-8-4-8-9.1A4.1 4.1 0 0 1 11 6a4.1 4.1 0 0 1 7 2.9Z"
+          stroke="currentColor"
+          strokeWidth="1.7"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
+      </svg>
+    );
+  }
+
+  return (
+    <svg aria-hidden="true" viewBox="0 0 24 24" className={iconClass} fill="none">
+      <path
+        d="M7.5 17.5h9a4 4 0 0 0 .4-8A5.5 5.5 0 0 0 6.2 8.2 4.7 4.7 0 0 0 7.5 17.5Z"
+        stroke="currentColor"
+        strokeWidth="1.7"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  );
+}
 
 export default function CalculatorSomnPage() {
   const faqJsonLd = {
@@ -185,6 +315,73 @@ export default function CalculatorSomnPage() {
         </div>
       </section>
 
+      <section
+        aria-label="De ce părinții folosesc calculatorul de somn"
+        className="bg-white px-5 py-8 sm:px-8 lg:px-10"
+      >
+        <div className="mx-auto grid max-w-7xl gap-3 md:grid-cols-4">
+          {[
+            "Folosit zilnic de părinți cu copii între 0 și 3 ani",
+            "Recomandări orientative și ușor de adaptat",
+            "Fără cont și gratuit",
+            "Creat de un părinte pentru alți părinți",
+          ].map((item) => (
+            <div
+              key={item}
+              className="flex items-center gap-3 rounded-2xl bg-white/70 px-5 py-4 shadow-sm shadow-slate-100 ring-1 ring-slate-100/80 backdrop-blur transition duration-200 hover:-translate-y-0.5 hover:bg-white hover:shadow-md hover:shadow-sky-100/60 md:rounded-full"
+            >
+              <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-emerald-50 text-sm font-black text-emerald-600 ring-1 ring-emerald-100">
+                ✓
+              </span>
+              <p className="text-sm font-semibold leading-6 text-slate-700">
+                {item}
+              </p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <section className="bg-white px-5 py-12 sm:px-8 lg:px-10">
+        <div className="mx-auto max-w-7xl rounded-[2rem] bg-[linear-gradient(135deg,_#fffdfb_0%,_#f7fbff_52%,_#fff7f1_100%)] p-6 shadow-xl shadow-slate-100/80 sm:p-8 lg:p-10">
+          <div className="mx-auto max-w-3xl text-center">
+            <p className="text-sm font-bold uppercase text-sky-700">
+              Cum funcționează
+            </p>
+            <h2 className="mt-3 text-3xl font-bold tracking-tight text-slate-950 sm:text-4xl">
+              Primești un reper orientativ în doar 3 pași
+            </h2>
+            <p className="mt-4 text-base leading-7 text-slate-600">
+              Fără reguli rigide sau promisiuni perfecte. Doar un punct de
+              pornire mai clar.
+            </p>
+          </div>
+
+          <div className="mt-8 grid gap-4 md:grid-cols-3">
+            {howItWorksSteps.map((step, index) => (
+              <div
+                key={step.title}
+                className="group rounded-3xl border border-slate-100 bg-white p-6 shadow-lg shadow-slate-100/70 transition duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-sky-100/60"
+              >
+                <div
+                  className={`flex h-12 w-12 items-center justify-center rounded-2xl text-sm font-black ring-1 ${step.accent}`}
+                >
+                  {step.icon}
+                </div>
+                <p className="mt-6 text-sm font-bold uppercase text-slate-400">
+                  Pasul {index + 1}
+                </p>
+                <h3 className="mt-2 text-xl font-bold text-slate-950">
+                  {step.title}
+                </h3>
+                <p className="mt-3 text-base leading-7 text-slate-600">
+                  {step.text}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       <section className="bg-white px-5 py-12 sm:px-8 lg:px-10">
         <div className="mx-auto max-w-7xl">
           <div className="mb-8 max-w-3xl">
@@ -200,6 +397,45 @@ export default function CalculatorSomnPage() {
             </p>
           </div>
           <SleepCalculator />
+        </div>
+      </section>
+
+      <section className="bg-white px-5 py-12 sm:px-8 lg:px-10">
+        <div className="mx-auto max-w-7xl rounded-[2rem] bg-[linear-gradient(135deg,_#fff8f4_0%,_#f8fbff_48%,_#fffaf5_100%)] p-6 shadow-xl shadow-rose-100/35 sm:p-8 lg:p-10">
+          <div className="mx-auto max-w-3xl text-center">
+            <p className="text-sm font-bold uppercase text-rose-700">
+              Semne că bebe ar putea fi obosit
+            </p>
+            <h2 className="mt-3 text-3xl font-bold tracking-tight text-slate-950 sm:text-4xl">
+              Semne că bebe ar putea avea nevoie de somn
+            </h2>
+            <p className="mt-4 text-base leading-7 text-slate-600">
+              Fiecare copil este diferit, dar aceste semne apar frecvent
+              înainte de somn.
+            </p>
+          </div>
+
+          <div className="mt-9 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {tiredSigns.map((sign) => (
+              <div
+                key={sign.title}
+                className="group rounded-3xl border border-white/80 bg-white p-6 shadow-lg shadow-slate-100/70 ring-1 ring-slate-100/70 transition duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-sky-100/50"
+              >
+                <div
+                  className={`flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br ring-1 transition duration-300 group-hover:scale-105 ${sign.accent}`}
+                >
+                  <TiredSignIcon type={sign.icon} />
+                </div>
+                <h3 className="mt-6 text-xl font-bold tracking-tight text-slate-950">
+                  {sign.title}
+                </h3>
+                <p className="mt-3 text-sm leading-6 text-slate-600">
+                  Poate fi un semnal blând că ritmul zilei se apropie de un
+                  moment de odihnă.
+                </p>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
@@ -273,35 +509,6 @@ export default function CalculatorSomnPage() {
               îngrijorări persistente legate de somn, respirație, creștere sau
               sănătate, discută cu pediatrul.
             </p>
-          </div>
-        </div>
-      </section>
-
-      <section className="bg-[#fff7f1] px-5 py-12 sm:px-8 lg:px-10">
-        <div className="mx-auto max-w-7xl">
-          <div className="max-w-3xl">
-            <p className="text-sm font-bold uppercase text-emerald-700">
-              Cum funcționează
-            </p>
-            <h2 className="mt-3 text-3xl font-bold tracking-tight text-slate-950">
-              Completezi câteva detalii și primești un reper orientativ.
-            </h2>
-          </div>
-
-          <div className="mt-8 grid gap-4 md:grid-cols-3">
-            {howItWorksSteps.map((step, index) => (
-              <div key={step.title} className="rounded-[1.5rem] bg-white p-5 shadow-lg shadow-slate-100/70">
-                <span className="inline-flex h-9 w-9 items-center justify-center rounded-full bg-emerald-50 text-sm font-black text-emerald-700">
-                  {index + 1}
-                </span>
-                <h3 className="mt-4 text-lg font-bold text-slate-950">
-                  {step.title}
-                </h3>
-                <p className="mt-2 text-sm leading-6 text-slate-600">
-                  {step.text}
-                </p>
-              </div>
-            ))}
           </div>
         </div>
       </section>

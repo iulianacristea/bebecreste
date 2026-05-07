@@ -1297,33 +1297,52 @@ export function SleepCalculator() {
               </p>
             </div>
           ) : (
-            <div className="mt-5 rounded-[1.5rem] border border-sky-100 bg-sky-50/70 p-5">
-              <p className="text-sm font-semibold uppercase text-sky-700">
-                Preview orientativ
-              </p>
-              <p className="mt-2 text-base leading-7 text-slate-600">
-                Completează datele copilului și aici vei vedea un reper clar
-                pentru următorul somn.
-              </p>
-
-              <div className="mt-5 grid gap-3">
-                {[
-                  ["Următorul somn", "ex: 10:00 - 11:00"],
-                  ["Ora de culcare", "ex: 19:00 - 20:00"],
-                  ["Fereastră de veghe", "adaptată vârstei copilului"],
-                ].map(([label, text]) => (
-                  <div
-                    key={label}
-                    className="rounded-2xl bg-white/85 p-4 shadow-sm ring-1 ring-white"
+            <div className="mt-5 animate-[resultFadeIn_0.5s_ease-out] rounded-[1.75rem] border border-dashed border-sky-200/80 bg-gradient-to-br from-sky-50/80 via-white to-rose-50/70 p-6 shadow-lg shadow-sky-100/45 sm:p-8">
+              <div className="mx-auto flex max-w-md flex-col items-center text-center">
+                <div className="relative flex h-16 w-16 animate-[resultFloat_4.5s_ease-in-out_infinite] items-center justify-center rounded-3xl bg-white shadow-md shadow-sky-100 ring-1 ring-sky-100">
+                  <span className="absolute right-3 top-3 h-2 w-2 rounded-full bg-rose-200" />
+                  <svg
+                    aria-hidden="true"
+                    viewBox="0 0 24 24"
+                    className="h-8 w-8 text-sky-700"
+                    fill="none"
                   >
-                    <p className="text-xs font-bold uppercase text-slate-500">
-                      {label}
-                    </p>
-                    <p className="mt-1 text-sm font-semibold leading-6 text-slate-700">
-                      {text}
-                    </p>
-                  </div>
-                ))}
+                    <path
+                      d="M19.25 15.65A7.4 7.4 0 0 1 8.35 4.75 7.9 7.9 0 1 0 19.25 15.65Z"
+                      stroke="currentColor"
+                      strokeWidth="1.7"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
+                  </svg>
+                </div>
+
+                <h4 className="mt-6 text-2xl font-bold tracking-tight text-slate-950">
+                  Recomandarea va apărea aici
+                </h4>
+                <p className="mt-4 text-base leading-7 text-slate-600">
+                  Completează datele copilului și vei primi:
+                </p>
+
+                <ul className="mt-5 grid w-full gap-3 text-left">
+                  {[
+                    "următoarea fereastră de somn",
+                    "ora orientativă de culcare",
+                    "explicații simple și ușor de urmărit",
+                  ].map((item) => (
+                    <li
+                      key={item}
+                      className="flex items-start gap-3 rounded-2xl bg-white/80 px-4 py-3 text-sm font-semibold leading-6 text-slate-700 shadow-sm shadow-sky-100/45 ring-1 ring-white/80"
+                    >
+                      <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-sky-500" />
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </ul>
+
+                <p className="mt-6 max-w-sm text-sm leading-6 text-slate-500">
+                  Fiecare copil este diferit. Recomandările sunt orientative.
+                </p>
               </div>
             </div>
           )}
