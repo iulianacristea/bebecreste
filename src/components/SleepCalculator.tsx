@@ -238,7 +238,27 @@ export function SleepCalculator() {
     return rule.recommendedNapCount;
   }
 
-  function getScheduleWakeWindows(rule: SleepRule, count: number) {
+  function getScheduleWakeWindows(
+    rule: SleepRule,
+    count: number,
+    wakeDate?: Date,
+    bedtimeStart?: Date,
+    hasExplicitNapCount = false
+  ) {
+    if (hasExplicitNapCount && wakeDate && bedtimeStart && count > 0) {
+      const dayLengthHours =
+        (bedtimeStart.getTime() - wakeDate.getTime()) / (60 * 60 * 1000);
+      const totalNapHours = rule.napDurationHours * count;
+      const distributedWakeWindow =
+        (dayLengthHours - totalNapHours) / (count + 1);
+
+      if (Number.isFinite(distributedWakeWindow) && distributedWakeWindow > 0) {
+        return Array.from({ length: count }, () =>
+          Math.max(distributedWakeWindow, rule.minimumWakeWindowHours)
+        );
+      }
+    }
+
     return Array.from({ length: count }, (_, index) => {
       const progress = count <= 1 ? 1 : index / (count - 1);
       const wakeWindow =
@@ -258,7 +278,14 @@ export function SleepCalculator() {
     count: NapCount
   ) {
     const recommendedNapCount = getRecommendedNapCount(rule, count);
-    const wakeWindows = getScheduleWakeWindows(rule, recommendedNapCount);
+    const hasExplicitNapCount = count !== "not-sure";
+    const wakeWindows = getScheduleWakeWindows(
+      rule,
+      recommendedNapCount,
+      wakeDate,
+      bedtimeStart,
+      hasExplicitNapCount
+    );
     const protectsWakeWindow =
       count === "not-sure" && rule.maximumWakeWindowHours <= 4;
 
@@ -281,6 +308,7 @@ export function SleepCalculator() {
       const napDuration = isProtectiveNap
         ? Math.min(rule.napDurationHours, 0.75)
         : rule.napDurationHours;
+      const isSingleNapDay = recommendedNapCount === 1;
 
       schedule.push({
         label: `Somn ${index + 1}`,
@@ -288,6 +316,10 @@ export function SleepCalculator() {
         description:
           isProtectiveNap
             ? "Somn scurt adăugat ca să nu depășească perioada maximă de veghe."
+            : isSingleNapDay
+            ? "Somnul de zi poate dura aproximativ 2-3 ore, în funcție de copil."
+            : hasExplicitNapCount
+            ? "Ora este distribuită ca să păstreze ziua echilibrată până la culcare."
             : index === wakeWindows.length - 1
             ? "Ultimul somn poate fi mai scurt, ca seara să rămână calmă."
             : "Folosește ora ca reper și urmărește semnele de oboseală.",
@@ -787,6 +819,17 @@ export function SleepCalculator() {
     }
   }
 
+  function handleWakeTimeChange(value: string) {
+    const digitsOnly = value.replace(/\D/g, "").slice(0, 4);
+
+    if (digitsOnly.length <= 2) {
+      setWakeTime(digitsOnly);
+      return;
+    }
+
+    setWakeTime(`${digitsOnly.slice(0, 2)}:${digitsOnly.slice(2)}`);
+  }
+
   function calculateSleep() {
     const hasYears = ageYears.trim() !== "";
     const hasMonths = ageMonths.trim() !== "";
@@ -822,6 +865,12 @@ export function SleepCalculator() {
       return;
     }
 
+    if (!/^([01]\d|2[0-3]):[0-5]\d$/.test(wakeTime)) {
+      setResult(null);
+      setError("Introdu ora trezirii în format 24h, de exemplu 07:00.");
+      return;
+    }
+
     setError("");
 
     const sleepRule = getSleepRule(totalMonths);
@@ -830,19 +879,33 @@ export function SleepCalculator() {
     const wakeDate = new Date();
     wakeDate.setHours(hours, minutes, 0, 0);
 
-    const minimumNextSleep = addHours(
-      wakeDate,
-      sleepRule.minimumWakeWindowHours
-    );
-    const maximumNextSleep = addHours(
-      wakeDate,
-      sleepRule.maximumWakeWindowHours
-    );
-
     const bedtimeStart = new Date();
     bedtimeStart.setHours(sleepRule.bedtimeHour, 0, 0, 0);
     const bedtimeEnd = new Date();
     bedtimeEnd.setHours(sleepRule.bedtimeEndHour, 0, 0, 0);
+    const recommendedNapCount = getRecommendedNapCount(sleepRule, napCount);
+    const hasExplicitNapCount = napCount !== "not-sure";
+    const plannedWakeWindows = getScheduleWakeWindows(
+      sleepRule,
+      recommendedNapCount,
+      wakeDate,
+      bedtimeStart,
+      hasExplicitNapCount
+    );
+    const effectiveMinimumWakeWindow = hasExplicitNapCount
+      ? Math.min(...plannedWakeWindows)
+      : sleepRule.minimumWakeWindowHours;
+    const effectiveMaximumWakeWindow = hasExplicitNapCount
+      ? Math.max(...plannedWakeWindows)
+      : sleepRule.maximumWakeWindowHours;
+    const effectiveMinimumNextSleep = addHours(
+      wakeDate,
+      effectiveMinimumWakeWindow
+    );
+    const effectiveMaximumNextSleep = addHours(
+      wakeDate,
+      effectiveMaximumWakeWindow
+    );
     const schedule = buildDailySchedule(
       wakeDate,
       bedtimeStart,
@@ -851,18 +914,18 @@ export function SleepCalculator() {
       napCount
     );
     const nextSleepInterval =
-      sleepRule.minimumWakeWindowHours === sleepRule.maximumWakeWindowHours
-        ? formatTime(maximumNextSleep)
-        : `${formatTime(minimumNextSleep)} - ${formatTime(maximumNextSleep)}`;
+      effectiveMinimumWakeWindow === effectiveMaximumWakeWindow
+        ? formatTime(effectiveMaximumNextSleep)
+        : `${formatTime(effectiveMinimumNextSleep)} - ${formatTime(effectiveMaximumNextSleep)}`;
     const bedtimeInterval = `${formatTime(bedtimeStart)} - ${formatTime(
       bedtimeEnd
     )}`;
 
     const nextResult: SleepResult = {
-      minimumWakeWindow: formatWakeWindow(sleepRule.minimumWakeWindowHours),
-      maximumWakeWindow: formatWakeWindow(sleepRule.maximumWakeWindowHours),
+      minimumWakeWindow: formatWakeWindow(effectiveMinimumWakeWindow),
+      maximumWakeWindow: formatWakeWindow(effectiveMaximumWakeWindow),
       nextSleepInterval,
-      nextSleepReminderAt: minimumNextSleep.getTime(),
+      nextSleepReminderAt: effectiveMinimumNextSleep.getTime(),
       bedtime: bedtimeInterval,
       napRecommendation:
         napCount === "not-sure"
@@ -953,9 +1016,12 @@ export function SleepCalculator() {
                 </label>
                 <input
                   id="wake-time"
-                  type="time"
+                  type="text"
                   value={wakeTime}
-                  onChange={(e) => setWakeTime(e.target.value)}
+                  onChange={(event) => handleWakeTimeChange(event.target.value)}
+                  inputMode="numeric"
+                  maxLength={5}
+                  placeholder="ex: 07:00"
                   className="w-full rounded-2xl border border-slate-200 bg-white px-4 py-3 text-slate-900 outline-none transition duration-200 hover:border-sky-200 focus:border-sky-300 focus:ring-4 focus:ring-sky-100"
                 />
               </div>
