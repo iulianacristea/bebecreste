@@ -6,9 +6,9 @@ import { Navbar } from "@/src/components/Navbar";
 import { getAllBlogPosts } from "@/src/lib/blogPosts";
 
 export const metadata: Metadata = {
-  title: "Blog parenting | Somn bebe, mese și rutine",
+  title: "Blog BebeCrește | Somn bebe, mese, diversificare și rutine",
   description:
-    "Ghiduri scurte și practice pentru momentele când bebe nu doarme, plus articole despre diversificare mese copil și rutine blânde.",
+    "Articole clare pentru părinți despre somnul bebelușului, mese, diversificare, copil mofturos și rutine blânde în primii ani.",
   keywords: [
     "bebe nu doarme",
     "somn bebe",
@@ -26,10 +26,13 @@ export const metadata: Metadata = {
     canonical: "https://bebecreste.ro/blog",
   },
   openGraph: {
-    title: "Blog parenting | BebeCrește.ro",
+    title: "Blog BebeCrește | Somn bebe, mese și rutine",
     description:
-      "Articole pentru părinți despre somnul bebelușilor, bebe nu doarme, diversificare și rutine zilnice.",
+      "Ghiduri pentru părinți despre somnul bebelușilor, diversificare, mese pentru copii și rutine zilnice.",
     url: "https://bebecreste.ro/blog",
+    siteName: "BebeCrește.ro",
+    locale: "ro_RO",
+    type: "website",
     images: [
       {
         url: "https://bebecreste.ro/blog/6monthbaby.jpeg",
@@ -41,7 +44,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Blog parenting | BebeCrește.ro",
+    title: "Blog BebeCrește | Somn bebe și mese",
     description:
       "Ghiduri scurte pentru când bebe nu doarme, plus mese, diversificare și rutine blânde.",
     images: ["https://bebecreste.ro/blog/6monthbaby.jpeg"],

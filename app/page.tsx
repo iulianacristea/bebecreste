@@ -2,15 +2,16 @@ import Image from "next/image";
 import Link from "next/link";
 import type { Metadata } from "next";
 import { EmailCapture } from "@/src/components/EmailCapture";
+import { FAQAccordion } from "@/src/components/FAQAccordion";
 import { Footer } from "@/src/components/Footer";
 import { Hero } from "@/src/components/Hero";
 import { MobileStickyCta } from "@/src/components/MobileStickyCta";
 import { Navbar } from "@/src/components/Navbar";
 
 export const metadata: Metadata = {
-  title: "Calculator somn copil și planner mese",
+  title: "BebeCrește | Somn bebe, planner mese și rutine pentru părinți",
   description:
-    "Bebe nu doarme sau copilul nu mănâncă? BebeCrește îți oferă repere simple pentru somn, mese și rutine, în mai puțin de 30 de secunde.",
+    "Bebe nu doarme sau mesele sunt greu de organizat? BebeCrește oferă calculator de somn, planner de mese și repere blânde pentru părinți.",
   keywords: [
     "calculator somn copil",
     "calculator somn bebe",
@@ -26,9 +27,9 @@ export const metadata: Metadata = {
     canonical: "https://bebecreste.ro",
   },
   openGraph: {
-    title: "BebeCrește.ro | Calculator somn copil și planner mese",
+    title: "BebeCrește | Somn bebe, mese și rutine pentru părinți",
     description:
-      "Bebe nu doarme? Primești repere simple și clare, adaptate vârstei copilului, fără stres și fără presiune.",
+      "Calculator de somn, planner de mese și ghiduri clare pentru părinți care vor mai multă liniște în rutina copilului.",
     url: "https://bebecreste.ro",
     siteName: "BebeCrește.ro",
     locale: "ro_RO",
@@ -44,9 +45,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "BebeCrește.ro | Calculator somn copil și planner mese",
+    title: "BebeCrește | Somn bebe, mese și rutine",
     description:
-      "Bebe nu doarme? Repere simple pentru somnul, mesele și rutina copilului tău.",
+      "Repere simple pentru somnul, mesele și rutina copilului tău.",
     images: ["/homepage/mama-bebe.jpeg"],
   },
 };
@@ -83,6 +84,45 @@ const benefitPoints = [
   "Construiești rutine mai liniștite",
 ];
 
+const aboutValues = [
+  {
+    title: "Simplu",
+    description:
+      "Repere clare, ușor de înțeles, pentru momentele în care ai nevoie de un punct de pornire rapid.",
+    accent: "bg-sky-50 text-sky-700 ring-sky-100",
+  },
+  {
+    title: "Practic",
+    description:
+      "Idei și instrumente pentru rutine de somn, mese și organizare, gândite pentru viața reală de acasă.",
+    accent: "bg-emerald-50 text-emerald-700 ring-emerald-100",
+  },
+  {
+    title: "Prietenos cu părinții",
+    description:
+      "Fără presiune și fără reguli rigide, doar sprijin blând pentru zile mai așezate cu copilul tău.",
+    accent: "bg-rose-50 text-rose-700 ring-rose-100",
+  },
+];
+
+const socialProofStats = [
+  {
+    value: "1.200+",
+    label: "Programe de somn generate",
+    accent: "text-sky-700",
+  },
+  {
+    value: "800+",
+    label: "Planuri de mese create",
+    accent: "text-rose-700",
+  },
+  {
+    value: "500+",
+    label: "Părinți ajutați",
+    accent: "text-emerald-700",
+  },
+];
+
 const blogPreviewPosts = [
   {
     title: "Idei de mese pentru copil mofturos",
@@ -98,6 +138,24 @@ const blogPreviewPosts = [
     title: "Program de somn pentru bebe de 6 luni",
     href: "/blog/program-de-somn-pentru-bebe-de-6-luni",
     text: "Ferestre de veghe, somnuri de zi și rutină blândă.",
+  },
+];
+
+const faqItems = [
+  {
+    question: "Ce este BebeCrește?",
+    answer:
+      "BebeCrește este un loc cu repere orientative pentru părinți despre somn, mese și rutine în primii ani.",
+  },
+  {
+    question: "Instrumentele sunt gratuite?",
+    answer:
+      "Da. Calculatorul de somn și plannerul de mese pot fi folosite gratuit, fără cont.",
+  },
+  {
+    question: "Recomandările înlocuiesc sfatul medicului?",
+    answer:
+      "Nu. Informațiile sunt orientative și nu înlocuiesc sfatul pediatrului sau al unui specialist.",
   },
 ];
 
@@ -167,6 +225,71 @@ export default function Home() {
 
       <Navbar />
       <Hero />
+
+      <section className="bg-white px-5 py-12 sm:px-8 lg:px-10">
+        <div className="mx-auto max-w-6xl rounded-[2rem] border border-rose-100 bg-[#fff8f4] p-6 shadow-xl shadow-rose-100/45 sm:p-8 lg:p-10">
+          <div className="grid gap-8 lg:grid-cols-[0.9fr_1.1fr] lg:items-start">
+            <div>
+              <p className="text-sm font-bold uppercase text-rose-700">
+                Despre BebeCrește
+              </p>
+              <h2 className="mt-3 max-w-2xl text-3xl font-bold leading-tight tracking-tight text-slate-950 sm:text-4xl">
+                Un proiect creat de părinți pentru părinți.
+              </h2>
+              <p className="mt-4 max-w-2xl text-base leading-7 text-slate-600">
+                BebeCrește ajută părinții să găsească repere orientative pentru
+                rutine de somn, mese și organizarea zilei, într-un mod calm și
+                ușor de aplicat. Informațiile oferite sunt orientative și nu
+                înlocuiesc sfatul medicului.
+              </p>
+            </div>
+
+            <div className="grid gap-4 md:grid-cols-3 lg:grid-cols-3">
+              {aboutValues.map((value) => (
+                <div
+                  key={value.title}
+                  className="rounded-[1.5rem] border border-white/85 bg-white p-5 shadow-lg shadow-rose-100/45"
+                >
+                  <span
+                    className={`inline-flex rounded-full px-3 py-1 text-xs font-bold uppercase ring-1 ${value.accent}`}
+                  >
+                    {value.title}
+                  </span>
+                  <p className="mt-4 text-sm font-semibold leading-6 text-slate-700">
+                    {value.description}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="bg-white px-5 pb-12 sm:px-8 lg:px-10">
+        <div className="mx-auto max-w-6xl overflow-hidden rounded-[2rem] border border-slate-100 bg-white shadow-xl shadow-slate-100/80">
+          <div className="grid gap-0 md:grid-cols-3">
+            {socialProofStats.map((stat, index) => (
+              <div
+                key={stat.label}
+                className={`p-6 text-center sm:p-8 ${
+                  index > 0
+                    ? "border-t border-slate-100 md:border-l md:border-t-0"
+                    : ""
+                }`}
+              >
+                <p
+                  className={`text-4xl font-extrabold tracking-tight sm:text-5xl ${stat.accent}`}
+                >
+                  {stat.value}
+                </p>
+                <p className="mt-3 text-sm font-bold uppercase tracking-[0.12em] text-slate-600">
+                  {stat.label}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
 
       <section className="bg-white px-5 py-12 sm:px-8 lg:px-10">
         <div className="mx-auto max-w-6xl">
@@ -377,6 +500,18 @@ export default function Home() {
       </section>
 
       <EmailCapture className="bg-white px-5 py-10 sm:px-8 lg:px-10" />
+
+      <section className="bg-white px-5 py-10 sm:px-8 lg:px-10">
+        <div className="mx-auto max-w-5xl">
+          <p className="text-sm font-semibold uppercase text-sky-700">
+            Întrebări frecvente
+          </p>
+          <h2 className="mt-3 text-3xl font-bold tracking-tight text-slate-950">
+            Răspunsuri rapide pentru părinți
+          </h2>
+          <FAQAccordion items={faqItems} className="mt-7" />
+        </div>
+      </section>
 
       <section className="bg-white px-5 py-10 sm:px-8 lg:px-10">
         <div className="mx-auto max-w-6xl rounded-[2rem] border border-rose-100 bg-gradient-to-br from-rose-50 via-white to-sky-50 p-6 text-center shadow-xl shadow-rose-100/45 sm:p-8">

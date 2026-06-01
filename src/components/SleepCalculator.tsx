@@ -1,5 +1,7 @@
 "use client";
 
+import { jsPDF } from "jspdf";
+import type { FormEvent } from "react";
 import { useEffect, useRef, useState } from "react";
 
 type SleepResult = {
@@ -61,6 +63,8 @@ type ChildProfile = {
 
 const sleepHistoryStorageKey = "bebecreste:sleep-calculator-history";
 const childProfileStorageKey = "bebecreste:child-profile";
+const medicalDisclaimer =
+  "Informațiile de pe BebeCrește.ro sunt orientative și nu înlocuiesc sfatul medicului pediatru sau al unui specialist. Pentru probleme medicale, alimentație specială sau tulburări de somn, consultă un specialist.";
 
 function readSleepHistory() {
   if (typeof window === "undefined") {
@@ -170,6 +174,11 @@ export function SleepCalculator() {
   const [sleepHistory, setSleepHistory] = useState<SleepHistoryItem[]>([]);
   const [error, setError] = useState("");
   const [copyStatus, setCopyStatus] = useState("");
+  const [pdfStatus, setPdfStatus] = useState("");
+  const [emailAddress, setEmailAddress] = useState("");
+  const [emailStatus, setEmailStatus] = useState<"idle" | "success" | "error">(
+    "idle"
+  );
   const [profileStatus, setProfileStatus] = useState("");
   const [hasSavedProfile, setHasSavedProfile] = useState(false);
   const [reminderStatus, setReminderStatus] = useState("");
@@ -654,6 +663,10 @@ export function SleepCalculator() {
     return parts.length > 0 ? parts.join(" și ") : "0 luni";
   }
 
+  function isValidEmail(value: string) {
+    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value.trim());
+  }
+
   function saveCalculation(historyItem: SleepHistoryItem) {
     const nextHistory = [historyItem, ...sleepHistory].slice(0, 3);
 
@@ -762,6 +775,167 @@ export function SleepCalculator() {
       setCopyStatus("Nu s-a putut copia");
       window.setTimeout(() => setCopyStatus(""), 2000);
     }
+  }
+
+  function addPdfText(
+    document: jsPDF,
+    text: string,
+    x: number,
+    y: number,
+    options: {
+      maxWidth?: number;
+      lineHeight?: number;
+      pageBottom?: number;
+    } = {}
+  ) {
+    const maxWidth = options.maxWidth ?? 170;
+    const lineHeight = options.lineHeight ?? 7;
+    const pageBottom = options.pageBottom ?? 280;
+    const lines = document.splitTextToSize(text, maxWidth) as string[];
+    let nextY = y;
+
+    lines.forEach((line) => {
+      if (nextY > pageBottom) {
+        document.addPage();
+        nextY = 20;
+      }
+
+      document.text(line, x, nextY);
+      nextY += lineHeight;
+    });
+
+    return nextY;
+  }
+
+  function downloadSleepSchedulePdf() {
+    if (!result) {
+      return;
+    }
+
+    try {
+      const document = new jsPDF({ unit: "mm", format: "a4" });
+      const hasYears = ageYears.trim() !== "";
+      const hasMonths = ageMonths.trim() !== "";
+      const years = hasYears ? Number(ageYears) : 0;
+      const months = hasMonths ? Number(ageMonths) : 0;
+      const ageLabel = getAgeLabel(years, months);
+      const generatedAt = new Date().toLocaleDateString("ro-RO", {
+        day: "2-digit",
+        month: "long",
+        year: "numeric",
+      });
+      const fileNameAge = ageLabel
+        .toLowerCase()
+        .replace(/[^\p{L}\p{N}]+/gu, "-")
+        .replace(/^-|-$/g, "");
+
+      document.setProperties({
+        title: "Program de somn BebeCrește",
+        subject: "Program orientativ de somn pentru copil",
+        creator: "BebeCrește.ro",
+      });
+
+      document.setTextColor(15, 23, 42);
+      document.setFont("helvetica", "bold");
+      document.setFontSize(20);
+      document.text("Program de somn BebeCrește", 20, 22);
+
+      document.setFont("helvetica", "normal");
+      document.setFontSize(10);
+      document.setTextColor(100, 116, 139);
+      document.text(`Generat la ${generatedAt}`, 20, 30);
+
+      document.setDrawColor(226, 232, 240);
+      document.line(20, 36, 190, 36);
+
+      document.setFont("helvetica", "bold");
+      document.setFontSize(12);
+      document.setTextColor(15, 23, 42);
+      document.text("Date introduse", 20, 47);
+
+      document.setFont("helvetica", "normal");
+      document.setFontSize(11);
+      let y = 56;
+      y = addPdfText(document, `Vârsta copilului: ${ageLabel}`, 20, y);
+      y = addPdfText(document, `Ora de trezire: ${wakeTime}`, 20, y);
+      y = addPdfText(document, `Somnuri selectate: ${getNapLabel(napCount)}`, 20, y);
+
+      document.setFont("helvetica", "bold");
+      document.setFontSize(12);
+      document.text("Program generat", 20, y + 6);
+      y += 16;
+
+      document.setFont("helvetica", "normal");
+      document.setFontSize(11);
+      result.schedule.forEach((item) => {
+        document.setFont("helvetica", "bold");
+        y = addPdfText(document, `${item.time} - ${item.label}`, 20, y);
+        document.setFont("helvetica", "normal");
+        y = addPdfText(document, item.description, 26, y, {
+          maxWidth: 160,
+          lineHeight: 6,
+        });
+        y += 2;
+      });
+
+      document.setFont("helvetica", "bold");
+      document.setFontSize(12);
+      y = addPdfText(document, "Recomandări scurte", 20, y + 6);
+
+      document.setFont("helvetica", "normal");
+      document.setFontSize(11);
+      [
+        `Următorul somn recomandat: ${result.nextSleepInterval}`,
+        `Culcare recomandată: ${result.bedtime}`,
+        `Fereastră de veghe: ${
+          result.minimumWakeWindow === result.maximumWakeWindow
+            ? result.maximumWakeWindow
+            : `${result.minimumWakeWindow} - ${result.maximumWakeWindow}`
+        }`,
+        `Somnuri de zi: ${result.napRecommendation}`,
+        `Somn total orientativ: ${result.totalSleepRecommendation}`,
+        result.explanation,
+      ].forEach((recommendation) => {
+        y = addPdfText(document, `• ${recommendation}`, 20, y + 1, {
+          maxWidth: 170,
+          lineHeight: 6,
+        });
+      });
+
+      document.setFont("helvetica", "bold");
+      document.setFontSize(12);
+      y = addPdfText(document, "Disclaimer medical", 20, y + 8);
+
+      document.setFont("helvetica", "normal");
+      document.setFontSize(10);
+      document.setTextColor(71, 85, 105);
+      addPdfText(document, medicalDisclaimer, 20, y + 1, {
+        maxWidth: 170,
+        lineHeight: 5.5,
+      });
+
+      document.save(
+        `program-somn-bebecreste${fileNameAge ? `-${fileNameAge}` : ""}.pdf`
+      );
+      setPdfStatus("PDF descărcat");
+      window.setTimeout(() => setPdfStatus(""), 2000);
+    } catch {
+      setPdfStatus("PDF-ul nu a putut fi generat");
+      window.setTimeout(() => setPdfStatus(""), 2500);
+    }
+  }
+
+  function handleEmailScheduleSubmit(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+
+    if (!result || !isValidEmail(emailAddress)) {
+      setEmailStatus("error");
+      return;
+    }
+
+    // Pregătit pentru integrare backend: aici se poate apela un endpoint intern.
+    setEmailStatus("success");
+    setEmailAddress("");
   }
 
   async function scheduleNextSleepReminder() {
@@ -1240,6 +1414,13 @@ export function SleepCalculator() {
                 </button>
                 <button
                   type="button"
+                  onClick={downloadSleepSchedulePdf}
+                  className="inline-flex justify-center rounded-full bg-slate-950 px-4 py-2 text-sm font-semibold text-white shadow-md shadow-slate-900/10 transition duration-200 hover:-translate-y-0.5 hover:bg-slate-800 hover:shadow-lg hover:shadow-slate-900/15 focus:outline-none focus:ring-4 focus:ring-slate-300 active:translate-y-0"
+                >
+                  Descarcă programul PDF
+                </button>
+                <button
+                  type="button"
                   onClick={scheduleNextSleepReminder}
                   className="inline-flex justify-center rounded-full bg-white px-4 py-2 text-sm font-semibold text-slate-700 shadow-sm ring-1 ring-emerald-100 transition duration-200 hover:-translate-y-0.5 hover:bg-emerald-50 hover:text-slate-950 focus:outline-none focus:ring-4 focus:ring-emerald-100 active:translate-y-0"
                 >
@@ -1256,11 +1437,76 @@ export function SleepCalculator() {
                 )}
               </div>
 
-              {(copyStatus || reminderStatus) && (
+              {(copyStatus || pdfStatus || reminderStatus) && (
                 <p className="mt-3 text-sm font-semibold text-emerald-700">
-                  {[copyStatus, reminderStatus].filter(Boolean).join(" • ")}
+                  {[copyStatus, pdfStatus, reminderStatus]
+                    .filter(Boolean)
+                    .join(" • ")}
                 </p>
               )}
+
+              <form
+                onSubmit={handleEmailScheduleSubmit}
+                className="mt-4 rounded-2xl border border-sky-100 bg-sky-50/60 p-4"
+                noValidate
+              >
+                <label
+                  htmlFor="sleep-schedule-email"
+                  className="block text-sm font-bold text-slate-900"
+                >
+                  Trimite-mi programul pe email
+                </label>
+                <div className="mt-3 grid gap-3 sm:grid-cols-[1fr_auto]">
+                  <input
+                    id="sleep-schedule-email"
+                    type="email"
+                    inputMode="email"
+                    autoComplete="email"
+                    value={emailAddress}
+                    onChange={(event) => {
+                      setEmailAddress(event.target.value);
+                      setEmailStatus("idle");
+                    }}
+                    placeholder="email@exemplu.ro"
+                    aria-invalid={emailStatus === "error"}
+                    aria-describedby="sleep-schedule-email-help sleep-schedule-email-feedback"
+                    className="w-full rounded-full border border-sky-100 bg-white px-4 py-3 text-sm text-slate-900 outline-none transition duration-200 placeholder:text-slate-400 hover:border-sky-200 focus:border-sky-300 focus:ring-4 focus:ring-sky-100"
+                  />
+                  <button
+                    type="submit"
+                    className="inline-flex justify-center rounded-full bg-sky-700 px-5 py-3 text-sm font-semibold text-white shadow-md shadow-sky-700/10 transition duration-200 hover:-translate-y-0.5 hover:bg-sky-800 hover:shadow-lg hover:shadow-sky-700/15 focus:outline-none focus:ring-4 focus:ring-sky-100 active:translate-y-0"
+                  >
+                    Trimite
+                  </button>
+                </div>
+                <p
+                  id="sleep-schedule-email-help"
+                  className="mt-2 text-xs leading-5 text-slate-500"
+                >
+                  Momentan afișăm doar confirmarea, fără trimitere reală.
+                </p>
+
+                {emailStatus === "success" ? (
+                  <p
+                    id="sleep-schedule-email-feedback"
+                    role="status"
+                    className="mt-3 rounded-2xl border border-emerald-100 bg-white px-4 py-3 text-sm font-semibold leading-6 text-emerald-700"
+                  >
+                    Programul este pregătit pentru trimitere. Integrarea cu
+                    emailul va fi conectată ulterior.
+                  </p>
+                ) : null}
+
+                {emailStatus === "error" ? (
+                  <p
+                    id="sleep-schedule-email-feedback"
+                    role="alert"
+                    className="mt-3 rounded-2xl border border-rose-100 bg-white px-4 py-3 text-sm font-semibold leading-6 text-rose-700"
+                  >
+                    Te rugăm să introduci o adresă de email validă.
+                  </p>
+                ) : null}
+              </form>
 
               <div className="mt-4 rounded-2xl bg-white/70 p-4">
                 <p className="text-sm font-semibold text-slate-900">

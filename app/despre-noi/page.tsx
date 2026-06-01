@@ -1,86 +1,112 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import { Footer } from "@/src/components/Footer";
 import { Navbar } from "@/src/components/Navbar";
 
 export const metadata: Metadata = {
-  title: "Despre BebeCrește",
+  title: "Despre BebeCrește | Repere blânde pentru părinți",
   description:
-    "BebeCrește ajută părinții cu repere simple pentru somn, mese și rutine, într-un ton blând și fără presiune.",
+    "Află povestea BebeCrește, un proiect creat pentru părinți care caută repere simple despre somn, mese și rutine, fără presiune.",
   alternates: {
     canonical: "/despre-noi",
   },
   openGraph: {
-    title: "Despre BebeCrește",
+    title: "Despre BebeCrește | Repere pentru părinți",
     description:
-      "Repere simple și orientative pentru părinți despre somn, mese și rutine.",
+      "Un proiect creat pentru părinți care vor mai multă claritate despre somn, mese și rutine în primii ani.",
     url: "/despre-noi",
+    siteName: "BebeCrește.ro",
+    locale: "ro_RO",
+    type: "website",
+    images: [
+      {
+        url: "/homepage/mama-bebe.jpeg",
+        width: 1200,
+        height: 630,
+        alt: "Părinte cu bebeluș, pentru BebeCrește.ro",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Despre BebeCrește | Repere pentru părinți",
+    description:
+      "Povestea unui proiect cu repere simple pentru somn, mese și rutine.",
+    images: ["/homepage/mama-bebe.jpeg"],
   },
 };
-
-const values = [
-  "Repere simple pentru zile reale",
-  "Recomandări orientative",
-  "Claritate fără presiune",
-];
 
 export default function DespreNoiPage() {
   return (
     <main className="min-h-screen overflow-hidden bg-[#fff7f1] text-slate-900">
       <Navbar />
 
-      <section className="relative px-5 pb-20 pt-10 sm:px-8 lg:px-10">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,_rgba(186,230,253,0.72),_transparent_34%),radial-gradient(circle_at_82%_12%,_rgba(254,205,211,0.72),_transparent_30%),linear-gradient(135deg,_#fff7f1_0%,_#f8fbff_48%,_#fff1f7_100%)]" />
-
-        <div className="relative mx-auto max-w-5xl">
-          <div className="rounded-[2rem] border border-white/75 bg-white/70 p-6 shadow-2xl shadow-rose-200/25 backdrop-blur sm:p-10 lg:p-12">
-            <p className="inline-flex rounded-full border border-rose-100 bg-white/75 px-4 py-2 text-sm font-semibold text-rose-700 shadow-sm">
-              BebeCrește.ro
+      <section className="bg-white px-5 py-12 sm:px-8 lg:px-10">
+        <div className="mx-auto grid max-w-6xl gap-8 rounded-[2rem] bg-[#fff8f4] p-6 shadow-xl shadow-rose-100/45 sm:p-8 lg:grid-cols-[1.08fr_0.92fr] lg:items-center lg:p-10">
+          <div>
+            <p className="text-sm font-bold uppercase text-rose-700">
+              Povestea din spatele BebeCrește
             </p>
 
-            <h1 className="mt-6 max-w-3xl text-4xl font-bold leading-tight tracking-tight text-slate-950 sm:text-5xl">
-              Despre BebeCrește
+            <h1 className="mt-3 max-w-2xl text-3xl font-bold leading-tight tracking-tight text-slate-950 sm:text-4xl">
+              BebeCrește a pornit din viața reală de părinte.
             </h1>
 
-            <div className="mt-6 max-w-3xl space-y-5 text-lg leading-8 text-slate-600">
+            <div className="mt-5 space-y-4 text-base leading-7 text-slate-650">
               <p>
-                BebeCrește ajută părinții cu repere simple pentru somn, mese și
-                rutine.
+                Sunt mama unei fetițe de 3 ani, Victoria. Odată cu ea am
+                descoperit cât de mult se schimbă totul de la o etapă la alta:
+                somnul, mesele, rutina și chiar lucrurile aparent simple din
+                fiecare zi.
               </p>
               <p>
-                Recomandările sunt orientative și sunt gândite ca puncte de
-                pornire ușor de adaptat la ritmul fiecărui copil.
+                Am început să citesc mult despre parenting, somnul bebelușilor
+                și alimentația copiilor mici pentru că îmi doream să înțeleg
+                mai bine nevoile copilului meu, fără presiune și fără reguli
+                imposibil de urmat.
               </p>
               <p>
-                Site-ul este creat pentru părinți care vor mai multă claritate,
-                fără presiune.
+                Dar de multe ori informațiile găsite online erau prea
+                complicate, prea contradictorii sau făcute să te simți că faci
+                ceva greșit dacă nu urmezi „programul perfect”.
+              </p>
+              <p>
+                Așa a apărut ideea BebeCrește: un loc simplu, calm și clar,
+                unde părinții pot găsi repere orientative pentru somn, mese,
+                diversificare, rutine și viața de zi cu zi cu un copil mic.
               </p>
             </div>
 
-            <div className="mt-8 grid gap-3 sm:grid-cols-3">
-              {values.map((value) => (
-                <div
-                  key={value}
-                  className="rounded-2xl border border-white/80 bg-sky-50/70 px-4 py-4 text-sm font-semibold leading-6 text-slate-700 shadow-sm"
-                >
-                  {value}
-                </div>
-              ))}
-            </div>
+            <p className="mt-6 rounded-2xl bg-white/75 p-4 text-base font-semibold leading-7 text-slate-800 shadow-sm shadow-rose-100/40">
+              Nu cred în perfecțiune și nici în reguli rigide. Cred că fiecare
+              copil este diferit și că părinții au nevoie, înainte de toate, de
+              mai multă claritate și mai puțin stres.
+            </p>
+          </div>
 
-            <div className="mt-9 flex flex-col gap-3 sm:flex-row">
-              <Link
-                href="/calculator-somn"
-                className="inline-flex justify-center rounded-full bg-slate-950 px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-slate-900/15 transition duration-200 hover:-translate-y-0.5 hover:bg-slate-800 hover:shadow-xl hover:shadow-slate-900/20 focus:outline-none focus:ring-4 focus:ring-slate-300 active:translate-y-0"
-              >
-                Calculator somn
-              </Link>
-              <Link
-                href="/planner-mese"
-                className="inline-flex justify-center rounded-full border border-rose-100 bg-white/85 px-6 py-3 text-sm font-semibold text-slate-800 shadow-sm transition duration-200 hover:-translate-y-0.5 hover:bg-rose-50 hover:text-slate-950 hover:shadow-md focus:outline-none focus:ring-4 focus:ring-rose-100 active:translate-y-0"
-              >
-                Planner mese
-              </Link>
+          <div className="rounded-[1.75rem] bg-white p-5 shadow-lg shadow-rose-100/60 sm:p-6">
+            <div className="flex min-h-72 flex-col justify-between rounded-[1.35rem] bg-[#f7fbff] p-6">
+              <p className="text-xl font-bold leading-8 text-slate-950">
+                Creat cu gândul la părinți care vor mai multă claritate și mai
+                puțin stres.
+              </p>
+
+              <div className="mt-8 space-y-3">
+                {[
+                  "Creat de o mamă",
+                  "Inspirat din viața reală",
+                  "Repere blânde, nu reguli rigide",
+                ].map((item) => (
+                  <div
+                    key={item}
+                    className="flex items-center gap-3 rounded-full bg-white px-4 py-3 text-sm font-bold text-slate-700 shadow-sm"
+                  >
+                    <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-emerald-50 text-emerald-700">
+                      ✓
+                    </span>
+                    <span>{item}</span>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
         </div>

@@ -2,16 +2,13 @@ import Image from "next/image";
 import Link from "next/link";
 
 const navigationLinks = [
-  { href: "/calculator-somn", label: "Calculator somn" },
+  { href: "/", label: "Acasă" },
+  { href: "/calculator-somn", label: "Somn bebe" },
   { href: "/planner-mese", label: "Planner mese" },
   { href: "/blog", label: "Blog" },
   { href: "/despre-noi", label: "Despre noi" },
-];
-
-const legalLinks = [
   { href: "/politica-confidentialitate", label: "Politica cookies" },
   { href: "/termeni-si-conditii", label: "Termeni" },
-  { href: "/termeni-si-conditii#disclaimer-medical", label: "Disclaimer" },
 ];
 
 function FooterLink({ href, label }: { href: string; label: string }) {
@@ -33,7 +30,7 @@ export function Footer() {
   return (
     <footer className="bg-white px-5 pb-8 pt-12 sm:px-8 lg:px-10">
       <div className="mx-auto max-w-7xl overflow-hidden rounded-[2rem] border border-white/80 bg-[linear-gradient(135deg,_#fff8f4_0%,_#f8fbff_50%,_#fff7fb_100%)] shadow-[0_24px_80px_rgba(244,114,182,0.14)]">
-        <div className="grid gap-8 p-6 sm:p-8 lg:grid-cols-[1.15fr_0.8fr_0.75fr_0.95fr] lg:p-10">
+        <div className="grid gap-8 p-6 sm:p-8 lg:grid-cols-[1fr_0.8fr_1.2fr] lg:p-10">
           <div>
             <Link
               href="/"
@@ -51,41 +48,30 @@ export function Footer() {
               </span>
             </Link>
             <p className="mt-5 max-w-sm text-base leading-7 text-slate-600">
-              Repere simple pentru somn, mese și rutine în primii ani.
-            </p>
-            <p className="mt-5 max-w-sm rounded-2xl bg-white/70 p-4 text-sm leading-6 text-slate-500 shadow-sm ring-1 ring-white/80">
-              Informațiile sunt orientative și nu înlocuiesc sfatul medicului.
+              BebeCrește oferă repere simple și blânde pentru somnul, mesele și
+              rutinele copilului în primii ani.
             </p>
           </div>
 
           <nav aria-label="Navigare footer" className="flex flex-col gap-3">
             <p className="mb-2 text-xs font-bold uppercase tracking-[0.08em] text-rose-700">
-              Navigare
+              Linkuri utile
             </p>
             {navigationLinks.map((link) => (
               <FooterLink key={link.href} href={link.href} label={link.label} />
             ))}
           </nav>
 
-          <nav aria-label="Linkuri legale" className="flex flex-col gap-3">
-            <p className="mb-2 text-xs font-bold uppercase tracking-[0.08em] text-sky-700">
-              Legal
-            </p>
-            {legalLinks.map((link) => (
-              <FooterLink key={link.href} href={link.href} label={link.label} />
-            ))}
-          </nav>
-
-          <div className="rounded-[1.75rem] border border-white/80 bg-white/65 p-5 shadow-lg shadow-slate-100/70 backdrop-blur">
-            <p className="text-xs font-bold uppercase tracking-[0.08em] text-emerald-700">
-              BebeCrește
-            </p>
-            <p className="mt-4 text-2xl font-bold leading-tight tracking-tight text-slate-950">
-              Creat cu grijă pentru părinți reali.
-            </p>
-            <p className="mt-4 text-sm leading-6 text-slate-600">
-              Un spațiu cald pentru zilele în care ai nevoie de mai multă
-              claritate și mai puțină presiune.
+          <div
+            id="disclaimer-medical"
+            className="rounded-[1.75rem] border border-white/80 bg-white/70 p-5 text-sm leading-6 text-slate-600 shadow-lg shadow-slate-100/70 backdrop-blur"
+          >
+            <p className="font-bold text-slate-900">Disclaimer medical</p>
+            <p className="mt-2">
+              Informațiile de pe BebeCrește.ro sunt orientative și nu
+              înlocuiesc sfatul medicului pediatru sau al unui specialist.
+              Pentru probleme medicale, alimentație specială sau tulburări de
+              somn, consultă un specialist.
             </p>
           </div>
         </div>

@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import type { Metadata } from "next";
+import { FAQAccordion } from "@/src/components/FAQAccordion";
 import { Footer } from "@/src/components/Footer";
 import { Navbar } from "@/src/components/Navbar";
 import { SleepCalculator } from "@/src/components/SleepCalculator";
@@ -24,10 +25,13 @@ export const metadata: Metadata = {
     canonical: "/calculator-somn",
   },
   openGraph: {
-    title: "Calculator somn bebe | Bebe nu doarme?",
+    title: "Calculator somn bebe | Program și ferestre de veghe",
     description:
-      "Bebe nu doarme? Primește repere orientative pentru următoarea fereastră de somn și ora de culcare.",
+      "Calculează următoarea fereastră de somn, ora de culcare și un program orientativ pentru bebe sau copil mic.",
     url: "/calculator-somn",
+    siteName: "BebeCrește.ro",
+    locale: "ro_RO",
+    type: "website",
     images: [
       {
         url: "/sleepcalculator/bebe-doarme.jpeg",
@@ -39,9 +43,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Calculator somn bebe | Bebe nu doarme?",
+    title: "Calculator somn bebe | Program și ferestre de veghe",
     description:
-      "Bebe nu doarme? Calculează următoarea fereastră de somn și ora de culcare.",
+      "Primește repere orientative pentru următorul somn, ora de culcare și rutina zilei.",
     images: ["/sleepcalculator/bebe-doarme.jpeg"],
   },
 };
@@ -521,21 +525,7 @@ export default function CalculatorSomnPage() {
           <h2 className="mt-3 text-3xl font-bold tracking-tight text-slate-950">
             FAQ despre calculatorul de somn pentru bebe.
           </h2>
-          <div className="mt-7 grid gap-4">
-            {faqItems.map((item) => (
-              <div
-                key={item.question}
-                className="rounded-[1.5rem] border border-slate-100 bg-white p-5 shadow-lg shadow-slate-100/70"
-              >
-                <h3 className="text-lg font-bold text-slate-950">
-                  {item.question}
-                </h3>
-                <p className="mt-2 text-sm leading-6 text-slate-600">
-                  {item.answer}
-                </p>
-              </div>
-            ))}
-          </div>
+          <FAQAccordion items={faqItems} className="mt-7" />
         </div>
       </section>
 

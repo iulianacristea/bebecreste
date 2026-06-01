@@ -1,12 +1,16 @@
 
 import type { MetadataRoute } from "next";
 import { getAllBlogPosts } from "@/src/lib/blogPosts";
+import { getAllMealAgePages } from "@/src/lib/mealAgePages";
+import { getAllSleepAgePages } from "@/src/lib/sleepAgePages";
 
 const baseUrl = "https://bebecreste.ro";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const lastModified = new Date();
   const blogPosts = getAllBlogPosts();
+  const mealAgePages = getAllMealAgePages();
+  const sleepAgePages = getAllSleepAgePages();
 
   const staticRoutes: MetadataRoute.Sitemap = [
     {
@@ -26,6 +30,12 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       lastModified,
       changeFrequency: "weekly",
       priority: 0.9,
+    },
+    {
+      url: `${baseUrl}/ghid-somn-bebe`,
+      lastModified,
+      changeFrequency: "monthly",
+      priority: 0.8,
     },
     {
       url: `${baseUrl}/blog`,
@@ -78,5 +88,19 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority: 0.7,
   }));
 
-  return [...staticRoutes, ...blogRoutes];
+  const sleepAgeRoutes: MetadataRoute.Sitemap = sleepAgePages.map((page) => ({
+    url: `${baseUrl}/somn/${page.slug}`,
+    lastModified,
+    changeFrequency: "monthly",
+    priority: 0.7,
+  }));
+
+  const mealAgeRoutes: MetadataRoute.Sitemap = mealAgePages.map((page) => ({
+    url: `${baseUrl}/mese/${page.slug}`,
+    lastModified,
+    changeFrequency: "monthly",
+    priority: 0.7,
+  }));
+
+  return [...staticRoutes, ...blogRoutes, ...sleepAgeRoutes, ...mealAgeRoutes];
 }

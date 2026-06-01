@@ -6,14 +6,10 @@ import Image from "next/image";
 
 const navigationLinks = [
   { href: "/", label: "Acasă" },
-  { href: "/calculator-somn", label: "Somn" },
-  { href: "/planner-mese", label: "Mese" },
+  { href: "/calculator-somn", label: "Somn bebe" },
+  { href: "/planner-mese", label: "Planner mese" },
   { href: "/blog", label: "Blog" },
-  {
-    href: "/despre-noi",
-    label: "Despre noi",
-  },
-  { href: "/contact", label: "Contact" },
+  { href: "/despre-noi", label: "Despre noi" },
 ];
 
 export function Navbar() {
@@ -88,7 +84,7 @@ export function Navbar() {
 
           <Link
             href="/calculator-somn"
-            className="hidden rounded-full bg-gradient-to-r from-slate-950 to-slate-800 px-5 py-3 text-sm font-semibold text-white shadow-[0_14px_32px_rgba(15,23,42,0.18)] transition duration-300 hover:-translate-y-0.5 hover:shadow-[0_18px_42px_rgba(15,23,42,0.22)] focus:outline-none focus:ring-4 focus:ring-slate-300 active:translate-y-0 md:inline-flex lg:px-6"
+            className="hidden rounded-full bg-gradient-to-r from-slate-950 to-slate-800 px-5 py-3 text-sm font-semibold text-white shadow-[0_14px_32px_rgba(15,23,42,0.18)] transition duration-300 hover:-translate-y-0.5 hover:shadow-[0_18px_42px_rgba(15,23,42,0.22)] focus:outline-none focus:ring-4 focus:ring-slate-300 active:translate-y-0 lg:inline-flex lg:px-6"
           >
             Calculează somnul
           </Link>

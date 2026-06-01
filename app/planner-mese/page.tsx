@@ -1,14 +1,15 @@
 import Image from "next/image";
 import Link from "next/link";
 import type { Metadata } from "next";
+import { FAQAccordion } from "@/src/components/FAQAccordion";
 import { Footer } from "@/src/components/Footer";
 import { MealPlanner } from "@/src/components/MealPlanner";
 import { Navbar } from "@/src/components/Navbar";
 
 export const metadata: Metadata = {
-  title: "Planner mese copii | Idei mese bebe și diversificare",
+  title: "Planner mese copii | Idei de mese pentru bebe și toddler",
   description:
-    "Planner mese copii pentru idei simple de mic dejun, prânz, cină și gustări, adaptate vârstei, diversificării și alimentelor disponibile.",
+    "Planner mese copii pentru idei simple de mic dejun, prânz, cină și gustări, adaptate vârstei, alergiilor și alimentelor disponibile.",
   keywords: [
     "planner mese copii",
     "planner mese bebe",
@@ -24,10 +25,13 @@ export const metadata: Metadata = {
     canonical: "/planner-mese",
   },
   openGraph: {
-    title: "Planner mese bebe | BebeCrește.ro",
+    title: "Planner mese copii | Idei simple pentru bebe și toddler",
     description:
-      "Idei de mese orientative pentru diversificare, în funcție de vârstă și alimente disponibile.",
+      "Generează idei orientative de mese pentru copil, în funcție de vârstă, alergii și ingredientele disponibile acasă.",
     url: "/planner-mese",
+    siteName: "BebeCrește.ro",
+    locale: "ro_RO",
+    type: "website",
     images: [
       {
         url: "/mealprep/bebe-mananca.jpeg",
@@ -39,9 +43,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Planner mese bebe | BebeCrește.ro",
+    title: "Planner mese copii | Idei simple de mese",
     description:
-      "Primești idei simple de mese pentru bebeluși și copii mici.",
+      "Primești idei simple de mese pentru bebeluși și copii mici, fără presiune.",
     images: ["/mealprep/bebe-mananca.jpeg"],
   },
 };
@@ -76,6 +80,24 @@ const relatedArticles = [
     title: "Cât mănâncă un copil de 1 an",
     href: "/blog/cat-trebuie-sa-manance-copilul-in-varsta-de-un-an",
     text: "Porții, apetit variabil și ritmul meselor după primul an.",
+  },
+];
+
+const faqItems = [
+  {
+    question: "Plannerul de mese înlocuiește sfatul medicului?",
+    answer:
+      "Nu. Plannerul oferă idei orientative și nu înlocuiește recomandările pediatrului, mai ales în caz de alergii, probleme de creștere sau alimentație specială.",
+  },
+  {
+    question: "Pot adapta ideile dacă nu am toate ingredientele?",
+    answer:
+      "Da. Ideile sunt puncte de pornire. Poți înlocui ingredientele cu alimente deja tolerate de copil și potrivite vârstei.",
+  },
+  {
+    question: "Ce fac dacă cel mic refuză sugestiile?",
+    answer:
+      "Refuzurile sunt frecvente la copiii mici. Păstrează porțiile mici, oferă un aliment familiar și reîncearcă fără presiune în altă zi.",
   },
 ];
 
@@ -299,6 +321,18 @@ export default function PlannerMesePage() {
               </Link>
             ))}
           </div>
+        </div>
+      </section>
+
+      <section className="bg-white px-5 py-12 sm:px-8 lg:px-10">
+        <div className="mx-auto max-w-5xl">
+          <p className="text-sm font-bold uppercase text-sky-700">
+            Întrebări frecvente
+          </p>
+          <h2 className="mt-3 text-3xl font-bold tracking-tight text-slate-950">
+            FAQ despre plannerul de mese.
+          </h2>
+          <FAQAccordion items={faqItems} className="mt-7" />
         </div>
       </section>
 

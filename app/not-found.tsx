@@ -20,7 +20,7 @@ export default function NotFound() {
           href="/"
           className="mt-8 inline-flex rounded-full bg-slate-950 px-7 py-4 font-semibold text-white shadow-lg shadow-slate-900/15 transition duration-200 hover:-translate-y-0.5 hover:bg-slate-800 hover:shadow-xl hover:shadow-slate-900/20 focus:outline-none focus:ring-4 focus:ring-slate-300 active:translate-y-0"
         >
-          Înapoi la homepage
+          Înapoi acasă
         </Link>
       </section>
     </main>
